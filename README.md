@@ -1,5 +1,9 @@
 # nc-qa-automation
 
+# UI Resources
+
+To use UI test scripts, the please make sure to have Node.js installed on your windows/ mac.
+
 # DSL Resources
 
 Python scripts for managing and analysing **Nutanix Calm / NCM** runbook and app operations at scale.  
@@ -11,7 +15,7 @@ These tools are designed to work alongside the [calm-dsl](https://github.com/nut
 
 | Requirement | Details |
 |---|---|
-| Python | 3.9+ |
+| Python | 3.11+ |
 | calm-dsl | Installed in `~/calm-dsl/venv` (or pass `--calm-dsl-dir`) |
 | NCM access | PC credentials configured in `~/.calm/config.ini` |
 | Python packages | `matplotlib`, `plotly`, `requests` — install with `pip install matplotlib plotly requests` |
