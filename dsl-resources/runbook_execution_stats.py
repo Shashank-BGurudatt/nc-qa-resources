@@ -907,7 +907,7 @@ Examples:
     if args.output:
         prefix = args.output
     else:
-        batch_dir = os.path.join(".", f"runbook_batch_{args.batch_id}")
+        batch_dir = os.path.join("../untitled folder", f"runbook_batch_{args.batch_id}")
         prefix    = os.path.join(batch_dir, args.batch_id)
     os.makedirs(os.path.dirname(os.path.abspath(prefix)) or ".", exist_ok=True)
 
