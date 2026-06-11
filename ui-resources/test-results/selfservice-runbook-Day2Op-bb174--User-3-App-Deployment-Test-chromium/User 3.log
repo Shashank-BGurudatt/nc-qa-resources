@@ -1,0 +1,48 @@
+
+================================================================================
+Test Log: 2026-06-10T11:13:33.656Z
+User: [User 3]
+================================================================================
+[2026-06-10T11:13:33.657Z] [INFO] Starting test for user: solution_user13@qa.nutanix.com
+[2026-06-10T11:13:33.658Z] [INFO] Output directory: /Users/shashank.bg/playwright-demo/test-results/selfservice-runbook-Day2Op-bb174--User-3-App-Deployment-Test-chromium
+[2026-06-10T11:13:33.669Z] [STEP] → Navigate to login page
+[2026-06-10T11:13:47.769Z] [INFO] ✓ Login page loaded successfully
+[2026-06-10T11:13:47.788Z] [STEP] → Enter username: solution_user13@qa.nutanix.com
+[2026-06-10T11:13:47.814Z] [INFO] ✓ Username entered
+[2026-06-10T11:13:47.818Z] [STEP] → Enter password
+[2026-06-10T11:13:47.833Z] [INFO] ✓ Password entered
+[2026-06-10T11:13:47.836Z] [STEP] → Submit login form
+[2026-06-10T11:13:47.910Z] [INFO] ✓ Dashboard loaded after login
+[2026-06-10T11:13:47.915Z] [STEP] → Dismiss tour if present
+[2026-06-10T11:13:58.430Z] [INFO] ✓ Tour dismissed
+[2026-06-10T11:13:59.871Z] [STEP] → Navigate to Self Service
+[2026-06-10T11:14:02.296Z] [INFO] ✓ Self Service iframe loaded
+[2026-06-10T11:14:02.300Z] [STEP] → Dismiss welcome modal
+[2026-06-10T11:14:10.771Z] [INFO] ✓ Welcome modal dismissed
+[2026-06-10T11:15:40.780Z] [DEBUG] Welcome message not found
+[2026-06-10T11:15:40.795Z] [STEP] → Dismiss welcome modal (legacy)
+[2026-06-10T11:15:48.932Z] [INFO] ✓ Welcome modal dismissed (legacy)
+[2026-06-10T11:15:48.936Z] [STEP] → Navigate to Runbooks
+[2026-06-10T11:15:50.832Z] [INFO] ✓ Runbooks page loaded
+[2026-06-10T11:15:50.838Z] [STEP] → Search for runbook: vmrestart-clone
+[2026-06-10T11:15:50.853Z] [INFO] ✓ Search for runbook "vmrestart-clone" completed
+[2026-06-10T11:15:50.878Z] [STEP] → Select runbook: vmrestart-clone
+[2026-06-10T11:15:51.736Z] [INFO] ✓ Selected runbook "vmrestart-clone" successfully
+[2026-06-10T11:15:51.740Z] [STEP] → Click on task: vmrestarttask
+[2026-06-10T11:15:53.077Z] [INFO] ✓ Clicked on task "vmrestarttask" successfully
+[2026-06-10T11:15:53.081Z] [STEP] → Select operation: VM Power Off
+[2026-06-10T11:15:53.606Z] [INFO] ✓ Selected operation "VM Power Off" successfully
+[2026-06-10T11:15:53.609Z] [STEP] → Save runbook configuration
+[2026-06-10T11:15:54.559Z] [INFO] ✓ Runbook saved successfully
+[2026-06-10T11:15:54.568Z] [INFO] ✓ Execute button is enabled
+[2026-06-10T11:15:54.573Z] [STEP] → Click execute button
+[2026-06-10T11:15:54.644Z] [INFO] ✓ Execute button clicked successfully
+[2026-06-10T11:15:54.648Z] [STEP] → Selecting the endpoint
+[2026-06-10T11:15:57.592Z] [INFO] ✓ Selected endpoint and execution started successfully
+[2026-06-10T11:15:57.598Z] [STEP] → Verify execution completion
+[2026-06-10T11:16:22.618Z] [INFO] ✓ Execution verified - Status SUCCESS
+[2026-06-10T11:16:22.629Z] [STEP] → Generate performance summary
+[2026-06-10T11:16:22.638Z] [INFO] ✓ Performance summary generated and exported
+[2026-06-10T11:16:22.639Z] [INFO] Log file saved to: /Users/shashank.bg/playwright-demo/test-results/selfservice-runbook-Day2Op-bb174--User-3-App-Deployment-Test-chromium
+[2026-06-10T11:16:22.643Z] [INFO] ✓ All steps completed successfully!
+[2026-06-10T11:16:22.644Z] [INFO] Total test execution time: 168988ms

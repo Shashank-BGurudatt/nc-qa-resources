@@ -1,0 +1,3181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Performance Test Results Viewer</title>
+    <!--
+      Report viewer for performance tracker JSON output.
+      Load one or more *-metrics.json (or all-users-metrics.json). Data is per page: UI stats and API stats
+      come from the tracker and are stored per step; we only display what's in the JSON. All timings in the
+      JSON are in milliseconds (ms); we show seconds (s) by dividing by 1000. Total Page Load is the
+      document load event for that target (same for steps that share the same document/iframe). Step duration
+      is unique per step. Author: manish.gupta@nutanix.com
+    -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #f0f2f5;
+            min-height: 100vh;
+            padding: 20px;
+            color: #1a1a1a;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: #1e293b;
+            color: white;
+            padding: 40px;
+            border-bottom: 3px solid #3b82f6;
+        }
+
+        h1 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: -0.5px;
+        }
+
+        .subtitle {
+            font-size: 16px;
+            opacity: 0.95;
+            font-weight: 400;
+        }
+
+        .content-wrapper {
+            padding: 40px;
+        }
+
+        .upload-section {
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 8px;
+            text-align: center;
+            margin-bottom: 30px;
+            border: 2px dashed #cbd5e1;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .upload-section input[type="file"] {
+            display: none;
+        }
+
+        .upload-button {
+            background: #3b82f6;
+            color: white;
+            padding: 14px 28px;
+            border-radius: 6px;
+            cursor: pointer;
+            display: inline-block;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.2s;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .upload-button:hover {
+            background: #2563eb;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+        }
+
+        .upload-hint {
+            margin-top: 20px;
+            color: #64748b;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .threshold-controls {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .threshold-controls h3 {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 15px;
+        }
+
+        .threshold-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .threshold-item {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .threshold-item label {
+            font-size: 13px;
+            font-weight: 500;
+            color: #475569;
+        }
+
+        .threshold-inputs {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .threshold-inputs input {
+            width: 80px;
+            padding: 6px 10px;
+            border: 1px solid #cbd5e1;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .threshold-inputs span {
+            font-size: 12px;
+            color: #64748b;
+        }
+
+        .apply-button {
+            background: #10b981;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            margin-top: 15px;
+        }
+
+        .apply-button:hover {
+            background: #059669;
+        }
+
+        .reset-button {
+            background: #64748b;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            margin-top: 15px;
+            margin-left: 10px;
+        }
+
+        .reset-button:hover {
+            background: #475569;
+        }
+
+        .chart-container {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .chart-container h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 20px;
+        }
+
+        .chart-wrapper {
+            position: relative;
+            height: 500px;
+            min-height: 500px;
+        }
+
+        .chart-wrapper.large {
+            height: 600px;
+        }
+
+        .charts-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .chart-full-width {
+            width: 100%;
+        }
+
+        .controls {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .control-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .control-group label {
+            font-weight: 500;
+            color: #555;
+        }
+
+        select, input[type="text"] {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: #ffffff;
+            color: #1e293b;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            border-left: 4px solid #64748b;
+        }
+
+        .stat-card.green {
+            border-left-color: #10b981;
+        }
+
+        .stat-card.orange {
+            border-left-color: #f59e0b;
+        }
+
+        .stat-card.blue {
+            border-left-color: #3b82f6;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: #64748b;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .stat-value {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1e293b;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-size: 22px;
+            font-weight: 600;
+            color: #1e293b;
+            margin: 30px 0 20px 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title::before {
+            content: '';
+            width: 4px;
+            height: 24px;
+            background: #3b82f6;
+            border-radius: 2px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin-bottom: 30px;
+            font-size: 14px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        th {
+            background: #475569;
+            color: white;
+            padding: 14px 16px;
+            text-align: left;
+            font-weight: 600;
+            position: sticky;
+            top: 0;
+            cursor: pointer;
+            user-select: none;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        th:hover {
+            background: #334155;
+        }
+
+        th:first-child {
+            border-top-left-radius: 8px;
+        }
+
+        th:last-child {
+            border-top-right-radius: 8px;
+        }
+
+        th.sortable::after {
+            content: ' ⇅';
+            opacity: 0.5;
+        }
+
+        th.sorted-asc::after {
+            content: ' ↑';
+            opacity: 1;
+        }
+
+        th.sorted-desc::after {
+            content: ' ↓';
+            opacity: 1;
+        }
+
+        td {
+            padding: 14px 16px;
+            border-bottom: 1px solid #e8eaf0;
+        }
+
+        tbody tr {
+            transition: all 0.2s;
+        }
+
+        tbody tr:hover {
+            background: #f8fafc;
+        }
+
+        tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .rating {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .rating.excellent {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .rating.good {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .rating.poor {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+            background: #e3f2fd;
+            color: #1976d2;
+        }
+
+        .badge.failed {
+            background: #ffebee;
+            color: #c62828;
+        }
+
+        .badge.slow {
+            background: #fff3e0;
+            color: #e65100;
+        }
+
+        .page-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .page-tab {
+            padding: 10px 20px;
+            background: #ecf0f1;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .page-tab:hover {
+            background: #bdc3c7;
+        }
+
+        .page-tab.active {
+            background: #3498db;
+            color: white;
+        }
+
+        .page-content {
+            display: none;
+        }
+
+        .page-content.active {
+            display: block;
+        }
+
+        .no-data {
+            text-align: center;
+            padding: 60px 20px;
+            color: #95a5a6;
+            font-size: 16px;
+        }
+
+        .export-buttons {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .export-button {
+            padding: 8px 16px;
+            background: #27ae60;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .export-button:hover {
+            background: #229954;
+        }
+
+        .metric-row {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 10px;
+            padding: 8px 0;
+            border-bottom: 1px solid #ecf0f1;
+        }
+
+        .metric-label {
+            font-weight: 600;
+            color: #555;
+        }
+
+        .metric-value {
+            color: #333;
+        }
+
+        .comparison-view {
+            overflow-x: auto;
+        }
+
+        .user-column {
+            min-width: 150px;
+        }
+
+        .table-caption {
+            caption-side: top;
+            text-align: left;
+            padding: 6px 0;
+            font-size: 12px;
+            color: #64748b;
+        }
+
+        .metric-def-hint {
+            font-size: 13px;
+            color: #475569;
+            margin-bottom: 8px;
+        }
+
+        .highlight {
+            background: #fff9c4 !important;
+        }
+
+        /* Print button styles */
+        .print-btn {
+            padding: 8px 16px;
+            margin: 5px;
+            background: #3b82f6;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+        .print-btn:hover {
+            background: #2563eb;
+        }
+        .print-btn-section {
+            margin: 10px 0;
+            text-align: right;
+        }
+
+        /* Print styles for wide tables */
+        @media print {
+            @page {
+                size: A3 landscape;
+                margin: 10mm;
+            }
+            
+            body {
+                font-size: 8pt;
+            }
+            
+            .print-btn, .upload-section, button, input[type="file"] {
+                display: none !important;
+            }
+            
+            table {
+                font-size: 7pt;
+                page-break-inside: avoid;
+            }
+            
+            details {
+                display: block !important;
+            }
+            
+            details > summary {
+                display: none;
+            }
+            
+            details[open] {
+                display: block;
+            }
+            
+            .section {
+                page-break-after: avoid;
+                page-break-inside: avoid;
+            }
+            
+            h1, h2, h3 {
+                page-break-after: avoid;
+            }
+        }
+
+        /* Tree report */
+        .report-tree { margin: 0; padding: 0; list-style: none; }
+        .tree-page { margin-bottom: 8px; }
+        .tree-page > summary { font-weight: 700; font-size: 16px; padding: 10px 12px; background: #f1f5f9; border-radius: 8px; cursor: pointer; list-style: none; }
+        .tree-page > summary::-webkit-details-marker { display: none; }
+        .tree-page > summary::before { content: '▶'; display: inline-block; margin-right: 8px; transition: transform 0.2s; }
+        .tree-page[open] > summary::before { transform: rotate(90deg); }
+        .tree-page > .tree-children { margin-left: 16px; margin-top: 8px; border-left: 2px solid #e2e8f0; padding-left: 16px; }
+        .tree-section { margin-bottom: 8px; }
+        .tree-section > summary { font-weight: 600; font-size: 14px; padding: 8px 10px; background: #e0f2fe; border-radius: 6px; cursor: pointer; list-style: none; }
+        .tree-section > summary::-webkit-details-marker { display: none; }
+        .tree-section > summary::before { content: '▶'; display: inline-block; margin-right: 8px; transition: transform 0.2s; }
+        .tree-section[open] > summary::before { transform: rotate(90deg); }
+        .tree-section > .tree-children { margin-left: 12px; margin-top: 6px; padding-left: 12px; }
+        .tree-endpoint { margin-bottom: 4px; }
+        .tree-endpoint > summary { font-weight: 500; font-size: 12px; padding: 6px 8px; background: #f8fafc; border-radius: 4px; cursor: pointer; list-style: none; font-family: monospace; }
+        .tree-endpoint > summary::-webkit-details-marker { display: none; }
+        .tree-endpoint > summary::before { content: '▶'; display: inline-block; margin-right: 6px; transition: transform 0.2s; font-size: 10px; }
+        .tree-endpoint[open] > summary::before { transform: rotate(90deg); }
+        .tree-endpoint > .tree-content { margin-left: 12px; margin-top: 6px; padding: 10px; background: #fafafa; border-radius: 4px; }
+        .tree-content { margin: 10px 0; padding: 12px; background: #f8fafc; border-radius: 6px; }
+        .tree-content .chart-wrapper { height: 220px; margin-top: 8px; }
+        .chart-toolbar { margin-top: 10px; margin-bottom: 4px; }
+        .chart-type-btn { padding: 4px 10px; margin-right: 6px; font-size: 12px; cursor: pointer; border: 1px solid #cbd5e1; border-radius: 4px; background: #f8fafc; }
+        .chart-type-btn:hover { background: #e2e8f0; }
+        .chart-type-btn.active { background: #3b82f6; color: white; border-color: #3b82f6; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎯 Performance Test Results Viewer</h1>
+            <p class="subtitle">Performance analytics and comparison dashboard v2.4</p>
+            <p class="subtitle" style="font-size: 13px; opacity: 0.9; margin-top: 6px;">Contact: <a href="mailto:Manish.Gupta@nutanix.com" style="color: #93c5fd;">Manish.Gupta@nutanix.com</a></p>
+        </div>
+
+        <div class="content-wrapper">
+            <div class="upload-section">
+                <label for="jsonFiles" class="upload-button">
+                    📁 Load JSON File
+                </label>
+                <input type="file" id="jsonFiles" accept=".json">
+                <p class="upload-hint">Load <strong>all-users-metrics.json</strong> (cumulative) or individual user JSON files</p>
+            </div>
+
+        <div id="content" style="display: none;">
+            <!-- Global Print Button -->
+            <div class="print-btn-section">
+                <button class="print-btn" onclick="printFullReport()">🖨️ Print Complete Report</button>
+            </div>
+            
+            <div class="threshold-controls">
+                <h3>⚙️ Performance Thresholds (milliseconds)</h3>
+                <div class="threshold-grid">
+                    <div class="threshold-item">
+                        <label>First Contentful Paint (FCP)</label>
+                        <div class="threshold-inputs">
+                            <input type="number" id="fcpExcellent" value="1800" placeholder="Excellent">
+                            <span>/</span>
+                            <input type="number" id="fcpGood" value="2500" placeholder="Good">
+                        </div>
+                    </div>
+                    <div class="threshold-item">
+                        <label>Page Load Time</label>
+                        <div class="threshold-inputs">
+                            <input type="number" id="pageLoadExcellent" value="1000" placeholder="Excellent">
+                            <span>/</span>
+                            <input type="number" id="pageLoadGood" value="3000" placeholder="Good">
+                        </div>
+                    </div>
+                    <div class="threshold-item">
+                        <label>Element Load Time</label>
+                        <div class="threshold-inputs">
+                            <input type="number" id="elementLoadExcellent" value="500" placeholder="Excellent">
+                            <span>/</span>
+                            <input type="number" id="elementLoadGood" value="2000" placeholder="Good">
+                        </div>
+                    </div>
+                    <div class="threshold-item">
+                        <label>Content Ready Time</label>
+                        <div class="threshold-inputs">
+                            <input type="number" id="contentReadyExcellent" value="2000" placeholder="Excellent">
+                            <span>/</span>
+                            <input type="number" id="contentReadyGood" value="5000" placeholder="Good">
+                        </div>
+                    </div>
+                    <div class="threshold-item">
+                        <label>API Response Time (P95)</label>
+                        <div class="threshold-inputs">
+                            <input type="number" id="apiP95Excellent" value="500" placeholder="Excellent">
+                            <span>/</span>
+                            <input type="number" id="apiP95Good" value="1000" placeholder="Good">
+                        </div>
+                    </div>
+                </div>
+                <button class="apply-button" onclick="applyThresholds()">Apply Thresholds</button>
+                <button class="reset-button" onclick="resetThresholds()">Reset to Defaults</button>
+            </div>
+
+            <div class="export-buttons">
+                <button class="export-button" onclick="exportToCSV()">📊 Export to CSV</button>
+                <button class="export-button" onclick="exportToExcel()">📈 Export to Excel</button>
+            </div>
+
+            <div class="controls">
+                <div class="control-group">
+                    <label>View:</label>
+                    <select id="viewMode" onchange="changeView()">
+                        <option value="per-user">Per User (Detailed)</option>
+                        <option value="comparison">Comparison with Charts</option>
+                    </select>
+                </div>
+                <div class="control-group" id="perUserSelectGroup">
+                    <label>User:</label>
+                    <select id="selectedUserIndex" onchange="renderView()">
+                        <option value="0">User 1</option>
+                    </select>
+                </div>
+                <div class="control-group" id="comparisonLimitGroup" style="display: none;">
+                    <label>Comparison: show</label>
+                    <select id="comparisonUserLimit" onchange="renderView()">
+                        <option value="10">first 10 users</option>
+                        <option value="20" selected>first 20 users</option>
+                        <option value="50">first 50 users</option>
+                        <option value="-1">all users</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label>Filter Page:</label>
+                    <select id="pageFilter" onchange="filterByPage()">
+                        <option value="all">All Pages</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label>Search:</label>
+                    <input type="text" id="searchBox" placeholder="Search API, metric..." oninput="searchMetrics()">
+                </div>
+            </div>
+
+            <div id="viewContainer"></div>
+        </div>
+        </div>
+    </div>
+
+    <script>
+        let allData = [];
+        let currentView = 'per-user';
+        let currentPageFilter = 'all';
+        
+        // Default thresholds (can be overridden by user)
+        let thresholds = {
+            fcpExcellent: 1800,
+            fcpGood: 2500,
+            pageLoadExcellent: 1000,
+            pageLoadGood: 3000,
+            elementLoadExcellent: 500,
+            elementLoadGood: 2000,
+            contentReadyExcellent: 2000,
+            contentReadyGood: 5000,
+            apiP95Excellent: 500,
+            apiP95Good: 1000
+        };
+
+        // Load JSON files
+        document.getElementById('jsonFiles').addEventListener('change', async (e) => {
+            const file = e.target.files[0];
+            if (!file) return;
+
+            try {
+                const text = await file.text();
+                const data = JSON.parse(text);
+                if (!data || typeof data !== 'object') throw new Error('Invalid JSON: not an object');
+
+                if (data.users && Array.isArray(data.users)) {
+                    allData = data.users.filter(u => u && typeof u === 'object' && u.pages && typeof u.pages === 'object');
+                    console.log(`Loaded cumulative file with ${allData.length} users`);
+                } else if (data.userLabel && data.pages && typeof data.pages === 'object') {
+                    allData = [data];
+                    console.log('Loaded individual user file');
+                } else {
+                    throw new Error('Invalid JSON format: expected "users" array or single user with "userLabel" and "pages"');
+                }
+
+                if (allData.length > 0) {
+                    document.getElementById('content').style.display = 'block';
+                    populatePageFilter();
+                    populateUserSelect();
+                    changeView();
+                }
+            } catch (error) {
+                console.error('Error loading file:', file.name, error);
+                alert(`Error loading ${file.name}: ${error.message}`);
+            }
+        });
+
+        function populatePageFilter() {
+            const pageFilter = document.getElementById('pageFilter');
+            const pages = new Set();
+            allData.forEach(data => {
+                if (data.pages && typeof data.pages === 'object') {
+                    Object.keys(data.pages).forEach(page => pages.add(page));
+                }
+            });
+            pageFilter.innerHTML = '<option value="all">All Pages</option>';
+            Array.from(pages).sort().forEach(page => {
+                pageFilter.innerHTML += `<option value="${page}">${page}</option>`;
+            });
+        }
+
+        function populateUserSelect() {
+            const sel = document.getElementById('selectedUserIndex');
+            if (!sel) return;
+            sel.innerHTML = allData.map((d, i) => `<option value="${i}">${d.userLabel}</option>`).join('');
+        }
+
+        function changeView() {
+            currentView = document.getElementById('viewMode').value;
+            document.getElementById('perUserSelectGroup').style.display = currentView === 'per-user' ? '' : 'none';
+            document.getElementById('comparisonLimitGroup').style.display = currentView === 'comparison' ? '' : 'none';
+            renderView();
+        }
+
+        function filterByPage() {
+            currentPageFilter = document.getElementById('pageFilter').value;
+            renderView();
+        }
+
+        function searchMetrics() {
+            const query = document.getElementById('searchBox').value.toLowerCase();
+            const rows = document.querySelectorAll('tbody tr');
+            
+            rows.forEach(row => {
+                const text = row.textContent.toLowerCase();
+                row.style.display = text.includes(query) ? '' : 'none';
+            });
+        }
+
+        function renderView() {
+            const container = document.getElementById('viewContainer');
+            document.getElementById('comparisonLimitGroup').style.display = currentView === 'comparison' ? '' : 'none';
+            document.getElementById('perUserSelectGroup').style.display = currentView === 'per-user' ? '' : 'none';
+            if (allData.length === 0) {
+                container.innerHTML = '<div class="no-data">No data loaded</div>';
+                return;
+            }
+            renderTreeView(container);
+        }
+
+        /** Returns { isComparison, users } for current view (per-user = one user, comparison = limited list). */
+        function getDataForView() {
+            const isComparison = currentView === 'comparison';
+            if (isComparison) {
+                const limitSelect = document.getElementById('comparisonUserLimit');
+                const limitVal = limitSelect ? parseInt(limitSelect.value, 10) : 20;
+                const cap = limitVal === -1 ? allData.length : Math.min(limitVal, allData.length);
+                return { isComparison: true, users: allData.slice(0, cap) };
+            }
+            const idx = parseInt(document.getElementById('selectedUserIndex')?.value || '0', 10);
+            const user = allData[Math.min(idx, allData.length - 1)];
+            return { isComparison: false, users: user ? [user] : [] };
+        }
+
+        function getUniquePages() {
+            const pages = new Set();
+            allData.forEach(d => { Object.keys(d.pages || {}).forEach(p => pages.add(p)); });
+            const list = Array.from(pages).sort();
+            return currentPageFilter === 'all' ? list : list.filter(p => p === currentPageFilter);
+        }
+
+        function endpointShortName(url) {
+            try { const path = new URL(url).pathname || url; return path.length > 50 ? path.slice(-47) + '…' : path; } catch (_) { return url.length > 50 ? url.slice(-47) + '…' : url; }
+        }
+
+        function sanitizeId(s) { return s.replace(/[^a-zA-Z0-9-_]/g, '_').slice(0, 80); }
+
+        /** Tree: Page → UI | API (API has endpoint sub-branches). */
+        function renderTreeView(container) {
+            const { isComparison, users } = getDataForView();
+            const pages = getUniquePages();
+            if (pages.length === 0) {
+                container.innerHTML = '<div class="no-data">No pages in data</div>';
+                return;
+            }
+            Object.keys(treeChartInstances).forEach(id => { try { treeChartInstances[id].destroy(); } catch (_) {} });
+            Object.keys(treeChartInstances).forEach(id => delete treeChartInstances[id]);
+            window._treeChartData = {};
+            let html = '<p class="metric-def-hint">' + (isComparison ? `Comparison: <strong>${users.length} users</strong>. Expand a page → UI or API to see stats.` : `Per user: <strong>${users[0]?.userLabel || '—'}</strong>. Expand a page → UI or API.`) + '</p>';
+            html += '<div class="report-tree">';
+
+            pages.forEach(pageName => {
+                const pageId = sanitizeId(pageName);
+                html += `<details class="tree-page" data-page="${pageId}">`;
+                html += `<summary>📄 ${pageName}</summary>`;
+                html += '<div class="tree-children">';
+
+                // —— UI branch ——
+                html += '<details class="tree-section" data-section="ui">';
+                html += '<summary>📊 UI</summary>';
+                html += '<div class="tree-children">';
+                html += '<div class="tree-content tree-ui" data-page="' + pageId + '">';
+                if (isComparison) {
+                    const uiTable = renderTreeUIComparisonTable(pageName, users);
+                    const chartId = 'chart-ui-' + pageId;
+                    html += uiTable.html;
+                    html += `<div class="chart-toolbar" data-chart-id="${chartId}"><button type="button" class="chart-type-btn active" data-type="bar">Bar</button><button type="button" class="chart-type-btn" data-type="line">Line</button></div><div class="chart-wrapper" style="height:220px"><canvas id="${chartId}"></canvas></div>`;
+                    window._treeChartData[chartId] = uiTable.chartData;
+                } else {
+                    const pageData = users[0]?.pages?.[pageName];
+                    html += pageData ? renderUIBlock(pageData) : '<p class="no-data">No UI data for this page</p>';
+                }
+                html += '</div></div></details>';
+
+                // —— API branch (summary + endpoint sub-branches) ——
+                const endpoints = new Set();
+                users.forEach(u => {
+                    const p = u.pages?.[pageName];
+                    if (p?.apiPerformance?.byEndpoint) Object.keys(p.apiPerformance.byEndpoint).forEach(ep => endpoints.add(ep));
+                });
+                const firstApi = users.length && users[0].pages?.[pageName]?.apiPerformance ? users[0].pages[pageName].apiPerformance : null;
+                const totalCalls = firstApi?.totalCalls ?? '—';
+                const uniqueEndpoints = endpoints.size;
+                html += '<details class="tree-section" data-section="api">';
+                html += `<summary>🌐 API (${isComparison ? uniqueEndpoints + ' endpoints' : totalCalls + ' calls, ' + uniqueEndpoints + ' endpoints'})</summary>`;
+                html += '<div class="tree-children">';
+
+                // API summary content
+                html += '<div class="tree-content tree-api-summary">';
+                if (uniqueEndpoints === 0) {
+                    html += '<p class="no-data" style="margin:0;">No API calls in this step. Normal when this step doesn’t send new requests — e.g. Global Overview data may load during Login; Self Service Home during Self Service Navigation; Blueprints may be static or cached. The tracker attributes each request to the step that sent it, so 0 here means no XHR/fetch were sent while this step was active.</p>';
+                } else if (isComparison) {
+                    html += renderTreeAPISummaryComparison(pageName, users);
+                } else {
+                    const api = users[0]?.pages?.[pageName]?.apiPerformance;
+                    html += api ? renderAPISummaryBlock(api) : '<p>No API data</p>';
+                }
+                html += '</div>';
+
+                // Endpoint sub-branches (only when there are endpoints)
+                Array.from(endpoints).sort().forEach((endpointUrl, ei) => {
+                    const epId = sanitizeId(String(ei) + '_' + endpointUrl.slice(-60));
+                    html += `<details class="tree-endpoint" data-page="${pageId}" data-endpoint="${epId}">`;
+                    html += `<summary title="${endpointUrl}">${endpointShortName(endpointUrl)}</summary>`;
+                    html += '<div class="tree-content">';
+                    html += `<p class="endpoint-full-url" style="word-break:break-all;font-size:11px;color:#64748b;margin-bottom:8px;">Endpoint: ${endpointUrl}</p>`;
+                    if (isComparison) {
+                        const tbl = renderTreeEndpointComparison(pageName, endpointUrl, users);
+                        const cid = 'chart-ep-' + pageId + '-' + epId;
+                        html += tbl.html;
+                        html += `<div class="chart-toolbar" data-chart-id="${cid}"><button type="button" class="chart-type-btn active" data-type="bar">Bar</button><button type="button" class="chart-type-btn" data-type="line">Line</button></div><div class="chart-wrapper" style="height:200px"><canvas id="${cid}"></canvas></div>`;
+                        window._treeChartData[cid] = tbl.chartData;
+                    } else {
+                        const pageData = users[0]?.pages?.[pageName];
+                        const stats = pageData?.apiPerformance?.byEndpoint?.[endpointUrl];
+                        html += stats ? renderEndpointRow(endpointUrl, stats) : '<p>—</p>';
+                    }
+                    html += '</div></details>';
+                });
+
+                html += '</div></details>'; // tree-section API
+                html += '</div></details>'; // tree-page
+            });
+
+            html += '</div>';
+            container.innerHTML = html;
+            makeTablesSortable();
+            attachTreeChartOnOpen();
+            
+            // Add holistic overview sections
+            renderHolisticAPISummary(container);
+            renderHolisticPageLoadOverview(container);
+            renderHolisticInteractiveTimeOverview(container);
+        }
+
+        function num(x, def) { const n = Number(x); return Number.isFinite(n) ? n : (def ?? 0); }
+        // Web Vitals from tracker: totalLoadTime, firstContentfulPaint, stepDurationMs etc. are in ms. Display: divide by 1000 for seconds.
+        // Each step's data is stored in isolation (no reuse from other pages); Total Page Load is per-document (same for steps sharing same document/iframe).
+        function renderUIBlock(pageData) {
+            if (!pageData || !pageData.webVitals || typeof pageData.webVitals !== 'object') return '<p>No Web Vitals</p>';
+            const wv = pageData.webVitals;
+            const loadMs = num(wv.totalLoadTime);
+            const fcpMs = num(wv.firstContentfulPaint);
+            const stepMs = num(wv.stepDurationMs);
+            const loadRating = getRating(loadMs, thresholds.pageLoadExcellent, thresholds.pageLoadGood);
+            const fcpRating = getRating(fcpMs, thresholds.fcpExcellent, thresholds.fcpGood);
+            const js = num(wv.jsSize), css = num(wv.cssSize), img = num(wv.imageSize), res = num(wv.totalResources);
+            const stepRow = stepMs > 0 ? `<div class="metric-row"><div class="metric-label">Step duration</div><div class="metric-value">${(stepMs / 1000).toFixed(2)}s <span style="font-size:11px;color:#64748b;">(this step only)</span></div></div>` : '';
+            
+            // Element Interaction Metrics
+            let elementBlock = '';
+            if (pageData.elementInteraction && pageData.elementInteraction.totalInteractions > 0) {
+                const ei = pageData.elementInteraction;
+                const avgRating = getRating(ei.avgWaitMs, 500, 2000); // <500ms excellent, <2s good
+                elementBlock = `
+                    <div style="margin-top:20px; padding-top:15px; border-top:2px solid #e2e8f0;">
+                        <h4 style="margin:0 0 10px 0; color:#555;">⚡ UI Interactivity (Element Responsiveness)</h4>
+                        <p class="metric-def-hint" style="margin-bottom:8px;font-size:11px;">How long it takes for buttons/inputs to become clickable/fillable after page loads.</p>
+                        <div class="metric-row">
+                            <div class="metric-label">Total Interactions Tracked</div>
+                            <div class="metric-value">${ei.totalInteractions}</div>
+                        </div>
+                        <div class="metric-row">
+                            <div class="metric-label">Avg Time to Interactive</div>
+                            <div class="metric-value">${ei.avgWaitMs}ms <span class="rating ${avgRating.class}">${avgRating.text}</span></div>
+                        </div>
+                        ${ei.slowInteractions > 0 ? `
+                        <div class="metric-row">
+                            <div class="metric-label">Slow Elements (>2s)</div>
+                            <div class="metric-value" style="color:#dc2626;">${ei.slowInteractions} ⚠️</div>
+                        </div>` : ''}
+                        ${ei.timeouts > 0 ? `
+                        <div class="metric-row">
+                            <div class="metric-label">Timeouts</div>
+                            <div class="metric-value" style="color:#dc2626;">${ei.timeouts} ❌</div>
+                        </div>` : ''}
+                        <details style="margin-top:10px;">
+                            <summary style="cursor:pointer; color:#3b82f6; font-weight:600; font-size:12px;">📋 View Details (${ei.details.length} interactions)</summary>
+                            <div style="margin-top:10px; max-height:200px; overflow-y:auto;">
+                                <table style="width:100%; font-size:11px; border-collapse:collapse;">
+                                    <thead>
+                                        <tr style="background:#f8fafc;">
+                                            <th style="padding:6px; text-align:left; border-bottom:1px solid #e2e8f0;">Action</th>
+                                            <th style="padding:6px; text-align:left; border-bottom:1px solid #e2e8f0;">Element</th>
+                                            <th style="padding:6px; text-align:right; border-bottom:1px solid #e2e8f0;">Wait Time</th>
+                                            <th style="padding:6px; text-align:center; border-bottom:1px solid #e2e8f0;">Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        ${ei.details.map(d => {
+                                            const waitRating = getRating(d.waitTimeMs, 500, 2000);
+                                            const statusIcon = d.timedOut ? '❌' : (d.waitTimeMs > 2000 ? '⚠️' : '✅');
+                                            return `
+                                            <tr style="border-bottom:1px solid #f1f5f9;">
+                                                <td style="padding:6px;">${d.action}</td>
+                                                <td style="padding:6px; max-width:200px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;" title="${d.element}">${d.element}</td>
+                                                <td style="padding:6px; text-align:right;">${d.waitTimeMs}ms <span class="rating ${waitRating.class}" style="font-size:10px;">${waitRating.text}</span></td>
+                                                <td style="padding:6px; text-align:center; font-size:14px;">${statusIcon}</td>
+                                            </tr>`;
+                                        }).join('')}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </details>
+                    </div>
+                `;
+            }
+            
+            return `
+                <p class="metric-def-hint" style="margin-bottom:8px;font-size:12px;"><strong>Total Page Load:</strong> Document load event (when page fully loads). <strong>UI Interactivity:</strong> When elements become clickable/fillable. <strong>FCP:</strong> First Contentful Paint.</p>
+                <h4 style="margin:0 0 10px 0; color:#555;">📊 Page Load Performance</h4>
+                ${stepRow}
+                <div class="metric-row"><div class="metric-label">Total Page Load Time</div><div class="metric-value">${(loadMs / 1000).toFixed(2)}s <span class="rating ${loadRating.class}">${loadRating.text}</span> <span style="font-size:11px;color:#64748b;">(600ms in timeline)</span></div></div>
+                <div class="metric-row"><div class="metric-label">First Contentful Paint (FCP)</div><div class="metric-value">${(fcpMs / 1000).toFixed(2)}s <span class="rating ${fcpRating.class}">${fcpRating.text}</span></div></div>
+                <div class="metric-row"><div class="metric-label">First Paint (FP)</div><div class="metric-value">${(num(wv.firstPaint) / 1000).toFixed(2)}s</div></div>
+                <div class="metric-row"><div class="metric-label">DOM Ready</div><div class="metric-value">${(num(wv.domContentLoaded) / 1000).toFixed(2)}s</div></div>
+                <div class="metric-row"><div class="metric-label">Total Size</div><div class="metric-value">${((js + css + img) / 1024 / 1024).toFixed(2)}MB (${res} files)</div></div>
+                <div class="metric-row"><div class="metric-label">Breakdown</div><div class="metric-value">JS: ${(js / 1024).toFixed(2)}KB | CSS: ${(css / 1024).toFixed(2)}KB | Images: ${(img / 1024).toFixed(2)}KB</div></div>
+                ${elementBlock}
+            `;
+        }
+
+        function renderAPISummaryBlock(api) {
+            const pageP95 = getPageP95(api);
+            const p95Rating = pageP95 > 0 ? getRating(pageP95, thresholds.apiP95Excellent, thresholds.apiP95Good) : null;
+            const p95Badge = p95Rating ? `<span class="rating ${p95Rating.class}">${p95Rating.text}</span>` : '';
+            return `
+                <h4 style="margin:0 0 10px 0; color:#555;">API Summary</h4>
+                <p class="metric-def-hint" style="margin-bottom:6px;font-size:11px;">Ratings use API Response Time (P95) threshold from ⚙️ Performance Thresholds.</p>
+                <div class="metric-row"><div class="metric-label">Total API Calls</div><div class="metric-value">${api.totalCalls} (${api.uniqueEndpoints} unique endpoints)</div></div>
+                <div class="metric-row"><div class="metric-label">Page-level P95</div><div class="metric-value">${pageP95 > 0 ? pageP95.toFixed(0) + 'ms ' + p95Badge : '-'}</div></div>
+                <div class="metric-row"><div class="metric-label">Slow Requests (>2s)</div><div class="metric-value">${api.slowRequests} ${api.slowRequests === 0 ? '✓' : '❌'}</div></div>
+                <div class="metric-row"><div class="metric-label">Failed Requests</div><div class="metric-value">${api.failedRequests} ${api.failedRequests === 0 ? '✓' : '❌'}</div></div>
+            `;
+        }
+
+        function renderEndpointRow(endpointUrl, stats) {
+            if (!stats || typeof stats !== 'object') return '<p>—</p>';
+            const avg = num(stats.avg), min = num(stats.min), max = num(stats.max), p90 = num(stats.p90), p95 = num(stats.p95);
+            const p95Rating = p95 > 0 ? getRating(p95, thresholds.apiP95Excellent, thresholds.apiP95Good) : null;
+            const p95Cell = p95Rating ? p95.toFixed(0) + ' <span class="rating ' + p95Rating.class + '">' + p95Rating.text + '</span>' : (p95 >= 0 ? p95.toFixed(0) : '—');
+            return `
+                <table class="sortable-table"><thead><tr><th>Endpoint</th><th>Method</th><th>Calls</th><th>Avg (ms)</th><th>Min</th><th>Max</th><th>P90</th><th>P95</th></tr></thead><tbody>
+                <tr><td style="font-family:monospace;font-size:11px;">${String(endpointUrl)}</td><td><span class="badge">${stats.method || '—'}</span></td><td>${num(stats.count)}</td><td>${avg.toFixed(0)}</td><td>${min.toFixed(0)}</td><td>${max.toFixed(0)}</td><td>${p90.toFixed(0)}</td><td>${p95Cell}</td></tr>
+                </tbody></table>
+            `;
+        }
+
+        function renderTreeUIComparisonTable(pageName, users) {
+            const labels = users.map(u => u.userLabel);
+            const stepDurations = [], loadTimes = [], fcps = [], fps = [], domReadys = [], totalSizes = [], breakdowns = [];
+            users.forEach(u => {
+                const p = u.pages?.[pageName];
+                const wv = p?.webVitals;
+                if (wv?.stepDurationMs != null) stepDurations.push(wv.stepDurationMs / 1000); else stepDurations.push(null);
+                if (wv?.totalLoadTime != null) loadTimes.push(wv.totalLoadTime / 1000); else loadTimes.push(null);
+                if (wv?.firstContentfulPaint != null) fcps.push(wv.firstContentfulPaint / 1000); else fcps.push(null);
+                if (wv?.firstPaint != null) fps.push(wv.firstPaint / 1000); else fps.push(null);
+                if (wv?.domContentLoaded != null) domReadys.push(wv.domContentLoaded / 1000); else domReadys.push(null);
+                if (wv && (wv.jsSize != null || wv.cssSize != null || wv.imageSize != null)) {
+                    const mb = ((wv.jsSize || 0) + (wv.cssSize || 0) + (wv.imageSize || 0)) / 1024 / 1024;
+                    totalSizes.push(mb.toFixed(2) + ' MB (' + (wv.totalResources || 0) + ' files)');
+                } else totalSizes.push(null);
+                if (wv) breakdowns.push('JS: ' + ((wv.jsSize || 0) / 1024).toFixed(2) + 'KB | CSS: ' + ((wv.cssSize || 0) / 1024).toFixed(2) + 'KB | Img: ' + ((wv.imageSize || 0) / 1024).toFixed(2) + 'KB');
+                else breakdowns.push(null);
+            });
+            
+            // Collect element interaction metrics
+            const avgInteractionTimes = [], slowElements = [], timeoutElements = [];
+            users.forEach(u => {
+                const pageData = u.pages?.[pageName];
+                const ei = pageData?.elementInteraction;
+                if (ei && ei.totalInteractions > 0) {
+                    avgInteractionTimes.push(ei.avgWaitMs);
+                    slowElements.push(ei.slowInteractions || 0);
+                    timeoutElements.push(ei.timeouts || 0);
+                } else {
+                    avgInteractionTimes.push(null);
+                    slowElements.push(null);
+                    timeoutElements.push(null);
+                }
+            });
+            
+            let html = '<p class="metric-def-hint" style="margin-bottom:8px;"><strong>Total Page Load:</strong> Server response + page render time (varies with load). <strong>Time to Interactive:</strong> Client-side delay until elements become usable (should be consistent ~50ms). <strong>Total Time:</strong> Sum of both, but varies due to server load.</p>';
+            html += '<h4 style="margin:0 0 8px 0; color:#555;">📊 Page Load Performance (comparison)</h4>';
+            html += '<div class="comparison-view"><table class="sortable-table"><thead><tr><th>Metric</th>';
+            users.forEach(u => { html += `<th class="user-column">${u.userLabel}</th>`; });
+            html += '</tr></thead><tbody>';
+            const cellWithRating = (valMs, excellent, good) => {
+              if (valMs == null) return '-';
+              const r = getRating(valMs, excellent, good);
+              return (valMs / 1000).toFixed(2) + 's <span class="rating ' + r.class + '">' + r.text + '</span>';
+            };
+            html += '<tr><td><strong>Step duration (s)</strong></td>'; users.forEach((_, i) => { html += `<td>${stepDurations[i] != null ? stepDurations[i].toFixed(2) : '-'}</td>`; }); html += '</tr>';
+            html += '<tr><td><strong>Total Page Load (s)</strong></td>'; users.forEach((_, i) => { const v = loadTimes[i] != null ? loadTimes[i] * 1000 : null; html += '<td>' + (v != null ? cellWithRating(v, thresholds.pageLoadExcellent, thresholds.pageLoadGood) : '-') + '</td>'; }); html += '</tr>';
+            html += '<tr><td><strong>First Paint (FP) (s)</strong></td>'; users.forEach((_, i) => { html += `<td>${fps[i] != null ? fps[i].toFixed(2) : '-'}</td>`; }); html += '</tr>';
+            html += '<tr><td><strong>First Contentful Paint (FCP) (s)</strong></td>'; users.forEach((_, i) => { const v = fcps[i] != null ? fcps[i] * 1000 : null; html += '<td>' + (v != null ? cellWithRating(v, thresholds.fcpExcellent, thresholds.fcpGood) : '-') + '</td>'; }); html += '</tr>';
+            html += '<tr><td><strong>DOM Ready (s)</strong></td>'; users.forEach((_, i) => { html += `<td>${domReadys[i] != null ? domReadys[i].toFixed(2) : '-'}</td>`; }); html += '</tr>';
+            html += '<tr><td><strong>Total Size</strong></td>'; users.forEach((_, i) => { html += `<td>${totalSizes[i] || '-'}</td>`; }); html += '</tr>';
+            html += '<tr><td><strong>Breakdown (JS | CSS | Img)</strong></td>'; users.forEach((_, i) => { html += `<td style="font-size:11px;">${breakdowns[i] || '-'}</td>`; }); html += '</tr>';
+            html += '</tbody></table></div>';
+            
+            // Add Element Interactivity comparison if data exists
+            const hasInteractionData = avgInteractionTimes.some(v => v != null);
+            if (hasInteractionData) {
+                html += '<h4 style="margin:20px 0 8px 0; padding-top:15px; border-top:2px solid #e2e8f0; color:#555;">⚡ UI Interactivity (comparison)</h4>';
+                html += '<p class="metric-def-hint" style="margin-bottom:8px; font-size:11px;"><strong>Avg Time to Interactive:</strong> Milliseconds from page-load-complete until button/input becomes usable. Measures client-side JavaScript/React performance (should be consistent across users, ~50ms). <strong>NOT</strong> affected by server load. <strong>Total Interactive Time = Page Load + Time to Interactive.</strong></p>';
+                html += '<div class="comparison-view"><table class="sortable-table"><thead><tr><th>Metric</th>';
+                users.forEach(u => { html += `<th class="user-column">${u.userLabel}</th>`; });
+                html += '</tr></thead><tbody>';
+                html += '<tr><td><strong>Avg Time to Interactive (ms)</strong></td>'; 
+                users.forEach((_, i) => { 
+                    const v = avgInteractionTimes[i];
+                    if (v != null) {
+                        const r = getRating(v, 500, 2000);
+                        html += `<td>${v}ms <span class="rating ${r.class}">${r.text}</span></td>`;
+                    } else {
+                        html += '<td>-</td>';
+                    }
+                }); 
+                html += '</tr>';
+                
+                // Add Total Interactive Time row (Page Load + Interactive)
+                html += '<tr style="background:#f8fafc; font-weight:600;"><td><strong>⏱️ Total Interactive Time (s)</strong><br><span style="font-size:10px; font-weight:400; color:#64748b;">(Page Load + Interactive)</span></td>'; 
+                users.forEach((_, i) => {
+                    const pageLoadS = loadTimes[i];
+                    const interactiveMs = avgInteractionTimes[i];
+                    if (pageLoadS != null && interactiveMs != null) {
+                        const totalS = pageLoadS + (interactiveMs / 1000);
+                        html += `<td><strong>${totalS.toFixed(3)}s</strong></td>`;
+                    } else {
+                        html += '<td>-</td>';
+                    }
+                }); 
+                html += '</tr>';
+                
+                html += '<tr><td><strong>Slow Elements (>2s)</strong></td>'; users.forEach((_, i) => { html += `<td>${slowElements[i] != null ? (slowElements[i] === 0 ? '0 ✓' : slowElements[i] + ' ⚠️') : '-'}</td>`; }); html += '</tr>';
+                html += '<tr><td><strong>Timeouts</strong></td>'; users.forEach((_, i) => { html += `<td>${timeoutElements[i] != null ? (timeoutElements[i] === 0 ? '0 ✓' : timeoutElements[i] + ' ❌') : '-'}</td>`; }); html += '</tr>';
+                html += '</tbody></table></div>';
+            }
+            
+            const chartData = { labels, datasets: [{ label: 'Page Load (s)', data: loadTimes.map(v => v ?? 0), backgroundColor: '#3b82f6' }, { label: 'FCP (s)', data: fcps.map(v => v ?? 0), backgroundColor: '#10b981' }] };
+            return { html, chartData };
+        }
+
+        function renderTreeAPISummaryComparison(pageName, users) {
+            let html = '<p class="metric-def-hint" style="margin-bottom:8px;">Summary for this page: Calls, Passed (OK), Failed, Slow (requests &gt;2s).</p>';
+            html += '<div class="comparison-view"><table class="sortable-table"><thead><tr><th>User</th><th>Calls</th><th>Passed</th><th>Failed</th><th>Slow (&gt;2s)</th></tr></thead><tbody>';
+            users.forEach(u => {
+                const api = u.pages?.[pageName]?.apiPerformance;
+                const calls = api?.totalCalls ?? 0;
+                const failed = api?.failedRequests ?? 0;
+                const passed = typeof calls === 'number' ? Math.max(0, calls - failed) : '—';
+                html += `<tr><td>${u.userLabel}</td><td>${calls}</td><td>${passed}</td><td>${failed}</td><td>${api?.slowRequests ?? 0}</td></tr>`;
+            });
+            html += '</tbody></table></div>';
+            return html;
+        }
+
+        function renderTreeEndpointComparison(pageName, endpointUrl, users) {
+            const labels = users.map(u => u.userLabel);
+            const p95s = [];
+            let html = '<p class="metric-def-hint" style="margin-bottom:6px;font-size:11px;">P95 ratings use API Response Time (P95) threshold from ⚙️ Performance Thresholds.</p>';
+            html += '<p class="metric-def-hint" style="margin-bottom:6px;font-size:11px;color:#64748b;">— = no calls from this user for this endpoint on this page (request may have run in another step or not triggered).</p>';
+            html += '<div class="comparison-view"><table class="sortable-table"><thead><tr><th>User</th><th>Method</th><th>Calls</th><th>Avg (ms)</th><th>Min</th><th>Max</th><th>P90</th><th>P95</th></tr></thead><tbody>';
+            users.forEach(u => {
+                const stats = u.pages?.[pageName]?.apiPerformance?.byEndpoint?.[endpointUrl];
+                const p95Val = stats ? num(stats.p95 ?? stats.avg) : 0;
+                p95s.push(p95Val);
+                const p95Rating = p95Val > 0 ? getRating(p95Val, thresholds.apiP95Excellent, thresholds.apiP95Good) : null;
+                const p95Cell = p95Rating ? p95Val.toFixed(0) + ' <span class="rating ' + p95Rating.class + '">' + p95Rating.text + '</span>' : (stats ? p95Val.toFixed(0) : '—');
+                if (stats && typeof stats === 'object') {
+                    const avg = num(stats.avg), min = num(stats.min), max = num(stats.max), p90 = num(stats.p90);
+                    html += `<tr><td>${u.userLabel}</td><td><span class="badge">${stats.method || '—'}</span></td><td>${num(stats.count)}</td><td>${avg.toFixed(0)}</td><td>${min.toFixed(0)}</td><td>${max.toFixed(0)}</td><td>${p90.toFixed(0)}</td><td>${p95Cell}</td></tr>`;
+                } else {
+                    html += `<tr><td>${u.userLabel}</td><td colspan="7">—</td></tr>`;
+                }
+            });
+            html += '</tbody></table></div>';
+            const chartData = { labels, datasets: [{ label: 'P95 (ms)', data: p95s, backgroundColor: '#8b5cf6' }] };
+            return { html, chartData };
+        }
+
+        const treeChartInstances = {};
+        function getChartTypeFor(canvasId) {
+            const toolbar = document.querySelector('.chart-toolbar[data-chart-id="' + canvasId + '"]');
+            const active = toolbar && toolbar.querySelector('.chart-type-btn.active');
+            return (active && active.getAttribute('data-type')) || 'bar';
+        }
+        function createTreeChart(canvas) {
+            const id = canvas.id;
+            if (treeChartInstances[id]) try { treeChartInstances[id].destroy(); } catch (_) {}
+            const data = window._treeChartData && window._treeChartData[id];
+            if (!data) return;
+            const type = getChartTypeFor(id);
+            const opts = { responsive: true, maintainAspectRatio: false, scales: { y: { beginAtZero: true } } };
+            if (type === 'line') {
+                const colors = ['#3b82f6', '#10b981', '#8b5cf6'];
+                data.datasets = data.datasets.map((ds, i) => ({ ...ds, borderColor: colors[i % colors.length] || ds.backgroundColor, backgroundColor: 'transparent', fill: false, tension: 0.2, pointRadius: 4 }));
+            }
+            treeChartInstances[id] = new Chart(canvas, { type: type, data: data, options: opts });
+        }
+        function attachTreeChartOnOpen() {
+            document.querySelectorAll('.report-tree details').forEach(det => {
+                det.addEventListener('toggle', function onToggle() {
+                    if (!this.open) return;
+                    const canvas = this.querySelector('canvas[id^="chart-"]');
+                    if (!canvas) return;
+                    createTreeChart(canvas);
+                    const toolbar = this.querySelector('.chart-toolbar[data-chart-id="' + canvas.id + '"]');
+                    if (!toolbar || toolbar.dataset.bound) return;
+                    toolbar.dataset.bound = '1';
+                    toolbar.querySelectorAll('.chart-type-btn').forEach(btn => {
+                        btn.addEventListener('click', function() {
+                            toolbar.querySelectorAll('.chart-type-btn').forEach(b => b.classList.remove('active'));
+                            this.classList.add('active');
+                            createTreeChart(canvas);
+                        });
+                    });
+                });
+            });
+        }
+
+        function renderPerUserView(container) {
+            let html = '';
+
+            allData.forEach((userData, userIndex) => {
+                html += `
+                    <div class="section">
+                        <h2 style="color: #3498db; margin-bottom: 20px;">
+                            ${userData.userLabel} - Total Duration: ${userData.totalDuration}s
+                        </h2>
+                `;
+
+                const pages = Object.entries(userData.pages);
+                const filteredPages = currentPageFilter === 'all' 
+                    ? pages 
+                    : pages.filter(([name]) => name === currentPageFilter);
+
+                filteredPages.forEach(([pageName, pageData]) => {
+                    html += renderPageSection(pageName, pageData, userData.userLabel);
+                });
+
+                html += `</div><hr style="margin: 40px 0; border: none; border-top: 2px solid #ecf0f1;">`;
+            });
+
+            container.innerHTML = html;
+            makeTablesSortable();
+        }
+
+        function renderPageSection(pageName, pageData, userLabel) {
+            let html = `
+                <div class="section">
+                    <div class="section-title">📄 ${pageName}</div>
+            `;
+
+            // UI Responsiveness
+            if (pageData.webVitals) {
+                const wv = pageData.webVitals;
+                const fcpRating = getRating(wv.firstContentfulPaint, thresholds.fcpExcellent, thresholds.fcpGood);
+                
+                html += `
+                    <h3 style="margin: 20px 0 10px 0; color: #555;">📊 Page Load Performance</h3>
+                    <div class="metric-row">
+                        <div class="metric-label">Total Page Load Time</div>
+                        <div class="metric-value">${(wv.totalLoadTime / 1000).toFixed(2)}s</div>
+                    </div>
+                    <div class="metric-row">
+                        <div class="metric-label">First Paint (FP)</div>
+                        <div class="metric-value">${(wv.firstPaint / 1000).toFixed(2)}s</div>
+                    </div>
+                    <div class="metric-row">
+                        <div class="metric-label">First Contentful Paint (FCP)</div>
+                        <div class="metric-value">${(wv.firstContentfulPaint / 1000).toFixed(2)}s <span class="rating ${fcpRating.class}">${fcpRating.text}</span></div>
+                    </div>
+                    <div class="metric-row">
+                        <div class="metric-label">DOM Ready</div>
+                        <div class="metric-value">${(wv.domContentLoaded / 1000).toFixed(2)}s</div>
+                    </div>
+                    <div class="metric-row">
+                        <div class="metric-label">Total Size</div>
+                        <div class="metric-value">${((wv.jsSize + wv.cssSize + wv.imageSize) / 1024 / 1024).toFixed(2)}MB (${wv.totalResources} files)</div>
+                    </div>
+                    <div class="metric-row">
+                        <div class="metric-label">Breakdown</div>
+                        <div class="metric-value">
+                            JS: ${(wv.jsSize / 1024).toFixed(2)}KB | 
+                            CSS: ${(wv.cssSize / 1024).toFixed(2)}KB | 
+                            Images: ${(wv.imageSize / 1024).toFixed(2)}KB
+                        </div>
+                    </div>
+                `;
+            }
+            
+            // Element Interaction Metrics
+            if (pageData.elementInteraction && pageData.elementInteraction.totalInteractions > 0) {
+                const ei = pageData.elementInteraction;
+                const avgRating = getRating(ei.avgWaitMs, 500, 2000);
+                html += `
+                    <h3 style="margin: 20px 0 10px 0; padding-top:15px; border-top:2px solid #e2e8f0; color: #555;">⚡ UI Interactivity (Element Responsiveness)</h3>
+                    <p class="metric-def-hint" style="margin-bottom:8px; font-size:11px;"><strong>Time to Interactive:</strong> Milliseconds from page-load-complete until element becomes usable. Measures client-side performance (JavaScript/React). Consistent across users (~50ms expected).</p>
+                    <div class="metric-row">
+                        <div class="metric-label">Total Interactions Tracked</div>
+                        <div class="metric-value">${ei.totalInteractions}</div>
+                    </div>
+                    <div class="metric-row">
+                        <div class="metric-label">Avg Time to Interactive</div>
+                        <div class="metric-value">${ei.avgWaitMs}ms <span class="rating ${avgRating.class}">${avgRating.text}</span></div>
+                    </div>
+                    <div class="metric-row" style="background:#f8fafc; padding:10px; border-radius:6px; font-weight:600;">
+                        <div class="metric-label">⏱️ Total Interactive Time</div>
+                        <div class="metric-value">${((wv.totalLoadTime / 1000) + (ei.avgWaitMs / 1000)).toFixed(3)}s <span style="font-size:11px; font-weight:400; color:#64748b;">(${(wv.totalLoadTime / 1000).toFixed(2)}s load + ${ei.avgWaitMs}ms interactive)</span></div>
+                    </div>
+                    ${ei.slowInteractions > 0 ? `
+                    <div class="metric-row">
+                        <div class="metric-label">Slow Elements (>2s)</div>
+                        <div class="metric-value" style="color:#dc2626;">${ei.slowInteractions} ⚠️</div>
+                    </div>` : ''}
+                    ${ei.timeouts > 0 ? `
+                    <div class="metric-row">
+                        <div class="metric-label">Timeouts</div>
+                        <div class="metric-value" style="color:#dc2626;">${ei.timeouts} ❌</div>
+                    </div>` : ''}
+                    <details style="margin-top:10px;">
+                        <summary style="cursor:pointer; color:#3b82f6; font-weight:600; font-size:12px;">📋 View Details (${ei.details.length} interactions)</summary>
+                        <div style="margin-top:10px; max-height:200px; overflow-y:auto;">
+                            <table style="width:100%; font-size:11px;">
+                                <thead>
+                                    <tr style="background:#f8fafc;">
+                                        <th style="padding:6px; text-align:left;">Action</th>
+                                        <th style="padding:6px; text-align:left;">Element</th>
+                                        <th style="padding:6px; text-align:right;">Wait Time</th>
+                                        <th style="padding:6px; text-align:center;">Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    ${ei.details.map(d => {
+                                        const waitRating = getRating(d.waitTimeMs, 500, 2000);
+                                        const statusIcon = d.timedOut ? '❌' : (d.waitTimeMs > 2000 ? '⚠️' : '✅');
+                                        return `
+                                        <tr>
+                                            <td style="padding:6px;">${d.action}</td>
+                                            <td style="padding:6px; max-width:200px; overflow:hidden; text-overflow:ellipsis;" title="${d.element}">${d.element}</td>
+                                            <td style="padding:6px; text-align:right;">${d.waitTimeMs}ms <span class="rating ${waitRating.class}" style="font-size:10px;">${waitRating.text}</span></td>
+                                            <td style="padding:6px; text-align:center;">${statusIcon}</td>
+                                        </tr>`;
+                                    }).join('')}
+                                </tbody>
+                            </table>
+                        </div>
+                    </details>
+                `;
+            }
+
+            // API Performance Summary (same fields as comparison: calls, slow, failed; page P95 = max endpoint P95)
+            const api = pageData.apiPerformance;
+            const pageP95 = getPageP95(api);
+            html += `
+                <h3 style="margin: 30px 0 10px 0; color: #555;">🌐 API Performance Summary</h3>
+                <div class="metric-row">
+                    <div class="metric-label">Total API Calls</div>
+                    <div class="metric-value">${api.totalCalls} (${api.uniqueEndpoints} unique endpoints)</div>
+                </div>
+                <div class="metric-row">
+                    <div class="metric-label">Page-level P95 (used in Comparison)</div>
+                    <div class="metric-value">${pageP95 > 0 ? pageP95.toFixed(0) + 'ms' : '-'} <span style="font-size: 11px; color: #64748b;">(max of per-endpoint P95 below)</span></div>
+                </div>
+                <div class="metric-row">
+                    <div class="metric-label">Slow Requests (>2s)</div>
+                    <div class="metric-value">${api.slowRequests} ${api.slowRequests === 0 ? '✓' : '❌'}</div>
+                </div>
+                <div class="metric-row">
+                    <div class="metric-label">Failed Requests</div>
+                    <div class="metric-value">${api.failedRequests} ${api.failedRequests === 0 ? '✓' : '❌'}</div>
+                </div>
+            `;
+
+            // API Details Table
+            if (api.byEndpoint && Object.keys(api.byEndpoint).length > 0) {
+                html += `
+                    <h3 style="margin: 30px 0 10px 0; color: #555;">📊 API Details</h3>
+                    <table class="sortable-table">
+                        <thead>
+                            <tr>
+                                <th class="sortable" data-sort="endpoint">Endpoint</th>
+                                <th class="sortable" data-sort="method">Method</th>
+                                <th class="sortable" data-sort="calls">Calls</th>
+                                <th class="sortable" data-sort="avg">Avg (ms)</th>
+                                <th class="sortable" data-sort="min">Min (ms)</th>
+                                <th class="sortable" data-sort="max">Max (ms)</th>
+                                <th class="sortable" data-sort="p90">P90 (ms)</th>
+                                <th class="sortable" data-sort="p95">P95 (ms)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                `;
+
+                Object.entries(api.byEndpoint).forEach(([endpoint, stats]) => {
+                    html += `
+                        <tr>
+                            <td style="font-family: monospace; font-size: 12px;">${endpoint}</td>
+                            <td><span class="badge">${stats.method}</span></td>
+                            <td>${stats.count}</td>
+                            <td>${stats.avg.toFixed(0)}</td>
+                            <td>${stats.min.toFixed(0)}</td>
+                            <td>${stats.max.toFixed(0)}</td>
+                            <td>${stats.p90.toFixed(0)}</td>
+                            <td>${stats.p95.toFixed(0)}</td>
+                        </tr>
+                    `;
+                });
+
+                html += `
+                        </tbody>
+                    </table>
+                `;
+            }
+
+            // Failed Requests
+            if (api.failedDetails && api.failedDetails.length > 0) {
+                html += `
+                    <h3 style="margin: 30px 0 10px 0; color: #e74c3c;">❌ Failed Requests</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Status</th>
+                                <th>Method</th>
+                                <th>URL</th>
+                                <th>Error</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                `;
+
+                api.failedDetails.forEach(req => {
+                    html += `
+                        <tr>
+                            <td><span class="badge failed">${req.status}</span></td>
+                            <td><span class="badge">${req.method}</span></td>
+                            <td style="font-family: monospace; font-size: 11px;">${req.url}</td>
+                            <td style="color: #e74c3c;">${req.error || 'N/A'}</td>
+                        </tr>
+                    `;
+                });
+
+                html += `
+                        </tbody>
+                    </table>
+                `;
+            }
+
+            html += `</div>`;
+            return html;
+        }
+
+        function renderComparisonView(container) {
+            console.log('renderComparisonView called, allData:', allData.length, 'users');
+            if (allData.length === 0) {
+                container.innerHTML = '<div class="no-data">No data loaded</div>';
+                return;
+            }
+
+            // Limit users in comparison (same data sources as per-user: totalLoadTime, getPageP95, api.totalCalls/slowRequests/failedRequests)
+            const limitSelect = document.getElementById('comparisonUserLimit');
+            const limitVal = limitSelect ? parseInt(limitSelect.value, 10) : 20;
+            const comparisonUserLimit = limitVal === -1 ? allData.length : Math.min(limitVal, allData.length);
+            const dataForComparison = allData.slice(0, comparisonUserLimit);
+            const totalUsers = allData.length;
+            const showingUsers = dataForComparison.length;
+
+            // Get all unique pages from full data
+            const allPages = new Set();
+            allData.forEach(data => {
+                Object.keys(data.pages).forEach(page => allPages.add(page));
+            });
+
+            let html = '<div class="section"><div class="section-title">📊 User Comparison</div>';
+            if (totalUsers > showingUsers) {
+                html += `<p class="metric-def-hint"><strong>Showing first ${showingUsers} of ${totalUsers} users</strong> — use "Comparison: show" above to change. Scroll tables horizontally. All metrics match Per-user view (same formulas).</p>`;
+            } else {
+                html += `<p class="metric-def-hint"><strong>Showing ${showingUsers} user${showingUsers !== 1 ? 's' : ''}</strong> — scroll tables horizontally. All metrics match Per-user view.</p>`;
+            }
+
+            // Metric definitions (so comparison and per-user data correlate)
+            html += `
+                <details class="metric-definitions" style="margin-bottom: 16px;">
+                    <summary style="cursor: pointer; font-weight: 600; color: #475569;">📋 Metric definitions (how comparison values are computed)</summary>
+                    <ul style="margin: 8px 0 0 20px; color: #64748b; font-size: 13px;">
+                        <li><strong>Page Load Time</strong> = <code>totalLoadTime</code> from Web Vitals (ms → shown in s). Same as "Total Page Load Time" in Per-user view.</li>
+                        <li><strong>P95 (API, by page)</strong> = <strong>max of per-endpoint P95</strong> for that page (i.e. the slowest endpoint’s P95). Same value appears in Per-user → page → API Details as the highest P95 in the table, and here as "Page-level P95 (Comparison)".</li>
+                        <li>FCP = First Contentful Paint (Web Vitals).</li>
+                    </ul>
+                </details>
+            `;
+
+            const hasElementData = dataForComparison.some(data =>
+                data.globalMetrics && data.globalMetrics.elementTimes && Object.keys(data.globalMetrics.elementTimes).length > 0
+            );
+
+            // Add charts section
+            html += '<div class="charts-grid">';
+            html += '<div class="chart-container chart-full-width"><h3>📈 First Contentful Paint (FCP) - Across All Users</h3><div class="chart-wrapper large"><canvas id="fcpChart"></canvas></div></div>';
+            html += '<div class="chart-container chart-full-width"><h3>📊 Page Load Time - Across All Users</h3><div class="chart-wrapper large"><canvas id="pageLoadChart"></canvas></div></div>';
+            html += '<div class="chart-container chart-full-width"><h3>⚡ API Response Time (P95) - Across All Users</h3><div class="chart-wrapper large"><canvas id="apiP95Chart"></canvas></div></div>';
+            
+            // Only add Element Load Time chart if we have data
+            if (hasElementData) {
+                html += '<div class="chart-container chart-full-width" id="elementLoadChartContainer"><h3>⏱️ Element Load Time - Across All Users</h3><div class="chart-wrapper large"><canvas id="elementLoadChart"></canvas></div></div>';
+            }
+            
+            html += '<div class="chart-container chart-full-width"><h3>🎯 Content Ready Time - Across All Users</h3><div class="chart-wrapper large"><canvas id="contentReadyChart"></canvas></div></div>';
+            html += '</div>';
+
+            // === NEW: UI METRICS SUMMARY (PER PAGE, ACROSS ALL USERS) ===
+            html += `
+                <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px; border-radius: 8px; margin: 30px 0 20px 0;">
+                    <h2 style="margin: 0 0 10px 0; font-size: 24px; font-weight: 700;">📊 UI Performance Summary - Across All Users</h2>
+                    <p style="margin: 0; font-size: 14px; opacity: 0.9;">Aggregated metrics for Total Page Load Time per page. Shows the min, max, average, and P95 across all ${allData.length} users.</p>
+                </div>
+                
+                <div class="chart-container">
+                    <h3 style="margin: 0 0 15px 0; color: #1e293b;">🎯 Total Page Load Time - Summary by Page</h3>
+                    <p style="margin: 0 0 15px 0; font-size: 13px; color: #64748b;">This table summarizes the <strong>Total Page Load Time</strong> for each page across all users. Use this to identify which pages perform consistently well or poorly.</p>
+                    <table class="sortable-table">
+                        <thead>
+                            <tr>
+                                <th class="sortable" data-sort="page">Page</th>
+                                <th class="sortable" data-sort="min">Min (s)</th>
+                                <th class="sortable" data-sort="max">Max (s)</th>
+                                <th class="sortable" data-sort="avg">Avg (s)</th>
+                                <th class="sortable" data-sort="p95">P95 (s)</th>
+                                <th class="sortable" data-sort="samples">Samples</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+            `;
+
+            // Calculate UI summary per page
+            Array.from(allPages).forEach(pageName => {
+                const loadTimes = [];
+                allData.forEach(data => {
+                    const pageData = data.pages[pageName];
+                    if (pageData && pageData.webVitals && pageData.webVitals.totalLoadTime) {
+                        loadTimes.push(pageData.webVitals.totalLoadTime / 1000); // Convert to seconds
+                    }
+                });
+
+                if (loadTimes.length > 0) {
+                    const min = Math.min(...loadTimes);
+                    const max = Math.max(...loadTimes);
+                    const avg = loadTimes.reduce((a, b) => a + b, 0) / loadTimes.length;
+                    
+                    // Calculate P95
+                    const sortedTimes = [...loadTimes].sort((a, b) => a - b);
+                    const p95Index = Math.ceil(sortedTimes.length * 0.95) - 1;
+                    const p95 = sortedTimes[Math.max(0, p95Index)];
+                    
+                    // Determine status based on P95
+                    let statusBadge = '';
+                    const p95Ms = p95 * 1000;
+                    if (p95Ms <= thresholds.contentReadyExcellent) {
+                        statusBadge = '<span class="badge excellent">✓ Excellent</span>';
+                    } else if (p95Ms <= thresholds.contentReadyGood) {
+                        statusBadge = '<span class="badge good">✓ Good</span>';
+                    } else {
+                        statusBadge = '<span class="badge needs-improvement">⚠ Needs Improvement</span>';
+                    }
+                    
+                    // Action-oriented insight
+                    let insight = '';
+                    const variance = max - min;
+                    const variancePercent = (variance / avg) * 100;
+                    if (variancePercent > 50) {
+                        insight = `<span style="color: #f59e0b; font-size: 12px;">⚠ High variance (${variancePercent.toFixed(0)}%) - investigate inconsistent performance</span>`;
+                    } else if (p95 > avg * 1.5) {
+                        insight = `<span style="color: #3b82f6; font-size: 12px;">ℹ P95 significantly higher than avg - check for outliers</span>`;
+                    }
+                    
+                    html += `
+                        <tr>
+                            <td><strong>${pageName}</strong></td>
+                            <td>${min.toFixed(2)}</td>
+                            <td>${max.toFixed(2)}</td>
+                            <td><strong>${avg.toFixed(2)}</strong></td>
+                            <td><strong>${p95.toFixed(2)}</strong></td>
+                            <td>${loadTimes.length}</td>
+                            <td>${statusBadge}${insight ? '<br>' + insight : ''}</td>
+                        </tr>
+                    `;
+                }
+            });
+
+            html += `
+                        </tbody>
+                    </table>
+                </div>
+            `;
+
+            // === NEW: API METRICS SUMMARY (PER ENDPOINT, ACROSS ALL USERS) ===
+            html += `
+                <div style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white; padding: 20px; border-radius: 8px; margin: 30px 0 20px 0;">
+                    <h2 style="margin: 0 0 10px 0; font-size: 24px; font-weight: 700;">🌐 API Performance Summary - Across All Users</h2>
+                    <p style="margin: 0; font-size: 14px; opacity: 0.9;">Aggregated metrics for all API endpoints across ${allData.length} users. Shows min, max, and average response times to identify bottlenecks.</p>
+                </div>
+            `;
+
+            // Collect all API endpoints across all users and all pages
+            const apiSummary = {};
+            allData.forEach(userData => {
+                Object.keys(userData.pages).forEach(pageName => {
+                    const pageData = userData.pages[pageName];
+                    if (pageData.apiPerformance && pageData.apiPerformance.byEndpoint) {
+                        Object.entries(pageData.apiPerformance.byEndpoint).forEach(([endpoint, stats]) => {
+                            if (!apiSummary[endpoint]) {
+                                apiSummary[endpoint] = {
+                                    method: stats.method,
+                                    allDurations: [],
+                                    pages: new Set()
+                                };
+                            }
+                            // Collect individual call durations for accurate statistics
+                            if (stats.calls && Array.isArray(stats.calls)) {
+                                stats.calls.forEach(call => {
+                                    apiSummary[endpoint].allDurations.push(call.duration);
+                                });
+                            } else {
+                                // Fallback: if calls array not available, use avg
+                                for (let i = 0; i < stats.count; i++) {
+                                    apiSummary[endpoint].allDurations.push(stats.avg);
+                                }
+                            }
+                            apiSummary[endpoint].pages.add(pageName);
+                        });
+                    }
+                });
+            });
+
+            // Render API summary table for each page
+            Array.from(allPages).forEach(pageName => {
+                // Filter endpoints for this page
+                const pageEndpoints = {};
+                allData.forEach(userData => {
+                    const pageData = userData.pages[pageName];
+                    if (pageData && pageData.apiPerformance && pageData.apiPerformance.byEndpoint) {
+                        Object.entries(pageData.apiPerformance.byEndpoint).forEach(([endpoint, stats]) => {
+                            if (!pageEndpoints[endpoint]) {
+                                pageEndpoints[endpoint] = {
+                                    method: stats.method,
+                                    durations: []
+                                };
+                            }
+                            // Collect durations
+                            if (stats.calls && Array.isArray(stats.calls)) {
+                                stats.calls.forEach(call => {
+                                    pageEndpoints[endpoint].durations.push(call.duration);
+                                });
+                            } else {
+                                for (let i = 0; i < stats.count; i++) {
+                                    pageEndpoints[endpoint].durations.push(stats.avg);
+                                }
+                            }
+                        });
+                    }
+                });
+
+                if (Object.keys(pageEndpoints).length > 0) {
+                    html += `
+                        <div class="chart-container">
+                            <h3 style="margin: 0 0 10px 0; color: #1e293b;">🔗 API Endpoints Summary - ${pageName}</h3>
+                            <p style="margin: 0 0 15px 0; font-size: 13px; color: #64748b;">Response time statistics for all API endpoints on <strong>${pageName}</strong> across all users.</p>
+                            <table class="sortable-table">
+                                <thead>
+                                    <tr>
+                                        <th class="sortable" data-sort="endpoint" style="min-width: 300px;">Endpoint</th>
+                                        <th class="sortable" data-sort="method">Method</th>
+                                        <th class="sortable" data-sort="calls">Total Calls</th>
+                                        <th class="sortable" data-sort="min">Min (ms)</th>
+                                        <th class="sortable" data-sort="max">Max (ms)</th>
+                                        <th class="sortable" data-sort="avg">Avg (ms)</th>
+                                        <th>Status & Insights</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                    `;
+
+                    // Sort by average response time (slowest first)
+                    const sortedEndpoints = Object.entries(pageEndpoints).sort((a, b) => {
+                        const avgA = a[1].durations.reduce((sum, d) => sum + d, 0) / a[1].durations.length;
+                        const avgB = b[1].durations.reduce((sum, d) => sum + d, 0) / b[1].durations.length;
+                        return avgB - avgA;
+                    });
+
+                    sortedEndpoints.forEach(([endpoint, data]) => {
+                        const durations = data.durations;
+                        const min = Math.min(...durations);
+                        const max = Math.max(...durations);
+                        const avg = durations.reduce((a, b) => a + b, 0) / durations.length;
+                        
+                        // Status based on average
+                        let statusBadge = '';
+                        if (avg < 100) {
+                            statusBadge = '<span class="badge excellent">⚡ Fast</span>';
+                        } else if (avg < 500) {
+                            statusBadge = '<span class="badge good">✓ Good</span>';
+                        } else if (avg < 1000) {
+                            statusBadge = '<span class="badge needs-improvement">⚠ Slow</span>';
+                        } else {
+                            statusBadge = '<span class="badge failed">❌ Very Slow</span>';
+                        }
+                        
+                        // AI-generated insights
+                        let insight = '';
+                        const variance = max - min;
+                        if (max > 2000) {
+                            insight = `<span style="color: #ef4444; font-size: 12px;">🔴 Max exceeds 2s - critical bottleneck</span>`;
+                        } else if (variance > avg * 2) {
+                            insight = `<span style="color: #f59e0b; font-size: 12px;">⚠ High variance - inconsistent performance</span>`;
+                        } else if (avg > 500 && variance < avg * 0.5) {
+                            insight = `<span style="color: #3b82f6; font-size: 12px;">ℹ Consistently slow - optimization needed</span>`;
+                        } else if (avg < 100) {
+                            insight = `<span style="color: #10b981; font-size: 12px;">✓ Excellent - well optimized</span>`;
+                        }
+                        
+                        // Shorten endpoint for display
+                        const endpointDisplay = endpoint.length > 80 ? '...' + endpoint.slice(-77) : endpoint;
+                        
+                        html += `
+                            <tr>
+                                <td style="font-family: monospace; font-size: 11px;" title="${endpoint}">${endpointDisplay}</td>
+                                <td><span class="badge">${data.method}</span></td>
+                                <td>${durations.length}</td>
+                                <td>${min.toFixed(0)}</td>
+                                <td><strong>${max.toFixed(0)}</strong></td>
+                                <td><strong>${avg.toFixed(0)}</strong></td>
+                                <td>${statusBadge}${insight ? '<br>' + insight : ''}</td>
+                            </tr>
+                        `;
+                    });
+
+                    html += `
+                                </tbody>
+                            </table>
+                        </div>
+                    `;
+                }
+            });
+
+            // FCP Comparison (source: pageData.webVitals.firstContentfulPaint = same as Per-user)
+            html += `
+                <h3 style="margin: 20px 0 10px 0;">First Contentful Paint (FCP) by Page</h3>
+                <table class="sortable-table"><caption class="table-caption">${showingUsers} user columns (scroll horizontally to see all)</caption>
+                    <thead>
+                        <tr>
+                            <th style="min-width: 120px;">Page</th>
+            `;
+
+            dataForComparison.forEach(data => {
+                html += `<th class="user-column">${data.userLabel}</th>`;
+            });
+
+            html += `
+                            <th>Average</th>
+                            <th>Min</th>
+                            <th>Max</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            `;
+
+            Array.from(allPages).forEach(pageName => {
+                const values = [];
+                html += `<tr><td><strong>${pageName}</strong></td>`;
+
+                dataForComparison.forEach(data => {
+                    const pageData = data.pages[pageName];
+                    if (pageData && pageData.webVitals) {
+                        const fcp = (pageData.webVitals.firstContentfulPaint / 1000).toFixed(2);
+                        values.push(parseFloat(fcp));
+                        const rating = getRating(pageData.webVitals.firstContentfulPaint, thresholds.fcpExcellent, thresholds.fcpGood);
+                        html += `<td>${fcp}s <span class="rating ${rating.class}">${rating.text}</span></td>`;
+                    } else {
+                        html += `<td>-</td>`;
+                    }
+                });
+
+                if (values.length > 0) {
+                    const avg = (values.reduce((a, b) => a + b, 0) / values.length).toFixed(2);
+                    const min = Math.min(...values).toFixed(2);
+                    const max = Math.max(...values).toFixed(2);
+                    html += `<td><strong>${avg}s</strong></td><td>${min}s</td><td>${max}s</td>`;
+                } else {
+                    html += `<td>-</td><td>-</td><td>-</td>`;
+                }
+
+                html += `</tr>`;
+            });
+
+            html += `</tbody></table>`;
+
+            // Page Load Time Comparison
+            html += `
+                <h3 style="margin: 30px 0 10px 0;">Page Load Time by Page</h3>
+                <p style="margin: 0 0 8px 0; font-size: 12px; color: #64748b;">Each cell = that user’s <strong>Total Page Load Time</strong> (Web Vitals <code>totalLoadTime</code>) for the row’s page.</p>
+                <table class="sortable-table"><caption class="table-caption">${showingUsers} user columns (scroll horizontally to see all)</caption>
+                    <thead>
+                        <tr>
+                            <th style="min-width: 120px;">Page</th>
+            `;
+
+            dataForComparison.forEach(data => {
+                html += `<th class="user-column">${data.userLabel}</th>`;
+            });
+
+            html += `
+                            <th>Average</th>
+                            <th>Min</th>
+                            <th>Max</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            `;
+
+            Array.from(allPages).forEach(pageName => {
+                const values = [];
+                html += `<tr><td><strong>${pageName}</strong></td>`;
+
+                dataForComparison.forEach(data => {
+                    const pageData = data.pages[pageName];
+                    if (pageData && pageData.webVitals && pageData.webVitals.totalLoadTime) {
+                        const loadTime = (pageData.webVitals.totalLoadTime / 1000).toFixed(2);
+                        values.push(parseFloat(loadTime));
+                        const rating = getRating(pageData.webVitals.totalLoadTime, thresholds.pageLoadExcellent, thresholds.pageLoadGood);
+                        html += `<td>${loadTime}s <span class="rating ${rating.class}">${rating.text}</span></td>`;
+                    } else {
+                        html += `<td>-</td>`;
+                    }
+                });
+
+                if (values.length > 0) {
+                    const avg = (values.reduce((a, b) => a + b, 0) / values.length).toFixed(2);
+                    const min = Math.min(...values).toFixed(2);
+                    const max = Math.max(...values).toFixed(2);
+                    html += `<td><strong>${avg}s</strong></td><td>${min}s</td><td>${max}s</td>`;
+                } else {
+                    html += `<td>-</td><td>-</td><td>-</td>`;
+                }
+
+                html += `</tr>`;
+            });
+
+            html += `</tbody></table>`;
+
+            // API Performance Comparison (with P95)
+            html += `
+                <h3 style="margin: 30px 0 10px 0;">API Summary by Page (Calls · Slow · Failed · P95)</h3>
+                <p style="margin: 0 0 8px 0; font-size: 12px; color: #64748b;">Each cell = that user’s <strong>page-level P95</strong>: max of per-endpoint P95 for this page (same as slowest endpoint in Per-user → API Details).</p>
+                <table class="sortable-table"><caption class="table-caption">${showingUsers} user columns (scroll horizontally to see all)</caption>
+                    <thead>
+                        <tr>
+                            <th style="min-width: 120px;">Page</th>
+            `;
+
+            dataForComparison.forEach(data => {
+                html += `<th class="user-column">${data.userLabel}</th>`;
+            });
+
+            html += `
+                            <th>Avg Calls</th>
+                            <th>P95 Response</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            `;
+
+            Array.from(allPages).forEach(pageName => {
+                const callCounts = [];
+                const p95Values = [];
+                
+                html += `<tr><td><strong>${pageName}</strong></td>`;
+
+                dataForComparison.forEach(data => {
+                    const pageData = data.pages[pageName];
+                    if (pageData && pageData.apiPerformance) {
+                        const api = pageData.apiPerformance;
+                        callCounts.push(api.totalCalls);
+                        const p95 = getPageP95(api);
+                        p95Values.push(p95);
+                        const apiRating = p95 > 0 ? getRating(p95, thresholds.apiP95Excellent, thresholds.apiP95Good) : null;
+                        const ratingBadge = apiRating ? `<span class="badge ${apiRating.class}">${apiRating.text}</span>` : '';
+                        const failedBadge = api.failedRequests > 0 ? `<span class="badge failed">${api.failedRequests} failed</span>` : '';
+                        html += `<td>${api.totalCalls} calls · ${api.slowRequests} slow · ${api.failedRequests} failed · P95 ${p95.toFixed(0)}ms ${ratingBadge} ${failedBadge}</td>`;
+                    } else {
+                        html += `<td>-</td>`;
+                    }
+                });
+
+                if (callCounts.length > 0) {
+                    const avgCalls = Math.round(callCounts.reduce((a, b) => a + b, 0) / callCounts.length);
+                    const avgP95 = (p95Values.reduce((a, b) => a + b, 0) / p95Values.length).toFixed(0);
+                    const avgRating = avgP95 > 0 ? getRating(parseFloat(avgP95), thresholds.apiP95Excellent, thresholds.apiP95Good) : null;
+                    const avgRatingBadge = avgRating ? `<span class="badge ${avgRating.class}">${avgRating.text}</span>` : '';
+                    html += `<td><strong>${avgCalls}</strong></td><td><strong>${avgP95}ms</strong> ${avgRatingBadge}</td>`;
+                } else {
+                    html += `<td>-</td><td>-</td>`;
+                }
+
+                html += `</tr>`;
+            });
+
+            html += `</tbody></table>`;
+
+            // API-level comparison: per endpoint P95 across users (same endpoint row = same API in Per-user API Details)
+            html += `<h3 style="margin: 30px 0 10px 0;">🔗 API-level comparison (endpoint P95 by user)</h3><p style="margin: 0 0 10px 0; font-size: 12px; color: #64748b;">For each page, compare the same endpoint across users. Each cell = that user's P95 for that endpoint (matches Per-user → API Details table).</p>`;
+            Array.from(allPages).forEach(pageName => {
+                const endpointsByUrl = new Set();
+                dataForComparison.forEach(data => {
+                    const pageData = data.pages[pageName];
+                    if (pageData && pageData.apiPerformance && pageData.apiPerformance.byEndpoint) {
+                        Object.keys(pageData.apiPerformance.byEndpoint).forEach(url => endpointsByUrl.add(url));
+                    }
+                });
+                const endpoints = Array.from(endpointsByUrl);
+                if (endpoints.length === 0) return;
+                const shortName = (url) => {
+                    try {
+                        const path = new URL(url).pathname || url;
+                        return path.length > 55 ? path.slice(-52) + '…' : path;
+                    } catch (_) { return url.length > 55 ? url.slice(-52) + '…' : url; }
+                };
+                html += `<details style="margin-bottom: 12px;"><summary style="cursor: pointer; font-weight: 600;">${pageName} (${endpoints.length} endpoints)</summary><div class="comparison-view" style="overflow-x: auto;"><table class="sortable-table" style="margin-top: 8px;"><thead><tr><th style="min-width: 200px;">Endpoint</th>`;
+                dataForComparison.forEach(data => { html += `<th class="user-column">${data.userLabel}</th>`; });
+                html += `</tr></thead><tbody>`;
+                endpoints.forEach(ep => {
+                    html += `<tr><td title="${ep}" style="font-family: monospace; font-size: 11px;">${shortName(ep)}</td>`;
+                    dataForComparison.forEach(data => {
+                        const pageData = data.pages[pageName];
+                        let p95 = '-';
+                        if (pageData && pageData.apiPerformance && pageData.apiPerformance.byEndpoint && pageData.apiPerformance.byEndpoint[ep]) {
+                            const v = pageData.apiPerformance.byEndpoint[ep].p95 ?? pageData.apiPerformance.byEndpoint[ep].avg;
+                            p95 = typeof v === 'number' ? v.toFixed(0) + 'ms' : String(v);
+                        }
+                        html += `<td>${p95}</td>`;
+                    });
+                    html += `</tr>`;
+                });
+                html += `</tbody></table></div></details>`;
+            });
+
+            // Element Load Time Table
+            const allElements = new Set();
+            dataForComparison.forEach(data => {
+                if (data.globalMetrics && data.globalMetrics.elementTimes) {
+                    Object.keys(data.globalMetrics.elementTimes).forEach(el => allElements.add(el));
+                }
+            });
+
+            if (allElements.size > 0) {
+                html += `
+                    <h3 style="margin: 30px 0 10px 0;">⏱️ Element Load Time</h3>
+                    <table class="sortable-table">
+                        <thead>
+                            <tr>
+                                <th>Element</th>
+                `;
+
+                dataForComparison.forEach(data => {
+                    html += `<th class="user-column">${data.userLabel}</th>`;
+                });
+
+                html += `
+                                <th>Average</th>
+                                <th>Min</th>
+                                <th>Max</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                `;
+
+                Array.from(allElements).forEach(element => {
+                    const times = [];
+                    html += `<tr><td><strong>${element}</strong></td>`;
+
+                    dataForComparison.forEach(data => {
+                        if (data.globalMetrics && data.globalMetrics.elementTimes && data.globalMetrics.elementTimes[element]) {
+                            const time = data.globalMetrics.elementTimes[element] / 1000;
+                            times.push(time);
+                            const rating = getRating(time * 1000, thresholds.elementLoadExcellent, thresholds.elementLoadGood);
+                            html += `<td>${time.toFixed(2)}s <span class="badge ${rating.class}">${rating.text}</span></td>`;
+                        } else {
+                            html += `<td>-</td>`;
+                        }
+                    });
+
+                    if (times.length > 0) {
+                        const avg = (times.reduce((a, b) => a + b, 0) / times.length).toFixed(2);
+                        const min = Math.min(...times).toFixed(2);
+                        const max = Math.max(...times).toFixed(2);
+                        html += `<td><strong>${avg}s</strong></td><td>${min}s</td><td>${max}s</td>`;
+                    } else {
+                        html += `<td>-</td><td>-</td><td>-</td>`;
+                    }
+
+                    html += `</tr>`;
+                });
+
+                html += `</tbody></table>`;
+            }
+
+            // Content Ready Time Table (Page Load Time)
+            html += `
+                <h3 style="margin: 30px 0 10px 0;">🎯 Content Ready Time (Total Page Load)</h3>
+                <table class="sortable-table">
+                    <thead>
+                        <tr>
+                            <th>Page</th>
+            `;
+
+            dataForComparison.forEach(data => {
+                html += `<th class="user-column">${data.userLabel}</th>`;
+            });
+
+            html += `
+                            <th>Average</th>
+                            <th>Min</th>
+                            <th>Max</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            `;
+
+                Array.from(allPages).forEach(pageName => {
+                const times = [];
+                html += `<tr><td><strong>${pageName}</strong></td>`;
+
+                dataForComparison.forEach(data => {
+                    const pageData = data.pages[pageName];
+                    if (pageData && pageData.webVitals && pageData.webVitals.totalLoadTime) {
+                        const time = pageData.webVitals.totalLoadTime / 1000;
+                        times.push(time);
+                        const rating = getRating(time * 1000, thresholds.contentReadyExcellent, thresholds.contentReadyGood);
+                        html += `<td>${time.toFixed(2)}s <span class="badge ${rating.class}">${rating.text}</span></td>`;
+                    } else {
+                        html += `<td>-</td>`;
+                    }
+                });
+
+                if (times.length > 0) {
+                    const avg = (times.reduce((a, b) => a + b, 0) / times.length).toFixed(2);
+                    const min = Math.min(...times).toFixed(2);
+                    const max = Math.max(...times).toFixed(2);
+                    html += `<td><strong>${avg}s</strong></td><td>${min}s</td><td>${max}s</td>`;
+                } else {
+                    html += `<td>-</td><td>-</td><td>-</td>`;
+                }
+
+                html += `</tr>`;
+            });
+
+            html += `</tbody></table></div>`;
+            
+            console.log('Setting innerHTML, html length:', html.length);
+            container.innerHTML = html;
+            makeTablesSortable();
+            // Charts use same limited user set as tables
+            setTimeout(() => renderComparisonCharts(allPages, dataForComparison), 100);
+            
+            // Add holistic overview sections
+            renderHolisticAPISummary(container);
+            renderHolisticPageLoadOverview(container);
+            renderHolisticInteractiveTimeOverview(container);
+        }
+
+        // Store chart instances to destroy before re-rendering
+        let chartInstances = {};
+
+        function renderComparisonCharts(allPages, dataForCharts) {
+            try {
+                const chartData = dataForCharts && dataForCharts.length > 0 ? dataForCharts : allData;
+                Object.values(chartInstances).forEach(chart => {
+                    if (chart) chart.destroy();
+                });
+                chartInstances = {};
+
+                const pages = Array.from(allPages);
+                const userLabels = chartData.map(d => d.userLabel);
+                const colors = [
+                    '#3b82f6', // blue
+                    '#10b981', // green
+                    '#f59e0b', // orange
+                    '#ef4444', // red
+                    '#8b5cf6', // purple
+                    '#ec4899', // pink
+                    '#14b8a6', // teal
+                    '#f97316', // orange-red
+                    '#06b6d4', // cyan
+                    '#84cc16', // lime
+                    '#f43f5e', // rose
+                    '#6366f1', // indigo
+                ];
+
+            // Show all pages (don't filter - show 0 if no data)
+            const pagesWithFCP = pages;
+
+            // 1. FCP Chart - X-axis: Users, Lines: Pages
+            const fcpData = {
+                labels: userLabels,
+                datasets: pagesWithFCP.map((page, idx) => ({
+                    label: page,
+                    data: chartData.map(data => {
+                        const pageData = data.pages[page];
+                        if (pageData && pageData.webVitals && pageData.webVitals.firstContentfulPaint) {
+                            // Add tiny jitter (0.001s * index) to separate overlapping lines
+                            const baseValue = pageData.webVitals.firstContentfulPaint / 1000;
+                            const jitter = idx * 0.001; // 1ms per page index
+                            return parseFloat((baseValue + jitter).toFixed(3));
+                        }
+                        return null;
+                    }),
+                    borderColor: colors[idx % colors.length],
+                    backgroundColor: colors[idx % colors.length],
+                    borderWidth: 2,
+                    pointRadius: 4,
+                    pointHoverRadius: 6,
+                    tension: 0.1,
+                    fill: false,
+                    spanGaps: true
+                }))
+            };
+
+            chartInstances.fcp = new Chart(document.getElementById('fcpChart'), {
+                type: 'line',
+                data: fcpData,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: {
+                        mode: 'index',
+                        intersect: false,
+                    },
+                    plugins: {
+                        legend: { 
+                            position: 'top',
+                            labels: {
+                                boxWidth: 12,
+                                padding: 10,
+                                font: { size: 11 }
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return context.dataset.label + ': ' + context.parsed.y + 's';
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: { display: true, text: 'Time (seconds)', font: { weight: 'bold' } },
+                            grid: { color: '#e2e8f0' }
+                        },
+                        x: {
+                            title: { display: true, text: 'Users', font: { weight: 'bold' } },
+                            grid: { display: false },
+                            ticks: {
+                                autoSkip: userLabels.length > 25,
+                                maxTicksLimit: Math.max(userLabels.length, 15),
+                                maxRotation: 45,
+                                minRotation: 45,
+                                font: { size: userLabels.length > 15 ? 10 : 11 }
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Show all pages (don't filter - show 0 if no data)
+            const pagesWithPageLoad = pages;
+
+            // 2. Page Load Time Chart - X-axis: Users, Lines: Pages
+            const pageLoadData = {
+                labels: userLabels,
+                datasets: pagesWithPageLoad.map((page, idx) => ({
+                    label: page,
+                    data: chartData.map(data => {
+                        const pageData = data.pages[page];
+                        if (pageData && pageData.webVitals && pageData.webVitals.totalLoadTime) {
+                            // Add tiny jitter to separate overlapping lines
+                            const baseValue = pageData.webVitals.totalLoadTime / 1000;
+                            const jitter = idx * 0.01; // 10ms per page index
+                            return parseFloat((baseValue + jitter).toFixed(3));
+                        }
+                        return null;
+                    }),
+                    borderColor: colors[idx % colors.length],
+                    backgroundColor: colors[idx % colors.length],
+                    borderWidth: 2,
+                    pointRadius: 4,
+                    pointHoverRadius: 6,
+                    tension: 0.1,
+                    fill: false,
+                    spanGaps: true
+                }))
+            };
+
+            chartInstances.pageLoad = new Chart(document.getElementById('pageLoadChart'), {
+                type: 'line',
+                data: pageLoadData,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: {
+                        mode: 'index',
+                        intersect: false,
+                    },
+                    plugins: {
+                        legend: { 
+                            position: 'top',
+                            labels: {
+                                boxWidth: 12,
+                                padding: 10,
+                                font: { size: 11 }
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return context.dataset.label + ': ' + context.parsed.y + 's';
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: { display: true, text: 'Time (seconds)', font: { weight: 'bold' } },
+                            grid: { color: '#e2e8f0' }
+                        },
+                        x: {
+                            title: { display: true, text: 'Users', font: { weight: 'bold' } },
+                            grid: { display: false },
+                            ticks: {
+                                autoSkip: userLabels.length > 25,
+                                maxTicksLimit: Math.max(userLabels.length, 15),
+                                maxRotation: 45,
+                                minRotation: 45,
+                                font: { size: userLabels.length > 15 ? 10 : 11 }
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Show all pages (don't filter - show 0 if no data)
+            const pagesWithAPI = pages;
+
+            // 3. API P95 Chart - X-axis: Users, Lines: Pages (page P95 = getPageP95 = max of endpoint P95)
+            const apiP95Data = {
+                labels: userLabels,
+                datasets: pagesWithAPI.map((page, idx) => ({
+                    label: page,
+                    data: chartData.map(data => {
+                        const pageData = data.pages[page];
+                        if (pageData && pageData.apiPerformance) {
+                            const p95 = getPageP95(pageData.apiPerformance);
+                            if (p95 > 0) {
+                                const jitter = idx * 0.5;
+                                return parseFloat((p95 + jitter).toFixed(1));
+                            }
+                        }
+                        return idx * 0.1;
+                    }),
+                    borderColor: colors[idx % colors.length],
+                    backgroundColor: colors[idx % colors.length],
+                    borderWidth: 2,
+                    pointRadius: 4,
+                    pointHoverRadius: 6,
+                    tension: 0.1,
+                    fill: false,
+                    spanGaps: false
+                }))
+            };
+
+            chartInstances.apiP95 = new Chart(document.getElementById('apiP95Chart'), {
+                type: 'line',
+                data: apiP95Data,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: {
+                        mode: 'index',
+                        intersect: false,
+                    },
+                    plugins: {
+                        legend: { 
+                            position: 'top',
+                            labels: {
+                                boxWidth: 12,
+                                padding: 10,
+                                font: { size: 11 }
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return context.dataset.label + ': ' + context.parsed.y + 'ms';
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: { display: true, text: 'P95 Response Time (milliseconds)', font: { weight: 'bold' } },
+                            grid: { color: '#e2e8f0' }
+                        },
+                        x: {
+                            title: { display: true, text: 'Users', font: { weight: 'bold' } },
+                            grid: { display: false },
+                            ticks: {
+                                autoSkip: userLabels.length > 25,
+                                maxTicksLimit: Math.max(userLabels.length, 15),
+                                maxRotation: 45,
+                                minRotation: 45,
+                                font: { size: userLabels.length > 15 ? 10 : 11 }
+                            }
+                        }
+                    }
+                }
+            });
+
+            // 4. Element Load Time Chart - X-axis: Users, Lines: Elements
+            const allElements = new Set();
+            chartData.forEach(data => {
+                if (data.globalMetrics && data.globalMetrics.elementTimes) {
+                    Object.keys(data.globalMetrics.elementTimes).forEach(el => allElements.add(el));
+                }
+            });
+            const elements = Array.from(allElements);
+
+            const elementCanvas = document.getElementById('elementLoadChart');
+            if (elements.length > 0 && elementCanvas) {
+                const elementLoadData = {
+                    labels: userLabels,
+                    datasets: elements.map((element, idx) => ({
+                        label: element,
+                        data: chartData.map(data => {
+                            if (data.globalMetrics && data.globalMetrics.elementTimes && data.globalMetrics.elementTimes[element]) {
+                                return parseFloat((data.globalMetrics.elementTimes[element] / 1000).toFixed(2));
+                            }
+                            return null;
+                        }),
+                        borderColor: colors[idx % colors.length],
+                        backgroundColor: colors[idx % colors.length],
+                        borderWidth: 2,
+                        pointRadius: 4,
+                        pointHoverRadius: 6,
+                        tension: 0.1,
+                        fill: false,
+                        spanGaps: true
+                    }))
+                };
+
+                chartInstances.elementLoad = new Chart(elementCanvas, {
+                    type: 'line',
+                    data: elementLoadData,
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        interaction: {
+                            mode: 'index',
+                            intersect: false,
+                        },
+                        plugins: {
+                            legend: { 
+                                position: 'top',
+                                labels: {
+                                    boxWidth: 12,
+                                    padding: 10,
+                                    font: { size: 11 }
+                                }
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        return context.dataset.label + ': ' + context.parsed.y + 's';
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                title: { display: true, text: 'Time (seconds)', font: { weight: 'bold' } },
+                                grid: { color: '#e2e8f0' }
+                            },
+                            x: {
+                                title: { display: true, text: 'Users', font: { weight: 'bold' } },
+                                grid: { display: false },
+                                ticks: {
+                                    autoSkip: userLabels.length > 25,
+                                    maxTicksLimit: Math.max(userLabels.length, 15),
+                                    maxRotation: 45,
+                                    minRotation: 45,
+                                    font: { size: userLabels.length > 15 ? 10 : 11 }
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+
+            // 5. Content Ready Time Chart - X-axis: Users, Lines: Pages
+            const contentReadyData = {
+                labels: userLabels,
+                datasets: pages.map((page, idx) => ({
+                    label: page,
+                    data: chartData.map(data => {
+                        const pageData = data.pages[page];
+                        if (pageData && pageData.webVitals && pageData.webVitals.totalLoadTime) {
+                            // Add tiny jitter to separate overlapping lines
+                            const baseValue = pageData.webVitals.totalLoadTime / 1000;
+                            const jitter = idx * 0.01; // 10ms per page index
+                            return parseFloat((baseValue + jitter).toFixed(3));
+                        }
+                        return null;
+                    }),
+                    borderColor: colors[idx % colors.length],
+                    backgroundColor: colors[idx % colors.length],
+                    borderWidth: 2,
+                    pointRadius: 4,
+                    pointHoverRadius: 6,
+                    tension: 0.1,
+                    fill: false,
+                    spanGaps: true
+                }))
+            };
+
+            chartInstances.contentReady = new Chart(document.getElementById('contentReadyChart'), {
+                type: 'line',
+                data: contentReadyData,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: {
+                        mode: 'index',
+                        intersect: false,
+                    },
+                    plugins: {
+                        legend: { 
+                            position: 'top',
+                            labels: {
+                                boxWidth: 12,
+                                padding: 10,
+                                font: { size: 11 }
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return context.dataset.label + ': ' + context.parsed.y + 's';
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: { display: true, text: 'Time (seconds)', font: { weight: 'bold' } },
+                            grid: { color: '#e2e8f0' }
+                        },
+                        x: {
+                            title: { display: true, text: 'Users', font: { weight: 'bold' } },
+                            grid: { display: false },
+                            ticks: {
+                                autoSkip: userLabels.length > 25,
+                                maxTicksLimit: Math.max(userLabels.length, 15),
+                                maxRotation: 45,
+                                minRotation: 45,
+                                font: { size: userLabels.length > 15 ? 10 : 11 }
+                            }
+                        }
+                    }
+                }
+            });
+
+            } catch (error) {
+                console.error('Error rendering charts:', error);
+                alert('Error rendering charts: ' + error.message);
+            }
+        }
+
+        function renderSummaryView(container) {
+            // Calculate aggregated stats
+            const summary = {
+                totalUsers: allData.length,
+                totalDuration: 0,
+                avgFCP: [],
+                totalAPICalls: 0,
+                avgAPIResponse: [],
+                failedRequests: 0,
+                slowRequests: 0,
+            };
+
+            allData.forEach(data => {
+                summary.totalDuration += parseFloat(data.totalDuration);
+                
+                Object.values(data.pages).forEach(page => {
+                    if (page.webVitals) {
+                        summary.avgFCP.push(page.webVitals.firstContentfulPaint);
+                    }
+                    if (page.apiPerformance) {
+                        summary.totalAPICalls += page.apiPerformance.totalCalls;
+                        summary.avgAPIResponse.push(getPageP95(page.apiPerformance));
+                        summary.failedRequests += page.apiPerformance.failedRequests;
+                        summary.slowRequests += page.apiPerformance.slowRequests;
+                    }
+                });
+            });
+
+            const avgFCP = summary.avgFCP.length > 0 
+                ? (summary.avgFCP.reduce((a, b) => a + b, 0) / summary.avgFCP.length / 1000).toFixed(2)
+                : 0;
+            
+            const avgAPIResp = summary.avgAPIResponse.length > 0
+                ? (summary.avgAPIResponse.reduce((a, b) => a + b, 0) / summary.avgAPIResponse.length).toFixed(0)
+                : 0;
+
+            const avgDuration = (summary.totalDuration / summary.totalUsers).toFixed(2);
+
+            let html = `
+                <div class="section">
+                    <div class="section-title">📊 Aggregated Summary (${summary.totalUsers} Users)</div>
+                    
+                    <div class="stats-grid">
+                        <div class="stat-card blue">
+                            <div class="stat-label">Average Test Duration</div>
+                            <div class="stat-value">${avgDuration}s</div>
+                        </div>
+                        <div class="stat-card green">
+                            <div class="stat-label">Average FCP</div>
+                            <div class="stat-value">${avgFCP}s</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label">Total API Calls</div>
+                            <div class="stat-value">${summary.totalAPICalls}</div>
+                        </div>
+                        <div class="stat-card ${summary.failedRequests > 0 ? 'orange' : 'green'}">
+                            <div class="stat-label">Failed Requests</div>
+                            <div class="stat-value">${summary.failedRequests}</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label">Avg Page P95</div>
+                            <div class="stat-value">${avgAPIResp}ms</div>
+                        </div>
+                        <div class="stat-card ${summary.slowRequests > 0 ? 'orange' : 'green'}">
+                            <div class="stat-label">Slow Requests (>2s)</div>
+                            <div class="stat-value">${summary.slowRequests}</div>
+                        </div>
+                    </div>
+
+                    <h3 style="margin: 30px 0 10px 0;">Per-User Summary</h3>
+                    <table class="sortable-table">
+                        <thead>
+                            <tr>
+                                <th class="sortable" data-sort="user">User</th>
+                                <th class="sortable" data-sort="duration">Duration (s)</th>
+                                <th class="sortable" data-sort="pages">Pages</th>
+                                <th class="sortable" data-sort="api">API Calls</th>
+                                <th class="sortable" data-sort="failed">Failed</th>
+                                <th class="sortable" data-sort="slow">Slow</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+            `;
+
+            allData.forEach(data => {
+                const pageCount = Object.keys(data.pages).length;
+                let totalAPICalls = 0;
+                let totalFailed = 0;
+                let totalSlow = 0;
+
+                Object.values(data.pages).forEach(page => {
+                    if (page.apiPerformance) {
+                        totalAPICalls += page.apiPerformance.totalCalls;
+                        totalFailed += page.apiPerformance.failedRequests;
+                        totalSlow += page.apiPerformance.slowRequests;
+                    }
+                });
+
+                html += `
+                    <tr>
+                        <td><strong>${data.userLabel}</strong></td>
+                        <td>${data.totalDuration}s</td>
+                        <td>${pageCount}</td>
+                        <td>${totalAPICalls}</td>
+                        <td>${totalFailed} ${totalFailed === 0 ? '✓' : '❌'}</td>
+                        <td>${totalSlow} ${totalSlow === 0 ? '✓' : '❌'}</td>
+                    </tr>
+                `;
+            });
+
+            html += `
+                        </tbody>
+                    </table>
+                </div>
+            `;
+
+            container.innerHTML = html;
+            makeTablesSortable();
+        }
+
+        function getRating(value, excellentThreshold, goodThreshold) {
+            const v = Number(value);
+            if (typeof v !== 'number' || !Number.isFinite(v)) return { text: '—', class: '' };
+            const ex = Number(excellentThreshold) || 0;
+            const good = Number(goodThreshold) || ex;
+            if (v < ex) return { text: 'Excellent', class: 'excellent' };
+            if (v < good) return { text: 'Good', class: 'good' };
+            return { text: 'Needs Improvement', class: 'poor' };
+        }
+
+        /** Page-level P95: max of per-endpoint P95 for this page (same as slowest endpoint in API Details). */
+        function getPageP95(api) {
+            if (!api || !api.byEndpoint || typeof api.byEndpoint !== 'object') return 0;
+            const keys = Object.keys(api.byEndpoint);
+            if (keys.length === 0) return 0;
+            const allP95s = keys.map(k => {
+                const ep = api.byEndpoint[k];
+                const n = Number(ep?.p95 ?? ep?.avg ?? 0);
+                return Number.isFinite(n) ? n : 0;
+            }).filter(n => n >= 0);
+            return allP95s.length === 0 ? 0 : Math.max(...allP95s);
+        }
+
+        function applyThresholds() {
+            // Read values from inputs
+            thresholds.fcpExcellent = parseInt(document.getElementById('fcpExcellent').value) || 1800;
+            thresholds.fcpGood = parseInt(document.getElementById('fcpGood').value) || 2500;
+            thresholds.pageLoadExcellent = parseInt(document.getElementById('pageLoadExcellent').value) || 1000;
+            thresholds.pageLoadGood = parseInt(document.getElementById('pageLoadGood').value) || 3000;
+            thresholds.elementLoadExcellent = parseInt(document.getElementById('elementLoadExcellent').value) || 500;
+            thresholds.elementLoadGood = parseInt(document.getElementById('elementLoadGood').value) || 2000;
+            thresholds.contentReadyExcellent = parseInt(document.getElementById('contentReadyExcellent').value) || 2000;
+            thresholds.contentReadyGood = parseInt(document.getElementById('contentReadyGood').value) || 5000;
+            thresholds.apiP95Excellent = parseInt(document.getElementById('apiP95Excellent').value) || 500;
+            thresholds.apiP95Good = parseInt(document.getElementById('apiP95Good').value) || 1000;
+            
+            // Re-render current view with new thresholds
+            renderView();
+            
+            alert('Thresholds applied! Ratings have been recalculated.');
+        }
+
+        function resetThresholds() {
+            // Reset to defaults
+            document.getElementById('fcpExcellent').value = 1800;
+            document.getElementById('fcpGood').value = 2500;
+            document.getElementById('pageLoadExcellent').value = 1000;
+            document.getElementById('pageLoadGood').value = 3000;
+            document.getElementById('elementLoadExcellent').value = 500;
+            document.getElementById('elementLoadGood').value = 2000;
+            document.getElementById('contentReadyExcellent').value = 2000;
+            document.getElementById('contentReadyGood').value = 5000;
+            document.getElementById('apiP95Excellent').value = 500;
+            document.getElementById('apiP95Good').value = 1000;
+            
+            // Apply defaults
+            applyThresholds();
+        }
+
+        function makeTablesSortable() {
+            document.querySelectorAll('.sortable').forEach(th => {
+                th.addEventListener('click', () => sortTable(th));
+            });
+        }
+
+        function sortTable(th) {
+            const table = th.closest('table');
+            const tbody = table.querySelector('tbody');
+            const rows = Array.from(tbody.querySelectorAll('tr'));
+            const columnIndex = Array.from(th.parentElement.children).indexOf(th);
+            const sortKey = th.dataset.sort;
+            
+            const isAsc = th.classList.contains('sorted-asc');
+            
+            // Remove all sort classes
+            th.parentElement.querySelectorAll('th').forEach(h => {
+                h.classList.remove('sorted-asc', 'sorted-desc');
+            });
+            
+            // Add appropriate class
+            th.classList.add(isAsc ? 'sorted-desc' : 'sorted-asc');
+            
+            rows.sort((a, b) => {
+                const aValue = a.children[columnIndex].textContent.trim();
+                const bValue = b.children[columnIndex].textContent.trim();
+                
+                const aNum = parseFloat(aValue);
+                const bNum = parseFloat(bValue);
+                
+                if (!isNaN(aNum) && !isNaN(bNum)) {
+                    return isAsc ? bNum - aNum : aNum - bNum;
+                } else {
+                    return isAsc ? bValue.localeCompare(aValue) : aValue.localeCompare(bValue);
+                }
+            });
+            
+            rows.forEach(row => tbody.appendChild(row));
+        }
+
+        function exportToCSV() {
+            let csv = 'User,Page,FCP (ms),Total Load Time (ms),API Calls,Page P95 (ms),Failed Requests,Slow Requests\n';
+            
+            allData.forEach(data => {
+                Object.entries(data.pages).forEach(([pageName, pageData]) => {
+                    const fcp = pageData.webVitals ? pageData.webVitals.firstContentfulPaint : '';
+                    const loadTime = pageData.webVitals ? pageData.webVitals.totalLoadTime : '';
+                    const api = pageData.apiPerformance;
+                    
+                    csv += `${data.userLabel},${pageName},${fcp},${loadTime},${api.totalCalls},${getPageP95(api)},${api.failedRequests},${api.slowRequests}\n`;
+                });
+            });
+
+            downloadFile(csv, 'performance-metrics.csv', 'text/csv');
+        }
+
+        function exportToExcel() {
+            alert('Excel export: Use CSV export and open in Excel');
+            exportToCSV();
+        }
+
+        function downloadFile(content, filename, type) {
+            const blob = new Blob([content], { type });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+
+        // Log page load
+        console.log('═══════════════════════════════════════════════════');
+        console.log('Performance Viewer v2.0 Loaded');
+        console.log('Chart.js available:', typeof Chart !== 'undefined');
+        console.log('Initial currentView:', currentView);
+        console.log('═══════════════════════════════════════════════════');
+        
+        // ============================================================
+        // HOLISTIC OVERVIEW SECTIONS
+        // ============================================================
+        
+        function renderHolisticAPISummary(container) {
+            if (!allData || allData.length === 0) return;
+            
+            const apiAggregation = {};
+            
+            allData.forEach((userData) => {
+                Object.entries(userData.pages || {}).forEach(([pageName, pageData]) => {
+                    const api = pageData.apiPerformance;
+                    if (!api || !api.byEndpoint) return;
+                    
+                    Object.entries(api.byEndpoint).forEach(([endpointUrl, stats]) => {
+                        if (!apiAggregation[endpointUrl]) {
+                            apiAggregation[endpointUrl] = {
+                                method: stats.method,
+                                count: 0,
+                                allMin: [],
+                                allMax: [],
+                                allP95: [],
+                                uis: new Set(),
+                                userPageCalls: {}
+                            };
+                        }
+                        
+                        const agg = apiAggregation[endpointUrl];
+                        agg.count += stats.count || 0;
+                        agg.uis.add(pageName);
+                        
+                        if (!agg.userPageCalls[userData.userLabel]) {
+                            agg.userPageCalls[userData.userLabel] = {};
+                        }
+                        agg.userPageCalls[userData.userLabel][pageName] = stats.count || 0;
+                        
+                        if (stats.min != null && stats.min !== Infinity) {
+                            agg.allMin.push({ value: stats.min, user: userData.userLabel, page: pageName });
+                        }
+                        if (stats.max != null && stats.max !== -Infinity) {
+                            agg.allMax.push({ value: stats.max, user: userData.userLabel, page: pageName });
+                        }
+                        if (stats.p95 != null) {
+                            agg.allP95.push({ value: stats.p95, user: userData.userLabel, page: pageName });
+                        }
+                    });
+                });
+            });
+            
+            const apiSummary = [];
+            Object.entries(apiAggregation).forEach(([endpointUrl, agg]) => {
+                if (agg.count === 0) return;
+                
+                const sortedMins = agg.allMin.sort((a, b) => a.value - b.value);
+                const sortedMaxs = agg.allMax.sort((a, b) => b.value - a.value);
+                const sortedP95s = agg.allP95.sort((a, b) => b.value - a.value);
+                
+                const minData = sortedMins[0] || { value: 0, user: '-', page: '-' };
+                const maxData = sortedMaxs[0] || { value: 0, user: '-', page: '-' };
+                const p95Data = sortedP95s[0] || { value: 0, user: '-', page: '-' };
+                
+                let maxCallsPerUser = 0;
+                let maxCallsUser = '';
+                Object.entries(agg.userPageCalls).forEach(([user, pages]) => {
+                    const userTotalCalls = Object.values(pages).reduce((sum, count) => sum + count, 0);
+                    if (userTotalCalls > maxCallsPerUser) {
+                        maxCallsPerUser = userTotalCalls;
+                        maxCallsUser = user;
+                    }
+                });
+                
+                let maxCallsPerPage = 0;
+                let maxCallsPage = '';
+                let maxCallsPageUser = '';
+                Object.entries(agg.userPageCalls).forEach(([user, pages]) => {
+                    Object.entries(pages).forEach(([page, count]) => {
+                        if (count > maxCallsPerPage) {
+                            maxCallsPerPage = count;
+                            maxCallsPage = page;
+                            maxCallsPageUser = user;
+                        }
+                    });
+                });
+                
+                apiSummary.push({
+                    endpoint: endpointUrl,
+                    method: agg.method,
+                    count: agg.count,
+                    uis: Array.from(agg.uis),
+                    min: minData.value,
+                    max: maxData.value,
+                    p95: p95Data.value,
+                    minRef: minData,
+                    maxRef: maxData,
+                    p95Ref: p95Data,
+                    maxCallsPerUser,
+                    maxCallsUser,
+                    maxCallsPerPage,
+                    maxCallsPage,
+                    maxCallsPageUser
+                });
+            });
+            
+            apiSummary.sort((a, b) => b.count - a.count);
+            if (apiSummary.length === 0) return;
+            
+            let html = `
+                <div class="section" id="holisticAPISection" style="margin-top: 40px; border: 3px solid #3b82f6; border-radius: 12px; padding: 30px; background: linear-gradient(135deg, #f8fafc 0%, #e0f2fe 100%);">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                        <h2 style="color: #1e40af; margin: 0; font-size: 28px;">🌐 Holistic API Latency Overview</h2>
+                        <button class="print-btn" onclick="printSection('holisticAPISection')">🖨️ Print This Section</button>
+                    </div>
+                    <p style="color: #64748b; margin-bottom: 20px; font-size: 14px;">
+                        Aggregated API performance across <strong>${allData.length} users</strong> and all pages.
+                    </p>
+                    <div style="background: white; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                            <div style="text-align: center; padding: 15px; background: #f1f5f9; border-radius: 6px;">
+                                <div style="font-size: 32px; font-weight: 700; color: #3b82f6;">${apiSummary.length}</div>
+                                <div style="font-size: 12px; color: #64748b; font-weight: 600;">UNIQUE APIs</div>
+                            </div>
+                            <div style="text-align: center; padding: 15px; background: #f1f5f9; border-radius: 6px;">
+                                <div style="font-size: 32px; font-weight: 700; color: #10b981;">${apiSummary.reduce((sum, api) => sum + api.count, 0)}</div>
+                                <div style="font-size: 12px; color: #64748b; font-weight: 600;">TOTAL CALLS</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="overflow-x: auto;">
+                        <table class="sortable-table" style="font-size: 11px;">
+                            <thead>
+                                <tr style="background: #1e293b; color: white;">
+                                    <th style="min-width: 300px;">API Endpoint</th>
+                                    <th>Method</th>
+                                    <th>Total Count</th>
+                                    <th>Max Calls/User</th>
+                                    <th>Max Calls/Page</th>
+                                    <th>Associated UIs</th>
+                                    <th>Min (ms)</th>
+                                    <th>Max (ms)</th>
+                                    <th>P95 (ms)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+            `;
+            
+            apiSummary.forEach((api, index) => {
+                const rowBg = index % 2 === 0 ? '#ffffff' : '#f8fafc';
+                const minRating = getRating(api.min, 500, 2000);
+                const maxRating = getRating(api.max, 500, 2000);
+                const p95Rating = getRating(api.p95, 500, 2000);
+                
+                html += `
+                    <tr style="background: ${rowBg};">
+                        <td style="font-family: monospace; font-size: 10px;" title="${api.endpoint}">${api.endpoint}</td>
+                        <td><span class="badge" style="font-size: 10px;">${api.method}</span></td>
+                        <td style="text-align: center; font-weight: 600;">${api.count}</td>
+                        <td style="text-align: center;">
+                            <div style="font-weight: 600; color: #f59e0b;">${api.maxCallsPerUser}</div>
+                            <div style="font-size: 9px; color: #64748b;">${api.maxCallsUser}</div>
+                        </td>
+                        <td style="text-align: center;">
+                            <div style="font-weight: 600; color: #10b981;">${api.maxCallsPerPage}</div>
+                            <div style="font-size: 9px; color: #64748b;">[${api.maxCallsPageUser}]</div>
+                            <div style="font-size: 9px; color: #64748b;">${api.maxCallsPage}</div>
+                        </td>
+                        <td><details style="cursor: pointer;"><summary style="color: #3b82f6;">${api.uis.length} UI(s)</summary><div style="margin-top: 5px; font-size: 10px;">${api.uis.map(ui => `<div>• ${ui}</div>`).join('')}</div></details></td>
+                        <td style="text-align: right;">
+                            <div>${api.min} <span class="rating ${minRating.class}">${minRating.text}</span></div>
+                            <div style="font-size: 9px; color: #64748b;">${api.minRef.user} @ ${api.minRef.page}</div>
+                        </td>
+                        <td style="text-align: right;">
+                            <div>${api.max} <span class="rating ${maxRating.class}">${maxRating.text}</span></div>
+                            <div style="font-size: 9px; color: #64748b;">${api.maxRef.user} @ ${api.maxRef.page}</div>
+                        </td>
+                        <td style="text-align: right;">
+                            <div>${api.p95} <span class="rating ${p95Rating.class}">${p95Rating.text}</span></div>
+                            <div style="font-size: 9px; color: #64748b;">${api.p95Ref.user} @ ${api.p95Ref.page}</div>
+                        </td>
+                    </tr>
+                `;
+            });
+            
+            html += `</tbody></table></div></div>`;
+            
+            const holDiv = document.createElement('div');
+            holDiv.innerHTML = html;
+            container.appendChild(holDiv);
+        }
+        
+        function renderHolisticPageLoadOverview(container) {
+            if (!allData || allData.length === 0) return;
+            
+            const pageLoadData = {};
+            allData.forEach(userData => {
+                Object.entries(userData.pages || {}).forEach(([pageName, pageData]) => {
+                    if (!pageData.webVitals || !pageData.webVitals.totalLoadTime) return;
+                    
+                    // Only page load time (rendering complete, but buttons/dropdowns may not be interactive yet)
+                    const pageLoadTime = pageData.webVitals.totalLoadTime;
+                    
+                    if (!pageLoadData[pageName]) pageLoadData[pageName] = [];
+                    pageLoadData[pageName].push({ time: pageLoadTime, user: userData.userLabel });
+                });
+            });
+            
+            const pageSummary = [];
+            Object.entries(pageLoadData).forEach(([pageName, times]) => {
+                if (times.length === 0) return;
+                const sortedTimes = times.sort((a, b) => a.time - b.time);
+                const min = sortedTimes[0];
+                const max = sortedTimes[sortedTimes.length - 1];
+                const p95Index = Math.ceil(sortedTimes.length * 0.95) - 1;
+                const p95 = sortedTimes[p95Index];
+                const maxRating = getRating(max.time, 500, 2000);
+                pageSummary.push({ page: pageName, min: min.time, minUser: min.user, max: max.time, maxUser: max.user, maxRating, p95: p95.time, p95User: p95.user, samples: times.length });
+            });
+            
+            if (pageSummary.length === 0) return;
+            
+            let html = `
+                <div class="section" id="holisticPageLoadSection" style="margin-top: 40px; border: 3px solid #10b981; border-radius: 12px; padding: 30px; background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                        <h2 style="color: #166534; margin: 0; font-size: 28px;">⏱️ Holistic Total Page Load Time Overview</h2>
+                        <button class="print-btn" onclick="printSection('holisticPageLoadSection')">🖨️ Print This Section</button>
+                    </div>
+                    <p style="color: #64748b; margin-bottom: 20px; font-size: 14px;">
+                        <strong>Definition:</strong> Total Page Load Time = Time for page to finish rendering (DOM ready, content visible).<br/>
+                        <strong>Note:</strong> Page is rendered but buttons/dropdowns may not be interactive yet. Shows Min/Max/P95 across all ${allData.length} users.
+                    </p>
+                    <div style="overflow-x: auto;"><table class="sortable-table" style="font-size: 11px;">
+                        <thead><tr style="background: #166534; color: white;"><th>Page/Step Name</th><th>Min (ms)</th><th>Min User</th><th>Max (ms)</th><th>Max User</th><th>P95 (ms)</th><th>P95 User</th><th>Samples</th></tr></thead>
+                        <tbody>
+            `;
+            
+            pageSummary.forEach((page, index) => {
+                const rowBg = index % 2 === 0 ? '#ffffff' : '#f8fafc';
+                html += `<tr style="background: ${rowBg};"><td><strong>${page.page}</strong></td><td style="text-align: right;">${Math.round(page.min)}</td><td style="font-size: 10px; color: #64748b;">${page.minUser}</td><td style="text-align: right;">${Math.round(page.max)} <span class="rating ${page.maxRating.class}">${page.maxRating.text}</span></td><td style="font-size: 10px; color: #64748b;">${page.maxUser}</td><td style="text-align: right; font-weight: 600;">${Math.round(page.p95)}</td><td style="font-size: 10px; color: #64748b;">${page.p95User}</td><td style="text-align: center;">${page.samples}</td></tr>`;
+            });
+            
+            html += `</tbody></table></div></div>`;
+            const holDiv = document.createElement('div');
+            holDiv.innerHTML = html;
+            container.appendChild(holDiv);
+        }
+        
+        function renderHolisticInteractiveTimeOverview(container) {
+            if (!allData || allData.length === 0) {
+                console.log('Interactive Time: No allData');
+                return;
+            }
+            
+            console.log('Interactive Time: Processing', allData.length, 'users');
+            const interactiveData = {};
+            allData.forEach(userData => {
+                Object.entries(userData.pages || {}).forEach(([pageName, pageData]) => {
+                    // Need both page load time AND interactive time
+                    if (!pageData.webVitals || !pageData.webVitals.totalLoadTime) return;
+                    
+                    const ei = pageData.elementInteraction;
+                    if (!ei || !ei.totalInteractions || ei.totalInteractions === 0) {
+                        return;
+                    }
+                    if (!ei.avgWaitMs || ei.avgWaitMs <= 0) return;
+                    
+                    // Total Interactive Time = Page Load Time + Avg Time to Interactive
+                    const totalInteractiveTime = pageData.webVitals.totalLoadTime + ei.avgWaitMs;
+                    
+                    if (!interactiveData[pageName]) interactiveData[pageName] = [];
+                    interactiveData[pageName].push({ time: totalInteractiveTime, user: userData.userLabel });
+                });
+            });
+            
+            console.log('Interactive Time: Pages with data:', Object.keys(interactiveData).length);
+            const interactiveSummary = [];
+            Object.entries(interactiveData).forEach(([pageName, times]) => {
+                if (times.length === 0) return;
+                const sortedTimes = times.sort((a, b) => a.time - b.time);
+                const min = sortedTimes[0];
+                const max = sortedTimes[sortedTimes.length - 1];
+                const p95Index = Math.ceil(sortedTimes.length * 0.95) - 1;
+                const p95 = sortedTimes[p95Index];
+                const maxRating = getRating(max.time, 500, 2000);
+                interactiveSummary.push({ page: pageName, min: min.time, minUser: min.user, max: max.time, maxUser: max.user, maxRating, p95: p95.time, p95User: p95.user, samples: times.length });
+            });
+            
+            console.log('Interactive Time: Summary entries:', interactiveSummary.length);
+            if (interactiveSummary.length === 0) {
+                console.log('Interactive Time: No summary data, returning early');
+                return;
+            }
+            
+            let html = `
+                <div class="section" id="holisticInteractiveSection" style="margin-top: 40px; border: 3px solid #f59e0b; border-radius: 12px; padding: 30px; background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                        <h2 style="color: #92400e; margin: 0; font-size: 28px;">⚡ Holistic Total Interactive Time Overview</h2>
+                        <button class="print-btn" onclick="printSection('holisticInteractiveSection')">🖨️ Print This Section</button>
+                    </div>
+                    <p style="color: #64748b; margin-bottom: 20px; font-size: 14px;">
+                        <strong>Definition:</strong> Total Interactive Time = Total Page Load (s) + Avg Time to Interactive (ms).<br/>
+                        <strong>Note:</strong> Complete time from navigation start until all buttons/dropdowns are fully interactive and usable. Shows Min/Max/P95 across all ${allData.length} users.
+                    </p>
+                    <div style="overflow-x: auto;"><table class="sortable-table" style="font-size: 11px;">
+                        <thead><tr style="background: #92400e; color: white;"><th>Page/Step Name</th><th>Min (ms)</th><th>Min User</th><th>Max (ms)</th><th>Max User</th><th>P95 (ms)</th><th>P95 User</th><th>Samples</th></tr></thead>
+                        <tbody>
+            `;
+            
+            interactiveSummary.forEach((page, index) => {
+                const rowBg = index % 2 === 0 ? '#ffffff' : '#f8fafc';
+                html += `<tr style="background: ${rowBg};"><td><strong>${page.page}</strong></td><td style="text-align: right;">${Math.round(page.min)}</td><td style="font-size: 10px; color: #64748b;">${page.minUser}</td><td style="text-align: right;">${Math.round(page.max)} <span class="rating ${page.maxRating.class}">${page.maxRating.text}</span></td><td style="font-size: 10px; color: #64748b;">${page.maxUser}</td><td style="text-align: right; font-weight: 600;">${Math.round(page.p95)}</td><td style="font-size: 10px; color: #64748b;">${page.p95User}</td><td style="text-align: center;">${page.samples}</td></tr>`;
+            });
+            
+            html += `</tbody></table></div></div>`;
+            const holDiv = document.createElement('div');
+            holDiv.innerHTML = html;
+            container.appendChild(holDiv);
+        }
+        
+        // ============================================================
+        // PRINT FUNCTIONS
+        // ============================================================
+        
+        function printFullReport() {
+            // Expand all details elements before printing
+            document.querySelectorAll('details').forEach(d => d.open = true);
+            
+            // Print
+            window.print();
+            
+            // Collapse back after print dialog closes
+            window.addEventListener('afterprint', function collapseAfterPrint() {
+                document.querySelectorAll('details').forEach(d => {
+                    // Keep major sections open, collapse minor ones
+                    if (!d.classList.contains('tree-page') && !d.classList.contains('tree-section')) {
+                        d.open = false;
+                    }
+                });
+                window.removeEventListener('afterprint', collapseAfterPrint);
+            });
+        }
+        
+        function printSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (!section) {
+                console.error('Section not found:', sectionId);
+                return;
+            }
+            
+            // Create a new window for printing
+            const printWindow = window.open('', '', 'width=1200,height=800');
+            
+            // Copy styles
+            const styles = Array.from(document.styleSheets)
+                .map(styleSheet => {
+                    try {
+                        return Array.from(styleSheet.cssRules)
+                            .map(rule => rule.cssText)
+                            .join('\n');
+                    } catch (e) {
+                        console.log('Could not access stylesheet:', e);
+                        return '';
+                    }
+                })
+                .join('\n');
+            
+            // Build print content
+            printWindow.document.write(`
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <title>Print Section</title>
+                    <style>${styles}</style>
+                    <style>
+                        @page { size: A3 landscape; margin: 10mm; }
+                        body { font-size: 8pt; }
+                        .print-btn { display: none !important; }
+                    </style>
+                </head>
+                <body>
+                    ${section.outerHTML}
+                    <script>
+                        window.onload = function() {
+                            window.print();
+                            window.onafterprint = function() { window.close(); };
+                        };
+                    </scr` + `ipt>
+                </body>
+                </html>
+            `);
+            
+            printWindow.document.close();
+        }
+        
+    </script>
+</body>
+</html>

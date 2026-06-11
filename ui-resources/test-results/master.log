@@ -1,0 +1,440 @@
+====================================================================================================
+MASTER TEST LOG
+Test Run: 2026-06-10T11:13:33.651Z
+====================================================================================================
+[2026-06-10T11:13:33.658Z] [User 3] [INFO] Starting test for user: solution_user13@qa.nutanix.com
+[2026-06-10T11:13:33.658Z] [User 3] [INFO] Output directory: /Users/shashank.bg/playwright-demo/test-results/selfservice-runbook-Day2Op-bb174--User-3-App-Deployment-Test-chromium
+[2026-06-10T11:13:33.669Z] [User 3] [STEP] → Navigate to login page
+[2026-06-10T11:13:43.097Z] [User 5] [INFO] ✓ Login page loaded successfully
+[2026-06-10T11:13:43.097Z] [User 4] [INFO] ✓ Login page loaded successfully
+[2026-06-10T11:13:43.116Z] [User 4] [STEP] → Enter username: solution_user14@qa.nutanix.com
+[2026-06-10T11:13:43.116Z] [User 5] [STEP] → Enter username: solution_user15@qa.nutanix.com
+[2026-06-10T11:13:43.148Z] [User 4] [INFO] ✓ Username entered
+[2026-06-10T11:13:43.148Z] [User 5] [INFO] ✓ Username entered
+[2026-06-10T11:13:43.152Z] [User 4] [STEP] → Enter password
+[2026-06-10T11:13:43.152Z] [User 5] [STEP] → Enter password
+[2026-06-10T11:13:43.181Z] [User 5] [INFO] ✓ Password entered
+[2026-06-10T11:13:43.183Z] [User 4] [INFO] ✓ Password entered
+[2026-06-10T11:13:43.188Z] [User 4] [STEP] → Submit login form
+[2026-06-10T11:13:43.188Z] [User 5] [STEP] → Submit login form
+[2026-06-10T11:13:43.245Z] [User 5] [INFO] ✓ Dashboard loaded after login
+[2026-06-10T11:13:43.246Z] [User 4] [INFO] ✓ Dashboard loaded after login
+[2026-06-10T11:13:43.249Z] [User 5] [STEP] → Dismiss tour if present
+[2026-06-10T11:13:43.249Z] [User 4] [STEP] → Dismiss tour if present
+[2026-06-10T11:13:43.360Z] [User 2] [INFO] ✓ Login page loaded successfully
+[2026-06-10T11:13:43.369Z] [User 2] [STEP] → Enter username: solution_user12@qa.nutanix.com
+[2026-06-10T11:13:43.388Z] [User 2] [INFO] ✓ Username entered
+[2026-06-10T11:13:43.390Z] [User 2] [STEP] → Enter password
+[2026-06-10T11:13:43.406Z] [User 2] [INFO] ✓ Password entered
+[2026-06-10T11:13:43.408Z] [User 2] [STEP] → Submit login form
+[2026-06-10T11:13:43.454Z] [User 2] [INFO] ✓ Dashboard loaded after login
+[2026-06-10T11:13:43.457Z] [User 2] [STEP] → Dismiss tour if present
+[2026-06-10T11:13:43.593Z] [User 9] [INFO] ✓ Login page loaded successfully
+[2026-06-10T11:13:43.602Z] [User 9] [STEP] → Enter username: solution_user19@qa.nutanix.com
+[2026-06-10T11:13:43.621Z] [User 9] [INFO] ✓ Username entered
+[2026-06-10T11:13:43.623Z] [User 9] [STEP] → Enter password
+[2026-06-10T11:13:43.638Z] [User 9] [INFO] ✓ Password entered
+[2026-06-10T11:13:43.641Z] [User 9] [STEP] → Submit login form
+[2026-06-10T11:13:43.687Z] [User 9] [INFO] ✓ Dashboard loaded after login
+[2026-06-10T11:13:43.690Z] [User 9] [STEP] → Dismiss tour if present
+[2026-06-10T11:13:44.812Z] [User 7] [INFO] ✓ Login page loaded successfully
+[2026-06-10T11:13:44.834Z] [User 7] [STEP] → Enter username: solution_user17@qa.nutanix.com
+[2026-06-10T11:13:44.863Z] [User 7] [INFO] ✓ Username entered
+[2026-06-10T11:13:44.866Z] [User 7] [STEP] → Enter password
+[2026-06-10T11:13:44.888Z] [User 7] [INFO] ✓ Password entered
+[2026-06-10T11:13:44.892Z] [User 7] [STEP] → Submit login form
+[2026-06-10T11:13:44.958Z] [User 7] [INFO] ✓ Dashboard loaded after login
+[2026-06-10T11:13:44.962Z] [User 7] [STEP] → Dismiss tour if present
+[2026-06-10T11:13:47.771Z] [User 3] [INFO] ✓ Login page loaded successfully
+[2026-06-10T11:13:47.789Z] [User 3] [STEP] → Enter username: solution_user13@qa.nutanix.com
+[2026-06-10T11:13:47.814Z] [User 3] [INFO] ✓ Username entered
+[2026-06-10T11:13:47.818Z] [User 3] [STEP] → Enter password
+[2026-06-10T11:13:47.833Z] [User 3] [INFO] ✓ Password entered
+[2026-06-10T11:13:47.837Z] [User 3] [STEP] → Submit login form
+[2026-06-10T11:13:47.910Z] [User 3] [INFO] ✓ Dashboard loaded after login
+[2026-06-10T11:13:47.915Z] [User 3] [STEP] → Dismiss tour if present
+[2026-06-10T11:13:50.578Z] [User 10] [INFO] ✓ Login page loaded successfully
+[2026-06-10T11:13:50.598Z] [User 10] [STEP] → Enter username: solution_user20@qa.nutanix.com
+[2026-06-10T11:13:50.623Z] [User 10] [INFO] ✓ Username entered
+[2026-06-10T11:13:50.626Z] [User 10] [STEP] → Enter password
+[2026-06-10T11:13:50.656Z] [User 10] [INFO] ✓ Password entered
+[2026-06-10T11:13:50.659Z] [User 10] [STEP] → Submit login form
+[2026-06-10T11:13:50.717Z] [User 10] [INFO] ✓ Dashboard loaded after login
+[2026-06-10T11:13:50.719Z] [User 10] [STEP] → Dismiss tour if present
+[2026-06-10T11:13:51.205Z] [User 5] [INFO] ✓ Tour dismissed
+[2026-06-10T11:13:51.531Z] [User 6] [INFO] ✓ Login page loaded successfully
+[2026-06-10T11:13:51.544Z] [User 6] [STEP] → Enter username: solution_user16@qa.nutanix.com
+[2026-06-10T11:13:51.565Z] [User 6] [INFO] ✓ Username entered
+[2026-06-10T11:13:51.567Z] [User 6] [STEP] → Enter password
+[2026-06-10T11:13:51.580Z] [User 2] [INFO] ✓ Tour dismissed
+[2026-06-10T11:13:51.588Z] [User 6] [INFO] ✓ Password entered
+[2026-06-10T11:13:51.593Z] [User 6] [STEP] → Submit login form
+[2026-06-10T11:13:51.663Z] [User 6] [INFO] ✓ Dashboard loaded after login
+[2026-06-10T11:13:51.666Z] [User 6] [STEP] → Dismiss tour if present
+[2026-06-10T11:13:51.673Z] [User 5] [STEP] → Navigate to Self Service
+[2026-06-10T11:13:51.710Z] [User 4] [INFO] ✓ Tour dismissed
+[2026-06-10T11:13:52.068Z] [User 2] [STEP] → Navigate to Self Service
+[2026-06-10T11:13:52.135Z] [User 4] [STEP] → Navigate to Self Service
+[2026-06-10T11:13:52.439Z] [User 9] [INFO] ✓ Tour dismissed
+[2026-06-10T11:13:52.566Z] [User 1] [INFO] ✓ Login page loaded successfully
+[2026-06-10T11:13:52.592Z] [User 1] [STEP] → Enter username: solution_user11@qa.nutanix.com
+[2026-06-10T11:13:52.613Z] [User 1] [INFO] ✓ Username entered
+[2026-06-10T11:13:52.616Z] [User 1] [STEP] → Enter password
+[2026-06-10T11:13:52.634Z] [User 1] [INFO] ✓ Password entered
+[2026-06-10T11:13:52.637Z] [User 1] [STEP] → Submit login form
+[2026-06-10T11:13:52.706Z] [User 1] [INFO] ✓ Dashboard loaded after login
+[2026-06-10T11:13:52.708Z] [User 1] [STEP] → Dismiss tour if present
+[2026-06-10T11:13:53.097Z] [User 9] [STEP] → Navigate to Self Service
+[2026-06-10T11:13:53.321Z] [User 8] [INFO] ✓ Login page loaded successfully
+[2026-06-10T11:13:53.343Z] [User 8] [STEP] → Enter username: solution_user18@qa.nutanix.com
+[2026-06-10T11:13:53.363Z] [User 8] [INFO] ✓ Username entered
+[2026-06-10T11:13:53.366Z] [User 8] [STEP] → Enter password
+[2026-06-10T11:13:53.386Z] [User 8] [INFO] ✓ Password entered
+[2026-06-10T11:13:53.389Z] [User 8] [STEP] → Submit login form
+[2026-06-10T11:13:53.458Z] [User 8] [INFO] ✓ Dashboard loaded after login
+[2026-06-10T11:13:53.460Z] [User 8] [STEP] → Dismiss tour if present
+[2026-06-10T11:13:54.092Z] [User 5] [INFO] ✓ Self Service iframe loaded
+[2026-06-10T11:13:54.096Z] [User 5] [STEP] → Dismiss welcome modal
+[2026-06-10T11:13:54.484Z] [User 2] [INFO] ✓ Self Service iframe loaded
+[2026-06-10T11:13:54.495Z] [User 2] [STEP] → Dismiss welcome modal
+[2026-06-10T11:13:54.542Z] [User 4] [INFO] ✓ Self Service iframe loaded
+[2026-06-10T11:13:54.546Z] [User 4] [STEP] → Dismiss welcome modal
+[2026-06-10T11:13:55.534Z] [User 9] [INFO] ✓ Self Service iframe loaded
+[2026-06-10T11:13:55.538Z] [User 9] [STEP] → Dismiss welcome modal
+[2026-06-10T11:13:55.990Z] [User 7] [INFO] ✓ Tour dismissed
+[2026-06-10T11:13:57.803Z] [User 7] [STEP] → Navigate to Self Service
+[2026-06-10T11:13:58.430Z] [User 3] [INFO] ✓ Tour dismissed
+[2026-06-10T11:13:59.872Z] [User 3] [STEP] → Navigate to Self Service
+[2026-06-10T11:14:00.225Z] [User 7] [INFO] ✓ Self Service iframe loaded
+[2026-06-10T11:14:00.228Z] [User 7] [STEP] → Dismiss welcome modal
+[2026-06-10T11:14:00.281Z] [User 10] [INFO] ✓ Tour dismissed
+[2026-06-10T11:14:00.888Z] [User 6] [INFO] ✓ Tour dismissed
+[2026-06-10T11:14:01.675Z] [User 10] [STEP] → Navigate to Self Service
+[2026-06-10T11:14:02.012Z] [User 6] [STEP] → Navigate to Self Service
+[2026-06-10T11:14:02.296Z] [User 3] [INFO] ✓ Self Service iframe loaded
+[2026-06-10T11:14:02.300Z] [User 3] [STEP] → Dismiss welcome modal
+[2026-06-10T11:14:03.131Z] [User 1] [INFO] ✓ Tour dismissed
+[2026-06-10T11:14:03.388Z] [User 5] [INFO] ✓ Welcome modal dismissed
+[2026-06-10T11:14:03.734Z] [User 2] [INFO] ✓ Welcome modal dismissed
+[2026-06-10T11:14:03.749Z] [User 2] [STEP] → Dismiss welcome modal (legacy)
+[2026-06-10T11:14:03.813Z] [User 4] [INFO] ✓ Welcome modal dismissed
+[2026-06-10T11:14:03.931Z] [User 1] [STEP] → Navigate to Self Service
+[2026-06-10T11:14:04.093Z] [User 10] [INFO] ✓ Self Service iframe loaded
+[2026-06-10T11:14:04.096Z] [User 10] [STEP] → Dismiss welcome modal
+[2026-06-10T11:14:04.460Z] [User 6] [INFO] ✓ Self Service iframe loaded
+[2026-06-10T11:14:04.463Z] [User 6] [STEP] → Dismiss welcome modal
+[2026-06-10T11:14:04.778Z] [User 9] [INFO] ✓ Welcome modal dismissed
+[2026-06-10T11:14:04.802Z] [User 9] [STEP] → Dismiss welcome modal (legacy)
+[2026-06-10T11:14:05.275Z] [User 8] [INFO] ✓ Tour dismissed
+[2026-06-10T11:14:06.349Z] [User 1] [INFO] ✓ Self Service iframe loaded
+[2026-06-10T11:14:06.354Z] [User 1] [STEP] → Dismiss welcome modal
+[2026-06-10T11:14:06.856Z] [User 8] [STEP] → Navigate to Self Service
+[2026-06-10T11:14:09.270Z] [User 8] [INFO] ✓ Self Service iframe loaded
+[2026-06-10T11:14:09.275Z] [User 8] [STEP] → Dismiss welcome modal
+[2026-06-10T11:14:10.197Z] [User 7] [INFO] ✓ Welcome modal dismissed
+[2026-06-10T11:14:10.213Z] [User 7] [STEP] → Dismiss welcome modal (legacy)
+[2026-06-10T11:14:10.772Z] [User 3] [INFO] ✓ Welcome modal dismissed
+[2026-06-10T11:14:11.890Z] [User 2] [INFO] ✓ Welcome modal dismissed (legacy)
+[2026-06-10T11:14:11.899Z] [User 2] [STEP] → Navigate to Runbooks
+[2026-06-10T11:14:12.544Z] [User 10] [INFO] ✓ Welcome modal dismissed
+[2026-06-10T11:14:12.564Z] [User 10] [STEP] → Dismiss welcome modal (legacy)
+[2026-06-10T11:14:12.919Z] [User 6] [INFO] ✓ Welcome modal dismissed
+[2026-06-10T11:14:12.925Z] [User 9] [INFO] ✓ Welcome modal dismissed (legacy)
+[2026-06-10T11:14:12.928Z] [User 9] [STEP] → Navigate to Runbooks
+[2026-06-10T11:14:12.939Z] [User 6] [STEP] → Dismiss welcome modal (legacy)
+[2026-06-10T11:14:13.787Z] [User 2] [INFO] ✓ Runbooks page loaded
+[2026-06-10T11:14:13.794Z] [User 2] [STEP] → Search for runbook: vmrestart-clone
+[2026-06-10T11:14:13.815Z] [User 2] [INFO] ✓ Search for runbook "vmrestart-clone" completed
+[2026-06-10T11:14:13.825Z] [User 2] [STEP] → Select runbook: vmrestart-clone
+[2026-06-10T11:14:14.278Z] [User 9] [INFO] ✓ Runbooks page loaded
+[2026-06-10T11:14:14.283Z] [User 9] [STEP] → Search for runbook: vmrestart-clone
+[2026-06-10T11:14:14.296Z] [User 9] [INFO] ✓ Search for runbook "vmrestart-clone" completed
+[2026-06-10T11:14:14.302Z] [User 9] [STEP] → Select runbook: vmrestart-clone
+[2026-06-10T11:14:14.809Z] [User 1] [INFO] ✓ Welcome modal dismissed
+[2026-06-10T11:14:14.828Z] [User 1] [STEP] → Dismiss welcome modal (legacy)
+[2026-06-10T11:14:15.158Z] [User 9] [INFO] ✓ Selected runbook "vmrestart-clone" successfully
+[2026-06-10T11:14:15.162Z] [User 9] [STEP] → Click on task: vmrestarttask
+[2026-06-10T11:14:17.353Z] [User 2] [INFO] ✓ Selected runbook "vmrestart-clone" successfully
+[2026-06-10T11:14:17.357Z] [User 2] [STEP] → Click on task: vmrestarttask
+[2026-06-10T11:14:17.425Z] [User 2] [INFO] ✓ Clicked on task "vmrestarttask" successfully
+[2026-06-10T11:14:17.428Z] [User 2] [STEP] → Select operation: VM Power Off
+[2026-06-10T11:14:17.736Z] [User 8] [INFO] ✓ Welcome modal dismissed
+[2026-06-10T11:14:17.750Z] [User 8] [STEP] → Dismiss welcome modal (legacy)
+[2026-06-10T11:14:17.899Z] [User 9] [INFO] ✓ Clicked on task "vmrestarttask" successfully
+[2026-06-10T11:14:17.903Z] [User 9] [STEP] → Select operation: VM Power Off
+[2026-06-10T11:14:17.916Z] [User 2] [INFO] ✓ Selected operation "VM Power Off" successfully
+[2026-06-10T11:14:17.919Z] [User 2] [STEP] → Save runbook configuration
+[2026-06-10T11:14:18.018Z] [User 9] [INFO] ✓ Selected operation "VM Power Off" successfully
+[2026-06-10T11:14:18.021Z] [User 9] [STEP] → Save runbook configuration
+[2026-06-10T11:14:18.344Z] [User 7] [INFO] ✓ Welcome modal dismissed (legacy)
+[2026-06-10T11:14:18.349Z] [User 7] [STEP] → Navigate to Runbooks
+[2026-06-10T11:14:19.696Z] [User 7] [INFO] ✓ Runbooks page loaded
+[2026-06-10T11:14:19.700Z] [User 7] [STEP] → Search for runbook: vmrestart-clone
+[2026-06-10T11:14:19.712Z] [User 7] [INFO] ✓ Search for runbook "vmrestart-clone" completed
+[2026-06-10T11:14:19.716Z] [User 7] [STEP] → Select runbook: vmrestart-clone
+[2026-06-10T11:14:19.959Z] [User 9] [INFO] ✓ Runbook saved successfully
+[2026-06-10T11:14:19.962Z] [User 9] [INFO] ✓ Execute button is enabled
+[2026-06-10T11:14:19.965Z] [User 9] [STEP] → Click execute button
+[2026-06-10T11:14:20.017Z] [User 9] [INFO] ✓ Execute button clicked successfully
+[2026-06-10T11:14:20.021Z] [User 9] [STEP] → Selecting the endpoint
+[2026-06-10T11:14:20.695Z] [User 10] [INFO] ✓ Welcome modal dismissed (legacy)
+[2026-06-10T11:14:20.701Z] [User 10] [STEP] → Navigate to Runbooks
+[2026-06-10T11:14:20.873Z] [User 2] [INFO] ✓ Runbook saved successfully
+[2026-06-10T11:14:20.877Z] [User 2] [INFO] ✓ Execute button is enabled
+[2026-06-10T11:14:20.881Z] [User 2] [STEP] → Click execute button
+[2026-06-10T11:14:20.936Z] [User 2] [INFO] ✓ Execute button clicked successfully
+[2026-06-10T11:14:20.940Z] [User 2] [STEP] → Selecting the endpoint
+[2026-06-10T11:14:21.057Z] [User 6] [INFO] ✓ Welcome modal dismissed (legacy)
+[2026-06-10T11:14:21.061Z] [User 6] [STEP] → Navigate to Runbooks
+[2026-06-10T11:14:22.434Z] [User 6] [INFO] ✓ Runbooks page loaded
+[2026-06-10T11:14:22.439Z] [User 6] [STEP] → Search for runbook: vmrestart-clone
+[2026-06-10T11:14:22.458Z] [User 6] [INFO] ✓ Search for runbook "vmrestart-clone" completed
+[2026-06-10T11:14:22.462Z] [User 6] [STEP] → Select runbook: vmrestart-clone
+[2026-06-10T11:14:22.542Z] [User 10] [INFO] ✓ Runbooks page loaded
+[2026-06-10T11:14:22.545Z] [User 10] [STEP] → Search for runbook: vmrestart-clone
+[2026-06-10T11:14:22.561Z] [User 10] [INFO] ✓ Search for runbook "vmrestart-clone" completed
+[2026-06-10T11:14:22.565Z] [User 10] [STEP] → Select runbook: vmrestart-clone
+[2026-06-10T11:14:22.955Z] [User 1] [INFO] ✓ Welcome modal dismissed (legacy)
+[2026-06-10T11:14:22.960Z] [User 1] [STEP] → Navigate to Runbooks
+[2026-06-10T11:14:23.127Z] [User 7] [INFO] ✓ Selected runbook "vmrestart-clone" successfully
+[2026-06-10T11:14:23.131Z] [User 7] [STEP] → Click on task: vmrestarttask
+[2026-06-10T11:14:23.214Z] [User 7] [INFO] ✓ Clicked on task "vmrestarttask" successfully
+[2026-06-10T11:14:23.218Z] [User 7] [STEP] → Select operation: VM Power Off
+[2026-06-10T11:14:23.325Z] [User 6] [INFO] ✓ Selected runbook "vmrestart-clone" successfully
+[2026-06-10T11:14:23.330Z] [User 6] [STEP] → Click on task: vmrestarttask
+[2026-06-10T11:14:23.518Z] [User 10] [INFO] ✓ Selected runbook "vmrestart-clone" successfully
+[2026-06-10T11:14:23.523Z] [User 10] [STEP] → Click on task: vmrestarttask
+[2026-06-10T11:14:23.706Z] [User 7] [INFO] ✓ Selected operation "VM Power Off" successfully
+[2026-06-10T11:14:23.710Z] [User 7] [STEP] → Save runbook configuration
+[2026-06-10T11:14:23.896Z] [User 9] [INFO] ✓ Selected endpoint and execution started successfully
+[2026-06-10T11:14:23.903Z] [User 9] [STEP] → Verify execution completion
+[2026-06-10T11:14:24.329Z] [User 1] [INFO] ✓ Runbooks page loaded
+[2026-06-10T11:14:24.334Z] [User 1] [STEP] → Search for runbook: vmrestart-clone
+[2026-06-10T11:14:24.349Z] [User 1] [INFO] ✓ Search for runbook "vmrestart-clone" completed
+[2026-06-10T11:14:24.353Z] [User 1] [STEP] → Select runbook: vmrestart-clone
+[2026-06-10T11:14:24.640Z] [User 7] [INFO] ✓ Runbook saved successfully
+[2026-06-10T11:14:24.644Z] [User 7] [INFO] ✓ Execute button is enabled
+[2026-06-10T11:14:24.648Z] [User 7] [STEP] → Click execute button
+[2026-06-10T11:14:24.699Z] [User 7] [INFO] ✓ Execute button clicked successfully
+[2026-06-10T11:14:24.701Z] [User 6] [INFO] ✓ Clicked on task "vmrestarttask" successfully
+[2026-06-10T11:14:24.703Z] [User 7] [STEP] → Selecting the endpoint
+[2026-06-10T11:14:24.706Z] [User 6] [STEP] → Select operation: VM Power Off
+[2026-06-10T11:14:24.877Z] [User 2] [INFO] ✓ Selected endpoint and execution started successfully
+[2026-06-10T11:14:24.880Z] [User 2] [STEP] → Verify execution completion
+[2026-06-10T11:14:25.225Z] [User 1] [INFO] ✓ Selected runbook "vmrestart-clone" successfully
+[2026-06-10T11:14:25.225Z] [User 6] [INFO] ✓ Selected operation "VM Power Off" successfully
+[2026-06-10T11:14:25.229Z] [User 1] [STEP] → Click on task: vmrestarttask
+[2026-06-10T11:14:25.229Z] [User 6] [STEP] → Save runbook configuration
+[2026-06-10T11:14:25.883Z] [User 8] [INFO] ✓ Welcome modal dismissed (legacy)
+[2026-06-10T11:14:25.891Z] [User 8] [STEP] → Navigate to Runbooks
+[2026-06-10T11:14:26.158Z] [User 6] [INFO] ✓ Runbook saved successfully
+[2026-06-10T11:14:26.161Z] [User 6] [INFO] ✓ Execute button is enabled
+[2026-06-10T11:14:26.165Z] [User 6] [STEP] → Click execute button
+[2026-06-10T11:14:26.230Z] [User 6] [INFO] ✓ Execute button clicked successfully
+[2026-06-10T11:14:26.234Z] [User 6] [STEP] → Selecting the endpoint
+[2026-06-10T11:14:26.596Z] [User 1] [INFO] ✓ Clicked on task "vmrestarttask" successfully
+[2026-06-10T11:14:26.600Z] [User 1] [STEP] → Select operation: VM Power Off
+[2026-06-10T11:14:26.819Z] [User 10] [INFO] ✓ Clicked on task "vmrestarttask" successfully
+[2026-06-10T11:14:26.824Z] [User 10] [STEP] → Select operation: VM Power Off
+[2026-06-10T11:14:26.954Z] [User 10] [INFO] ✓ Selected operation "VM Power Off" successfully
+[2026-06-10T11:14:26.958Z] [User 10] [STEP] → Save runbook configuration
+[2026-06-10T11:14:27.592Z] [User 1] [INFO] ✓ Selected operation "VM Power Off" successfully
+[2026-06-10T11:14:27.595Z] [User 1] [STEP] → Save runbook configuration
+[2026-06-10T11:14:27.615Z] [User 7] [INFO] ✓ Selected endpoint and execution started successfully
+[2026-06-10T11:14:27.619Z] [User 7] [STEP] → Verify execution completion
+[2026-06-10T11:14:27.785Z] [User 8] [INFO] ✓ Runbooks page loaded
+[2026-06-10T11:14:27.788Z] [User 8] [STEP] → Search for runbook: vmrestart-clone
+[2026-06-10T11:14:27.814Z] [User 8] [INFO] ✓ Search for runbook "vmrestart-clone" completed
+[2026-06-10T11:14:27.821Z] [User 8] [STEP] → Select runbook: vmrestart-clone
+[2026-06-10T11:14:27.905Z] [User 10] [INFO] ✓ Runbook saved successfully
+[2026-06-10T11:14:27.908Z] [User 10] [INFO] ✓ Execute button is enabled
+[2026-06-10T11:14:27.910Z] [User 10] [STEP] → Click execute button
+[2026-06-10T11:14:27.962Z] [User 10] [INFO] ✓ Execute button clicked successfully
+[2026-06-10T11:14:27.965Z] [User 10] [STEP] → Selecting the endpoint
+[2026-06-10T11:14:28.555Z] [User 1] [INFO] ✓ Runbook saved successfully
+[2026-06-10T11:14:28.559Z] [User 1] [INFO] ✓ Execute button is enabled
+[2026-06-10T11:14:28.562Z] [User 1] [STEP] → Click execute button
+[2026-06-10T11:14:28.614Z] [User 1] [INFO] ✓ Execute button clicked successfully
+[2026-06-10T11:14:28.616Z] [User 1] [STEP] → Selecting the endpoint
+[2026-06-10T11:14:28.674Z] [User 8] [INFO] ✓ Selected runbook "vmrestart-clone" successfully
+[2026-06-10T11:14:28.677Z] [User 8] [STEP] → Click on task: vmrestarttask
+[2026-06-10T11:14:29.145Z] [User 6] [INFO] ✓ Selected endpoint and execution started successfully
+[2026-06-10T11:14:29.148Z] [User 6] [STEP] → Verify execution completion
+[2026-06-10T11:14:31.572Z] [User 1] [INFO] ✓ Selected endpoint and execution started successfully
+[2026-06-10T11:14:31.577Z] [User 1] [STEP] → Verify execution completion
+[2026-06-10T11:14:31.962Z] [User 10] [INFO] ✓ Selected endpoint and execution started successfully
+[2026-06-10T11:14:31.968Z] [User 8] [INFO] ✓ Clicked on task "vmrestarttask" successfully
+[2026-06-10T11:14:31.971Z] [User 10] [STEP] → Verify execution completion
+[2026-06-10T11:14:31.972Z] [User 8] [STEP] → Select operation: VM Power Off
+[2026-06-10T11:14:32.090Z] [User 8] [INFO] ✓ Selected operation "VM Power Off" successfully
+[2026-06-10T11:14:32.093Z] [User 8] [STEP] → Save runbook configuration
+[2026-06-10T11:14:33.022Z] [User 8] [INFO] ✓ Runbook saved successfully
+[2026-06-10T11:14:33.027Z] [User 8] [INFO] ✓ Execute button is enabled
+[2026-06-10T11:14:33.030Z] [User 8] [STEP] → Click execute button
+[2026-06-10T11:14:33.103Z] [User 8] [INFO] ✓ Execute button clicked successfully
+[2026-06-10T11:14:33.106Z] [User 8] [STEP] → Selecting the endpoint
+[2026-06-10T11:14:36.011Z] [User 8] [INFO] ✓ Selected endpoint and execution started successfully
+[2026-06-10T11:14:36.014Z] [User 8] [STEP] → Verify execution completion
+[2026-06-10T11:14:48.867Z] [User 9] [INFO] ✓ Execution verified - Status SUCCESS
+[2026-06-10T11:14:48.873Z] [User 9] [STEP] → Generate performance summary
+[2026-06-10T11:14:48.879Z] [User 9] [INFO] ✓ Performance summary generated and exported
+[2026-06-10T11:14:48.879Z] [User 9] [INFO] Log file saved to: /Users/shashank.bg/playwright-demo/test-results/selfservice-runbook-Day2Op-da47f--User-9-App-Deployment-Test-chromium
+[2026-06-10T11:14:48.883Z] [User 9] [INFO] ✓ All steps completed successfully!
+[2026-06-10T11:14:48.883Z] [User 9] [INFO] Total test execution time: 75307ms
+
+====================================================================================================
+Test Completed: 2026-06-10T11:14:48.927Z
+====================================================================================================
+[2026-06-10T11:14:51.851Z] [User 2] [INFO] ✓ Execution verified - Status SUCCESS
+[2026-06-10T11:14:51.861Z] [User 2] [STEP] → Generate performance summary
+[2026-06-10T11:14:51.869Z] [User 2] [INFO] ✓ Performance summary generated and exported
+[2026-06-10T11:14:51.869Z] [User 2] [INFO] Log file saved to: /Users/shashank.bg/playwright-demo/test-results/selfservice-runbook-Day2Op-3f713--User-2-App-Deployment-Test-chromium
+[2026-06-10T11:14:51.874Z] [User 2] [INFO] ✓ All steps completed successfully!
+[2026-06-10T11:14:51.875Z] [User 2] [INFO] Total test execution time: 78504ms
+
+====================================================================================================
+Test Completed: 2026-06-10T11:14:51.903Z
+====================================================================================================
+[2026-06-10T11:14:54.641Z] [User 7] [INFO] ✓ Execution verified - Status SUCCESS
+[2026-06-10T11:14:54.651Z] [User 7] [STEP] → Generate performance summary
+[2026-06-10T11:14:54.658Z] [User 7] [INFO] ✓ Performance summary generated and exported
+[2026-06-10T11:14:54.658Z] [User 7] [INFO] Log file saved to: /Users/shashank.bg/playwright-demo/test-results/selfservice-runbook-Day2Op-c6ec6--User-7-App-Deployment-Test-chromium
+[2026-06-10T11:14:54.665Z] [User 7] [INFO] ✓ All steps completed successfully!
+[2026-06-10T11:14:54.666Z] [User 7] [INFO] Total test execution time: 81157ms
+
+====================================================================================================
+Test Completed: 2026-06-10T11:14:54.693Z
+====================================================================================================
+[2026-06-10T11:14:56.128Z] [User 6] [INFO] ✓ Execution verified - Status SUCCESS
+[2026-06-10T11:14:56.136Z] [User 6] [STEP] → Generate performance summary
+[2026-06-10T11:14:56.143Z] [User 6] [INFO] ✓ Performance summary generated and exported
+[2026-06-10T11:14:56.143Z] [User 6] [INFO] Log file saved to: /Users/shashank.bg/playwright-demo/test-results/selfservice-runbook-Day2Op-9c8a8--User-6-App-Deployment-Test-chromium
+[2026-06-10T11:14:56.147Z] [User 6] [INFO] ✓ All steps completed successfully!
+[2026-06-10T11:14:56.148Z] [User 6] [INFO] Total test execution time: 83061ms
+
+====================================================================================================
+Test Completed: 2026-06-10T11:14:56.170Z
+====================================================================================================
+[2026-06-10T11:14:56.576Z] [User 1] [INFO] ✓ Execution verified - Status SUCCESS
+[2026-06-10T11:14:56.588Z] [User 1] [STEP] → Generate performance summary
+[2026-06-10T11:14:56.597Z] [User 1] [INFO] ✓ Performance summary generated and exported
+[2026-06-10T11:14:56.597Z] [User 1] [INFO] Log file saved to: /Users/shashank.bg/playwright-demo/test-results/selfservice-runbook-Day2Op-aabf6--User-1-App-Deployment-Test-chromium
+[2026-06-10T11:14:56.603Z] [User 1] [INFO] ✓ All steps completed successfully!
+[2026-06-10T11:14:56.603Z] [User 1] [INFO] Total test execution time: 83093ms
+
+====================================================================================================
+Test Completed: 2026-06-10T11:14:56.631Z
+====================================================================================================
+[2026-06-10T11:15:00.975Z] [User 8] [INFO] ✓ Execution verified - Status SUCCESS
+[2026-06-10T11:15:00.982Z] [User 8] [STEP] → Generate performance summary
+[2026-06-10T11:15:00.989Z] [User 8] [INFO] ✓ Performance summary generated and exported
+[2026-06-10T11:15:00.989Z] [User 8] [INFO] Log file saved to: /Users/shashank.bg/playwright-demo/test-results/selfservice-runbook-Day2Op-3a1d4--User-8-App-Deployment-Test-chromium
+[2026-06-10T11:15:00.993Z] [User 8] [INFO] ✓ All steps completed successfully!
+[2026-06-10T11:15:00.994Z] [User 8] [INFO] Total test execution time: 87743ms
+
+====================================================================================================
+Test Completed: 2026-06-10T11:15:01.018Z
+====================================================================================================
+[2026-06-10T11:15:01.981Z] [User 10] [INFO] ✓ Execution verified - Status SUCCESS
+[2026-06-10T11:15:01.992Z] [User 10] [STEP] → Generate performance summary
+[2026-06-10T11:15:01.999Z] [User 10] [INFO] ✓ Performance summary generated and exported
+[2026-06-10T11:15:01.999Z] [User 10] [INFO] Log file saved to: /Users/shashank.bg/playwright-demo/test-results/selfservice-runbook-Day2Op-61b76-User-10-App-Deployment-Test-chromium
+[2026-06-10T11:15:02.003Z] [User 10] [INFO] ✓ All steps completed successfully!
+[2026-06-10T11:15:02.003Z] [User 10] [INFO] Total test execution time: 88532ms
+
+====================================================================================================
+Test Completed: 2026-06-10T11:15:02.032Z
+====================================================================================================
+[2026-06-10T11:15:33.399Z] [User 5] [DEBUG] Welcome message not found
+[2026-06-10T11:15:33.414Z] [User 5] [STEP] → Dismiss welcome modal (legacy)
+[2026-06-10T11:15:33.821Z] [User 4] [DEBUG] Welcome message not found
+[2026-06-10T11:15:33.831Z] [User 4] [STEP] → Dismiss welcome modal (legacy)
+[2026-06-10T11:15:40.782Z] [User 3] [DEBUG] Welcome message not found
+[2026-06-10T11:15:40.795Z] [User 3] [STEP] → Dismiss welcome modal (legacy)
+[2026-06-10T11:15:41.551Z] [User 5] [INFO] ✓ Welcome modal dismissed (legacy)
+[2026-06-10T11:15:41.554Z] [User 5] [STEP] → Navigate to Runbooks
+[2026-06-10T11:15:41.948Z] [User 4] [INFO] ✓ Welcome modal dismissed (legacy)
+[2026-06-10T11:15:41.950Z] [User 4] [STEP] → Navigate to Runbooks
+[2026-06-10T11:15:43.328Z] [User 4] [INFO] ✓ Runbooks page loaded
+[2026-06-10T11:15:43.331Z] [User 4] [STEP] → Search for runbook: vmrestart-clone
+[2026-06-10T11:15:43.340Z] [User 4] [INFO] ✓ Search for runbook "vmrestart-clone" completed
+[2026-06-10T11:15:43.358Z] [User 4] [STEP] → Select runbook: vmrestart-clone
+[2026-06-10T11:15:43.399Z] [User 5] [INFO] ✓ Runbooks page loaded
+[2026-06-10T11:15:43.402Z] [User 5] [STEP] → Search for runbook: vmrestart-clone
+[2026-06-10T11:15:43.411Z] [User 5] [INFO] ✓ Search for runbook "vmrestart-clone" completed
+[2026-06-10T11:15:43.413Z] [User 5] [STEP] → Select runbook: vmrestart-clone
+[2026-06-10T11:15:44.209Z] [User 4] [INFO] ✓ Selected runbook "vmrestart-clone" successfully
+[2026-06-10T11:15:44.213Z] [User 4] [STEP] → Click on task: vmrestarttask
+[2026-06-10T11:15:44.271Z] [User 5] [INFO] ✓ Selected runbook "vmrestart-clone" successfully
+[2026-06-10T11:15:44.275Z] [User 5] [STEP] → Click on task: vmrestarttask
+[2026-06-10T11:15:45.547Z] [User 4] [INFO] ✓ Clicked on task "vmrestarttask" successfully
+[2026-06-10T11:15:45.550Z] [User 4] [STEP] → Select operation: VM Power Off
+[2026-06-10T11:15:45.651Z] [User 5] [INFO] ✓ Clicked on task "vmrestarttask" successfully
+[2026-06-10T11:15:45.654Z] [User 5] [STEP] → Select operation: VM Power Off
+[2026-06-10T11:15:46.580Z] [User 4] [INFO] ✓ Selected operation "VM Power Off" successfully
+[2026-06-10T11:15:46.583Z] [User 4] [STEP] → Save runbook configuration
+[2026-06-10T11:15:46.645Z] [User 5] [INFO] ✓ Selected operation "VM Power Off" successfully
+[2026-06-10T11:15:46.648Z] [User 5] [STEP] → Save runbook configuration
+[2026-06-10T11:15:47.524Z] [User 4] [INFO] ✓ Runbook saved successfully
+[2026-06-10T11:15:47.531Z] [User 4] [INFO] ✓ Execute button is enabled
+[2026-06-10T11:15:47.537Z] [User 4] [STEP] → Click execute button
+[2026-06-10T11:15:47.584Z] [User 5] [INFO] ✓ Runbook saved successfully
+[2026-06-10T11:15:47.588Z] [User 5] [INFO] ✓ Execute button is enabled
+[2026-06-10T11:15:47.591Z] [User 5] [STEP] → Click execute button
+[2026-06-10T11:15:47.618Z] [User 4] [INFO] ✓ Execute button clicked successfully
+[2026-06-10T11:15:47.621Z] [User 4] [STEP] → Selecting the endpoint
+[2026-06-10T11:15:47.633Z] [User 5] [INFO] ✓ Execute button clicked successfully
+[2026-06-10T11:15:47.636Z] [User 5] [STEP] → Selecting the endpoint
+[2026-06-10T11:15:48.933Z] [User 3] [INFO] ✓ Welcome modal dismissed (legacy)
+[2026-06-10T11:15:48.936Z] [User 3] [STEP] → Navigate to Runbooks
+[2026-06-10T11:15:50.515Z] [User 5] [INFO] ✓ Selected endpoint and execution started successfully
+[2026-06-10T11:15:50.517Z] [User 5] [STEP] → Verify execution completion
+[2026-06-10T11:15:50.539Z] [User 4] [INFO] ✓ Selected endpoint and execution started successfully
+[2026-06-10T11:15:50.544Z] [User 4] [STEP] → Verify execution completion
+[2026-06-10T11:15:50.833Z] [User 3] [INFO] ✓ Runbooks page loaded
+[2026-06-10T11:15:50.838Z] [User 3] [STEP] → Search for runbook: vmrestart-clone
+[2026-06-10T11:15:50.853Z] [User 3] [INFO] ✓ Search for runbook "vmrestart-clone" completed
+[2026-06-10T11:15:50.878Z] [User 3] [STEP] → Select runbook: vmrestart-clone
+[2026-06-10T11:15:51.736Z] [User 3] [INFO] ✓ Selected runbook "vmrestart-clone" successfully
+[2026-06-10T11:15:51.740Z] [User 3] [STEP] → Click on task: vmrestarttask
+[2026-06-10T11:15:53.077Z] [User 3] [INFO] ✓ Clicked on task "vmrestarttask" successfully
+[2026-06-10T11:15:53.081Z] [User 3] [STEP] → Select operation: VM Power Off
+[2026-06-10T11:15:53.607Z] [User 3] [INFO] ✓ Selected operation "VM Power Off" successfully
+[2026-06-10T11:15:53.609Z] [User 3] [STEP] → Save runbook configuration
+[2026-06-10T11:15:54.561Z] [User 3] [INFO] ✓ Runbook saved successfully
+[2026-06-10T11:15:54.569Z] [User 3] [INFO] ✓ Execute button is enabled
+[2026-06-10T11:15:54.573Z] [User 3] [STEP] → Click execute button
+[2026-06-10T11:15:54.645Z] [User 3] [INFO] ✓ Execute button clicked successfully
+[2026-06-10T11:15:54.648Z] [User 3] [STEP] → Selecting the endpoint
+[2026-06-10T11:15:57.593Z] [User 3] [INFO] ✓ Selected endpoint and execution started successfully
+[2026-06-10T11:15:57.598Z] [User 3] [STEP] → Verify execution completion
+[2026-06-10T11:16:12.516Z] [User 5] [INFO] ✓ Execution verified - Status SUCCESS
+[2026-06-10T11:16:12.522Z] [User 5] [STEP] → Generate performance summary
+[2026-06-10T11:16:12.529Z] [User 5] [INFO] ✓ Performance summary generated and exported
+[2026-06-10T11:16:12.529Z] [User 5] [INFO] Log file saved to: /Users/shashank.bg/playwright-demo/test-results/selfservice-runbook-Day2Op-a1ccb--User-5-App-Deployment-Test-chromium
+[2026-06-10T11:16:12.533Z] [User 4] [INFO] ✓ Execution verified - Status SUCCESS
+[2026-06-10T11:16:12.534Z] [User 5] [INFO] ✓ All steps completed successfully!
+[2026-06-10T11:16:12.534Z] [User 5] [INFO] Total test execution time: 159001ms
+[2026-06-10T11:16:12.537Z] [User 4] [STEP] → Generate performance summary
+[2026-06-10T11:16:12.545Z] [User 4] [INFO] ✓ Performance summary generated and exported
+[2026-06-10T11:16:12.545Z] [User 4] [INFO] Log file saved to: /Users/shashank.bg/playwright-demo/test-results/selfservice-runbook-Day2Op-64d75--User-4-App-Deployment-Test-chromium
+[2026-06-10T11:16:12.549Z] [User 4] [INFO] ✓ All steps completed successfully!
+[2026-06-10T11:16:12.550Z] [User 4] [INFO] Total test execution time: 158984ms
+
+====================================================================================================
+Test Completed: 2026-06-10T11:16:12.566Z
+====================================================================================================
+
+====================================================================================================
+Test Completed: 2026-06-10T11:16:12.580Z
+====================================================================================================
+[2026-06-10T11:16:22.619Z] [User 3] [INFO] ✓ Execution verified - Status SUCCESS
+[2026-06-10T11:16:22.630Z] [User 3] [STEP] → Generate performance summary
+[2026-06-10T11:16:22.639Z] [User 3] [INFO] ✓ Performance summary generated and exported
+[2026-06-10T11:16:22.639Z] [User 3] [INFO] Log file saved to: /Users/shashank.bg/playwright-demo/test-results/selfservice-runbook-Day2Op-bb174--User-3-App-Deployment-Test-chromium
+[2026-06-10T11:16:22.644Z] [User 3] [INFO] ✓ All steps completed successfully!
+[2026-06-10T11:16:22.644Z] [User 3] [INFO] Total test execution time: 168988ms
+
+====================================================================================================
+Test Completed: 2026-06-10T11:16:22.673Z
+====================================================================================================

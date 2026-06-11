@@ -1,0 +1,4345 @@
+{
+  "userLabel": "[User 7]",
+  "testStartTime": 1781090013543,
+  "testEndTime": 1781090094656,
+  "totalDuration": "81.11",
+  "pages": {
+    "Step 01 - Navigate to login page": {
+      "webVitals": {
+        "domContentLoaded": 301.1000000014901,
+        "firstPaint": 320,
+        "firstContentfulPaint": 320,
+        "totalLoadTime": 284,
+        "totalResources": 14,
+        "jsSize": 0,
+        "cssSize": 0,
+        "imageSize": 0,
+        "responseTime": 246.39999999850988,
+        "dnsTime": 0,
+        "tcpTime": 0,
+        "navigationType": "navigate",
+        "_captureTimestamp": 1781090024831,
+        "_fetchStart": 17.100000001490116,
+        "_loadEventEnd": 301.1000000014901,
+        "stepDurationMs": 11225,
+        "source": "main page",
+        "capturedAt": 1781090024833,
+        "metricsQuality": "complete",
+        "retries": 0,
+        "captureDurationMs": 17,
+        "stepId": "Step 01 - Navigate to login page-1",
+        "_diagnostic": {
+          "attemptCount": 1,
+          "retryCount": 0,
+          "quality": "complete",
+          "captureTimeMs": 17,
+          "hasLoadTime": true,
+          "hasFCP": true,
+          "hasDOMReady": true
+        }
+      },
+      "metricsQuality": "complete",
+      "apiPerformance": {
+        "totalCalls": 9,
+        "uniqueEndpoints": 4,
+        "avgResponse": "247.44",
+        "slowRequests": 0,
+        "failedRequests": 0,
+        "byEndpoint": {
+          "https://iam.nconprem-10-122-152-117.ccpnx.com/PrismGateway/services/rest/v1/utils/pre_login_details": {
+            "calls": [
+              {
+                "url": "https://iam.nconprem-10-122-152-117.ccpnx.com/PrismGateway/services/rest/v1/utils/pre_login_details",
+                "normalizedUrl": "https://iam.nconprem-10-122-152-117.ccpnx.com/PrismGateway/services/rest/v1/utils/pre_login_details",
+                "fullUrl": "https://iam.nconprem-10-122-152-117.ccpnx.com/PrismGateway/services/rest/v1/utils/pre_login_details",
+                "method": "GET",
+                "status": 200,
+                "duration": 241,
+                "page": "Step 01 - Navigate to login page",
+                "stepId": "Step 01 - Navigate to login page-1",
+                "timestamp": 1781090022480
+              }
+            ],
+            "count": 1,
+            "totalDuration": 241,
+            "minDuration": 241,
+            "maxDuration": 241,
+            "method": "GET",
+            "avg": 241,
+            "min": 241,
+            "max": 241,
+            "p90": 241,
+            "p95": 241
+          },
+          "https://iam.nconprem-10-122-152-117.ccpnx.com/api/iam/v4.1.b3/authn/welcome-banner": {
+            "calls": [
+              {
+                "url": "https://iam.nconprem-10-122-152-117.ccpnx.com/api/iam/v4.1.b3/authn/welcome-banner",
+                "normalizedUrl": "https://iam.nconprem-10-122-152-117.ccpnx.com/api/iam/v4.1.b3/authn/welcome-banner",
+                "fullUrl": "https://iam.nconprem-10-122-152-117.ccpnx.com/api/iam/v4.1.b3/authn/welcome-banner",
+                "method": "GET",
+                "status": 200,
+                "duration": 244,
+                "page": "Step 01 - Navigate to login page",
+                "stepId": "Step 01 - Navigate to login page-1",
+                "timestamp": 1781090022491
+              },
+              {
+                "url": "https://iam.nconprem-10-122-152-117.ccpnx.com/api/iam/v4.1.b3/authn/welcome-banner",
+                "normalizedUrl": "https://iam.nconprem-10-122-152-117.ccpnx.com/api/iam/v4.1.b3/authn/welcome-banner",
+                "fullUrl": "https://iam.nconprem-10-122-152-117.ccpnx.com/api/iam/v4.1.b3/authn/welcome-banner",
+                "method": "GET",
+                "status": 200,
+                "duration": 250,
+                "page": "Step 01 - Navigate to login page",
+                "stepId": "Step 01 - Navigate to login page-1",
+                "timestamp": 1781090023815
+              }
+            ],
+            "count": 2,
+            "totalDuration": 494,
+            "minDuration": 244,
+            "maxDuration": 250,
+            "method": "GET",
+            "avg": 247,
+            "min": 244,
+            "max": 250,
+            "p90": 250,
+            "p95": 250
+          },
+          "https://iam.nconprem-10-122-152-117.ccpnx.com/api/iam/v4.1.b3/authn/login-requests/{uuid}": {
+            "calls": [
+              {
+                "url": "https://iam.nconprem-10-122-152-117.ccpnx.com/api/iam/v4.1.b3/authn/login-requests/ea264465-6f85-5684-9c35-fe89870dd950",
+                "normalizedUrl": "https://iam.nconprem-10-122-152-117.ccpnx.com/api/iam/v4.1.b3/authn/login-requests/{uuid}",
+                "fullUrl": "https://iam.nconprem-10-122-152-117.ccpnx.com/api/iam/v4.1.b3/authn/login-requests/ea264465-6f85-5684-9c35-fe89870dd950",
+                "method": "GET",
+                "status": 200,
+                "duration": 249,
+                "page": "Step 01 - Navigate to login page",
+                "stepId": "Step 01 - Navigate to login page-1",
+                "timestamp": 1781090022496
+              },
+              {
+                "url": "https://iam.nconprem-10-122-152-117.ccpnx.com/api/iam/v4.1.b3/authn/login-requests/ea264465-6f85-5684-9c35-fe89870dd950",
+                "normalizedUrl": "https://iam.nconprem-10-122-152-117.ccpnx.com/api/iam/v4.1.b3/authn/login-requests/{uuid}",
+                "fullUrl": "https://iam.nconprem-10-122-152-117.ccpnx.com/api/iam/v4.1.b3/authn/login-requests/ea264465-6f85-5684-9c35-fe89870dd950",
+                "method": "GET",
+                "status": 200,
+                "duration": 243,
+                "page": "Step 01 - Navigate to login page",
+                "stepId": "Step 01 - Navigate to login page-1",
+                "timestamp": 1781090022740
+              },
+              {
+                "url": "https://iam.nconprem-10-122-152-117.ccpnx.com/api/iam/v4.1.b3/authn/login-requests/ea264465-6f85-5684-9c35-fe89870dd950",
+                "normalizedUrl": "https://iam.nconprem-10-122-152-117.ccpnx.com/api/iam/v4.1.b3/authn/login-requests/{uuid}",
+                "fullUrl": "https://iam.nconprem-10-122-152-117.ccpnx.com/api/iam/v4.1.b3/authn/login-requests/ea264465-6f85-5684-9c35-fe89870dd950",
+                "method": "PUT",
+                "status": 200,
+                "duration": 249,
+                "page": "Step 01 - Navigate to login page",
+                "stepId": "Step 01 - Navigate to login page-1",
+                "timestamp": 1781090022990
+              },
+              {
+                "url": "https://iam.nconprem-10-122-152-117.ccpnx.com/api/iam/v4.1.b3/authn/login-requests/ea264465-6f85-5684-9c35-fe89870dd950",
+                "normalizedUrl": "https://iam.nconprem-10-122-152-117.ccpnx.com/api/iam/v4.1.b3/authn/login-requests/{uuid}",
+                "fullUrl": "https://iam.nconprem-10-122-152-117.ccpnx.com/api/iam/v4.1.b3/authn/login-requests/ea264465-6f85-5684-9c35-fe89870dd950",
+                "method": "GET",
+                "status": 200,
+                "duration": 248,
+                "page": "Step 01 - Navigate to login page",
+                "stepId": "Step 01 - Navigate to login page-1",
+                "timestamp": 1781090023812
+              }
+            ],
+            "count": 4,
+            "totalDuration": 989,
+            "minDuration": 243,
+            "maxDuration": 249,
+            "method": "GET",
+            "avg": 247.25,
+            "min": 243,
+            "max": 249,
+            "p90": 249,
+            "p95": 249
+          },
+          "https://iam.nconprem-10-122-152-117.ccpnx.com/api/iam/v4.1.b3/authn/login-providers": {
+            "calls": [
+              {
+                "url": "https://iam.nconprem-10-122-152-117.ccpnx.com/api/iam/v4.1.b3/authn/login-providers",
+                "normalizedUrl": "https://iam.nconprem-10-122-152-117.ccpnx.com/api/iam/v4.1.b3/authn/login-providers",
+                "fullUrl": "https://iam.nconprem-10-122-152-117.ccpnx.com/api/iam/v4.1.b3/authn/login-providers?$filter=isBrowserLoginSupported%20eq%20true&$orderby=name",
+                "method": "GET",
+                "status": 200,
+                "duration": 249,
+                "page": "Step 01 - Navigate to login page",
+                "stepId": "Step 01 - Navigate to login page-1",
+                "timestamp": 1781090022496
+              },
+              {
+                "url": "https://iam.nconprem-10-122-152-117.ccpnx.com/api/iam/v4.1.b3/authn/login-providers",
+                "normalizedUrl": "https://iam.nconprem-10-122-152-117.ccpnx.com/api/iam/v4.1.b3/authn/login-providers",
+                "fullUrl": "https://iam.nconprem-10-122-152-117.ccpnx.com/api/iam/v4.1.b3/authn/login-providers?$filter=isBrowserLoginSupported%20eq%20true&$orderby=name",
+                "method": "GET",
+                "status": 200,
+                "duration": 254,
+                "page": "Step 01 - Navigate to login page",
+                "stepId": "Step 01 - Navigate to login page-1",
+                "timestamp": 1781090023818
+              }
+            ],
+            "count": 2,
+            "totalDuration": 503,
+            "minDuration": 249,
+            "maxDuration": 254,
+            "method": "GET",
+            "avg": 251.5,
+            "min": 249,
+            "max": 254,
+            "p90": 254,
+            "p95": 254
+          }
+        },
+        "failedDetails": []
+      }
+    },
+    "Step 02 - Enter username": {
+      "webVitals": {
+        "domContentLoaded": 301.1000000014901,
+        "firstPaint": 320,
+        "firstContentfulPaint": 320,
+        "totalLoadTime": 284,
+        "totalResources": 14,
+        "jsSize": 0,
+        "cssSize": 0,
+        "imageSize": 0,
+        "responseTime": 246.39999999850988,
+        "dnsTime": 0,
+        "tcpTime": 0,
+        "navigationType": "navigate",
+        "_captureTimestamp": 1781090024865,
+        "_fetchStart": 17.100000001490116,
+        "_loadEventEnd": 301.1000000014901,
+        "stepDurationMs": 30,
+        "source": "main page",
+        "capturedAt": 1781090024866,
+        "metricsQuality": "complete",
+        "retries": 0,
+        "captureDurationMs": 2,
+        "stepId": "Step 02 - Enter username-2",
+        "_diagnostic": {
+          "attemptCount": 1,
+          "retryCount": 0,
+          "quality": "complete",
+          "captureTimeMs": 2,
+          "hasLoadTime": true,
+          "hasFCP": true,
+          "hasDOMReady": true
+        }
+      },
+      "metricsQuality": "complete",
+      "elementInteraction": {
+        "totalInteractions": 1,
+        "avgWaitMs": 28,
+        "slowInteractions": 0,
+        "timeouts": 0,
+        "details": [
+          {
+            "action": "fill",
+            "element": "Username input field",
+            "waitTimeMs": 28,
+            "timedOut": false,
+            "timestamp": 1781090024862
+          }
+        ]
+      },
+      "apiPerformance": {
+        "totalCalls": 0,
+        "uniqueEndpoints": 0,
+        "avgResponse": "0",
+        "slowRequests": 0,
+        "failedRequests": 0,
+        "byEndpoint": {},
+        "failedDetails": []
+      }
+    },
+    "Step 03 - Enter password": {
+      "webVitals": {
+        "domContentLoaded": 301.1000000014901,
+        "firstPaint": 320,
+        "firstContentfulPaint": 320,
+        "totalLoadTime": 284,
+        "totalResources": 14,
+        "jsSize": 0,
+        "cssSize": 0,
+        "imageSize": 0,
+        "responseTime": 246.39999999850988,
+        "dnsTime": 0,
+        "tcpTime": 0,
+        "navigationType": "navigate",
+        "_captureTimestamp": 1781090024891,
+        "_fetchStart": 17.100000001490116,
+        "_loadEventEnd": 301.1000000014901,
+        "stepDurationMs": 23,
+        "source": "main page",
+        "capturedAt": 1781090024892,
+        "metricsQuality": "complete",
+        "retries": 0,
+        "captureDurationMs": 2,
+        "stepId": "Step 03 - Enter password-3",
+        "_diagnostic": {
+          "attemptCount": 1,
+          "retryCount": 0,
+          "quality": "complete",
+          "captureTimeMs": 2,
+          "hasLoadTime": true,
+          "hasFCP": true,
+          "hasDOMReady": true
+        }
+      },
+      "metricsQuality": "complete",
+      "elementInteraction": {
+        "totalInteractions": 1,
+        "avgWaitMs": 22,
+        "slowInteractions": 0,
+        "timeouts": 0,
+        "details": [
+          {
+            "action": "fill",
+            "element": "Password input field",
+            "waitTimeMs": 22,
+            "timedOut": false,
+            "timestamp": 1781090024888
+          }
+        ]
+      },
+      "apiPerformance": {
+        "totalCalls": 0,
+        "uniqueEndpoints": 0,
+        "avgResponse": "0",
+        "slowRequests": 0,
+        "failedRequests": 0,
+        "byEndpoint": {},
+        "failedDetails": []
+      }
+    },
+    "Step 04 - Submit and wait for dashboard page": {
+      "webVitals": {
+        "domContentLoaded": 301.1000000014901,
+        "firstPaint": 320,
+        "firstContentfulPaint": 320,
+        "totalLoadTime": 284,
+        "totalResources": 14,
+        "jsSize": 0,
+        "cssSize": 0,
+        "imageSize": 0,
+        "responseTime": 246.39999999850988,
+        "dnsTime": 0,
+        "tcpTime": 0,
+        "navigationType": "navigate",
+        "_captureTimestamp": 1781090024960,
+        "_fetchStart": 17.100000001490116,
+        "_loadEventEnd": 301.1000000014901,
+        "stepDurationMs": 66,
+        "source": "main page",
+        "capturedAt": 1781090024961,
+        "metricsQuality": "complete",
+        "retries": 0,
+        "captureDurationMs": 3,
+        "stepId": "Step 04 - Submit and wait for dashboard page-4",
+        "_diagnostic": {
+          "attemptCount": 1,
+          "retryCount": 0,
+          "quality": "complete",
+          "captureTimeMs": 3,
+          "hasLoadTime": true,
+          "hasFCP": true,
+          "hasDOMReady": true
+        }
+      },
+      "metricsQuality": "complete",
+      "elementInteraction": {
+        "totalInteractions": 1,
+        "avgWaitMs": 64,
+        "slowInteractions": 0,
+        "timeouts": 0,
+        "details": [
+          {
+            "action": "click",
+            "element": "Login submit button",
+            "waitTimeMs": 64,
+            "timedOut": false,
+            "timestamp": 1781090024956
+          }
+        ]
+      },
+      "apiPerformance": {
+        "totalCalls": 1,
+        "uniqueEndpoints": 1,
+        "avgResponse": "496.00",
+        "slowRequests": 0,
+        "failedRequests": 0,
+        "byEndpoint": {
+          "https://iam.nconprem-10-122-152-117.ccpnx.com/api/iam/v4.1.b3/authn/login-requests/{uuid}/$actions/validate-credentials": {
+            "calls": [
+              {
+                "url": "https://iam.nconprem-10-122-152-117.ccpnx.com/api/iam/v4.1.b3/authn/login-requests/ea264465-6f85-5684-9c35-fe89870dd950/$actions/validate-credentials",
+                "normalizedUrl": "https://iam.nconprem-10-122-152-117.ccpnx.com/api/iam/v4.1.b3/authn/login-requests/{uuid}/$actions/validate-credentials",
+                "fullUrl": "https://iam.nconprem-10-122-152-117.ccpnx.com/api/iam/v4.1.b3/authn/login-requests/ea264465-6f85-5684-9c35-fe89870dd950/$actions/validate-credentials",
+                "method": "POST",
+                "status": 200,
+                "duration": 496,
+                "page": "Step 04 - Submit and wait for dashboard page",
+                "stepId": "Step 04 - Submit and wait for dashboard page-4",
+                "timestamp": 1781090025451
+              }
+            ],
+            "count": 1,
+            "totalDuration": 496,
+            "minDuration": 496,
+            "maxDuration": 496,
+            "method": "POST",
+            "avg": 496,
+            "min": 496,
+            "max": 496,
+            "p90": 496,
+            "p95": 496
+          }
+        },
+        "failedDetails": []
+      }
+    },
+    "Step 05 - Dismiss tour if present": {
+      "webVitals": {
+        "domContentLoaded": 1043.5999999977648,
+        "firstPaint": 836,
+        "firstContentfulPaint": 836,
+        "totalLoadTime": 5229.400000002235,
+        "totalResources": 34,
+        "jsSize": 1374336,
+        "cssSize": 6813,
+        "imageSize": 543724,
+        "responseTime": 273.4000000022352,
+        "dnsTime": 0,
+        "tcpTime": 0,
+        "navigationType": "navigate",
+        "_captureTimestamp": 1781090037802,
+        "_fetchStart": 509.8999999985099,
+        "_loadEventEnd": 5739.300000000745,
+        "stepDurationMs": 12838,
+        "source": "main page",
+        "capturedAt": 1781090037802,
+        "metricsQuality": "complete",
+        "retries": 0,
+        "captureDurationMs": 2,
+        "stepId": "Step 05 - Dismiss tour if present-5",
+        "_diagnostic": {
+          "attemptCount": 1,
+          "retryCount": 0,
+          "quality": "complete",
+          "captureTimeMs": 2,
+          "hasLoadTime": true,
+          "hasFCP": true,
+          "hasDOMReady": true
+        }
+      },
+      "metricsQuality": "complete",
+      "elementInteraction": {
+        "totalInteractions": 1,
+        "avgWaitMs": 67,
+        "slowInteractions": 0,
+        "timeouts": 0,
+        "details": [
+          {
+            "action": "click",
+            "element": "Skip tour button",
+            "waitTimeMs": 67,
+            "timedOut": false,
+            "timestamp": 1781090035487
+          }
+        ]
+      },
+      "apiPerformance": {
+        "totalCalls": 14,
+        "uniqueEndpoints": 10,
+        "avgResponse": "601.07",
+        "slowRequests": 1,
+        "failedRequests": 0,
+        "byEndpoint": {
+          "https://nconprem-10-122-152-117.ccpnx.com/api/multidomain/v4.0/config/applications": {
+            "calls": [
+              {
+                "url": "https://nconprem-10-122-152-117.ccpnx.com/api/multidomain/v4.0/config/applications",
+                "normalizedUrl": "https://nconprem-10-122-152-117.ccpnx.com/api/multidomain/v4.0/config/applications",
+                "fullUrl": "https://nconprem-10-122-152-117.ccpnx.com/api/multidomain/v4.0/config/applications",
+                "method": "GET",
+                "status": 200,
+                "duration": 247,
+                "page": "Step 05 - Dismiss tour if present",
+                "stepId": "Step 05 - Dismiss tour if present-5",
+                "timestamp": 1781090031437
+              },
+              {
+                "url": "https://nconprem-10-122-152-117.ccpnx.com/api/multidomain/v4.0/config/applications",
+                "normalizedUrl": "https://nconprem-10-122-152-117.ccpnx.com/api/multidomain/v4.0/config/applications",
+                "fullUrl": "https://nconprem-10-122-152-117.ccpnx.com/api/multidomain/v4.0/config/applications",
+                "method": "GET",
+                "status": 200,
+                "duration": 245,
+                "page": "Step 05 - Dismiss tour if present",
+                "stepId": "Step 05 - Dismiss tour if present-5",
+                "timestamp": 1781090032781
+              }
+            ],
+            "count": 2,
+            "totalDuration": 492,
+            "minDuration": 245,
+            "maxDuration": 247,
+            "method": "GET",
+            "avg": 246,
+            "min": 245,
+            "max": 247,
+            "p90": 247,
+            "p95": 247
+          },
+          "https://nconprem-10-122-152-117.ccpnx.com/api/nutanix-central/v4.0.a1/resources/apps": {
+            "calls": [
+              {
+                "url": "https://nconprem-10-122-152-117.ccpnx.com/api/nutanix-central/v4.0.a1/resources/apps",
+                "normalizedUrl": "https://nconprem-10-122-152-117.ccpnx.com/api/nutanix-central/v4.0.a1/resources/apps",
+                "fullUrl": "https://nconprem-10-122-152-117.ccpnx.com/api/nutanix-central/v4.0.a1/resources/apps",
+                "method": "POST",
+                "status": 200,
+                "duration": 1303,
+                "page": "Step 05 - Dismiss tour if present",
+                "stepId": "Step 05 - Dismiss tour if present-5",
+                "timestamp": 1781090032493
+              },
+              {
+                "url": "https://nconprem-10-122-152-117.ccpnx.com/api/nutanix-central/v4.0.a1/resources/apps",
+                "normalizedUrl": "https://nconprem-10-122-152-117.ccpnx.com/api/nutanix-central/v4.0.a1/resources/apps",
+                "fullUrl": "https://nconprem-10-122-152-117.ccpnx.com/api/nutanix-central/v4.0.a1/resources/apps",
+                "method": "POST",
+                "status": 200,
+                "duration": 327,
+                "page": "Step 05 - Dismiss tour if present",
+                "stepId": "Step 05 - Dismiss tour if present-5",
+                "timestamp": 1781090032863
+              }
+            ],
+            "count": 2,
+            "totalDuration": 1630,
+            "minDuration": 327,
+            "maxDuration": 1303,
+            "method": "POST",
+            "avg": 815,
+            "min": 327,
+            "max": 1303,
+            "p90": 1303,
+            "p95": 1303
+          },
+          "https://nconprem-10-122-152-117.ccpnx.com/api/nutanix-central/v4/authn/users/me": {
+            "calls": [
+              {
+                "url": "https://nconprem-10-122-152-117.ccpnx.com/api/nutanix-central/v4/authn/users/me",
+                "normalizedUrl": "https://nconprem-10-122-152-117.ccpnx.com/api/nutanix-central/v4/authn/users/me",
+                "fullUrl": "https://nconprem-10-122-152-117.ccpnx.com/api/nutanix-central/v4/authn/users/me",
+                "method": "GET",
+                "status": 200,
+                "duration": 247,
+                "page": "Step 05 - Dismiss tour if present",
+                "stepId": "Step 05 - Dismiss tour if present-5",
+                "timestamp": 1781090032762
+              },
+              {
+                "url": "https://nconprem-10-122-152-117.ccpnx.com/api/nutanix-central/v4/authn/users/me",
+                "normalizedUrl": "https://nconprem-10-122-152-117.ccpnx.com/api/nutanix-central/v4/authn/users/me",
+                "fullUrl": "https://nconprem-10-122-152-117.ccpnx.com/api/nutanix-central/v4/authn/users/me",
+                "method": "GET",
+                "status": 200,
+                "duration": 481,
+                "page": "Step 05 - Dismiss tour if present",
+                "stepId": "Step 05 - Dismiss tour if present-5",
+                "timestamp": 1781090033784
+              }
+            ],
+            "count": 2,
+            "totalDuration": 728,
+            "minDuration": 247,
+            "maxDuration": 481,
+            "method": "GET",
+            "avg": 364,
+            "min": 247,
+            "max": 481,
+            "p90": 481,
+            "p95": 481
+          },
+          "https://iam.services.nconprem-10-122-152-117.ccpnx.com/api/iam/v4.1.b1/authz/user-authorization-policies": {
+            "calls": [
+              {
+                "url": "https://iam.services.nconprem-10-122-152-117.ccpnx.com/api/iam/v4.1.b1/authz/user-authorization-policies",
+                "normalizedUrl": "https://iam.services.nconprem-10-122-152-117.ccpnx.com/api/iam/v4.1.b1/authz/user-authorization-policies",
+                "fullUrl": "https://iam.services.nconprem-10-122-152-117.ccpnx.com/api/iam/v4.1.b1/authz/user-authorization-policies?$limit=50&$page=0",
+                "method": "GET",
+                "status": 200,
+                "duration": 519,
+                "page": "Step 05 - Dismiss tour if present",
+                "stepId": "Step 05 - Dismiss tour if present-5",
+                "timestamp": 1781090033053
+              }
+            ],
+            "count": 1,
+            "totalDuration": 519,
+            "minDuration": 519,
+            "maxDuration": 519,
+            "method": "GET",
+            "avg": 519,
+            "min": 519,
+            "max": 519,
+            "p90": 519,
+            "p95": 519
+          },
+          "https://iam.services.nconprem-10-122-152-117.ccpnx.com/api/iam/v4.1.b1/authz/user-roles": {
+            "calls": [
+              {
+                "url": "https://iam.services.nconprem-10-122-152-117.ccpnx.com/api/iam/v4.1.b1/authz/user-roles",
+                "normalizedUrl": "https://iam.services.nconprem-10-122-152-117.ccpnx.com/api/iam/v4.1.b1/authz/user-roles",
+                "fullUrl": "https://iam.services.nconprem-10-122-152-117.ccpnx.com/api/iam/v4.1.b1/authz/user-roles?$limit=50&$page=0",
+                "method": "GET",
+                "status": 200,
+                "duration": 759,
+                "page": "Step 05 - Dismiss tour if present",
+                "stepId": "Step 05 - Dismiss tour if present-5",
+                "timestamp": 1781090033293
+              }
+            ],
+            "count": 1,
+            "totalDuration": 759,
+            "minDuration": 759,
+            "maxDuration": 759,
+            "method": "GET",
+            "avg": 759,
+            "min": 759,
+            "max": 759,
+            "p90": 759,
+            "p95": 759
+          },
+          "https://nconprem-10-122-152-117.ccpnx.com/api/nutanix-central/v4.0.a1/resources/domains/stats": {
+            "calls": [
+              {
+                "url": "https://nconprem-10-122-152-117.ccpnx.com/api/nutanix-central/v4.0.a1/resources/domains/stats",
+                "normalizedUrl": "https://nconprem-10-122-152-117.ccpnx.com/api/nutanix-central/v4.0.a1/resources/domains/stats",
+                "fullUrl": "https://nconprem-10-122-152-117.ccpnx.com/api/nutanix-central/v4.0.a1/resources/domains/stats",
+                "method": "POST",
+                "status": 200,
+                "duration": 452,
+                "page": "Step 05 - Dismiss tour if present",
+                "stepId": "Step 05 - Dismiss tour if present-5",
+                "timestamp": 1781090033784
+              },
+              {
+                "url": "https://nconprem-10-122-152-117.ccpnx.com/api/nutanix-central/v4.0.a1/resources/domains/stats",
+                "normalizedUrl": "https://nconprem-10-122-152-117.ccpnx.com/api/nutanix-central/v4.0.a1/resources/domains/stats",
+                "fullUrl": "https://nconprem-10-122-152-117.ccpnx.com/api/nutanix-central/v4.0.a1/resources/domains/stats",
+                "method": "POST",
+                "status": 200,
+                "duration": 335,
+                "page": "Step 05 - Dismiss tour if present",
+                "stepId": "Step 05 - Dismiss tour if present-5",
+                "timestamp": 1781090034873
+              }
+            ],
+            "count": 2,
+            "totalDuration": 787,
+            "minDuration": 335,
+            "maxDuration": 452,
+            "method": "POST",
+            "avg": 393.5,
+            "min": 335,
+            "max": 452,
+            "p90": 452,
+            "p95": 452
+          },
+          "https://nconprem-10-122-152-117.ccpnx.com/api/nutanix-central/v4.0.a1/monitor/domains/alerts": {
+            "calls": [
+              {
+                "url": "https://nconprem-10-122-152-117.ccpnx.com/api/nutanix-central/v4.0.a1/monitor/domains/alerts",
+                "normalizedUrl": "https://nconprem-10-122-152-117.ccpnx.com/api/nutanix-central/v4.0.a1/monitor/domains/alerts",
+                "fullUrl": "https://nconprem-10-122-152-117.ccpnx.com/api/nutanix-central/v4.0.a1/monitor/domains/alerts",
+                "method": "POST",
+                "status": 200,
+                "duration": 453,
+                "page": "Step 05 - Dismiss tour if present",
+                "stepId": "Step 05 - Dismiss tour if present-5",
+                "timestamp": 1781090033785
+              }
+            ],
+            "count": 1,
+            "totalDuration": 453,
+            "minDuration": 453,
+            "maxDuration": 453,
+            "method": "POST",
+            "avg": 453,
+            "min": 453,
+            "max": 453,
+            "p90": 453,
+            "p95": 453
+          },
+          "https://nconprem-10-122-152-117.ccpnx.com/api/nutanix-central/v4.0.a1/monitor/domains/tasks": {
+            "calls": [
+              {
+                "url": "https://nconprem-10-122-152-117.ccpnx.com/api/nutanix-central/v4.0.a1/monitor/domains/tasks",
+                "normalizedUrl": "https://nconprem-10-122-152-117.ccpnx.com/api/nutanix-central/v4.0.a1/monitor/domains/tasks",
+                "fullUrl": "https://nconprem-10-122-152-117.ccpnx.com/api/nutanix-central/v4.0.a1/monitor/domains/tasks",
+                "method": "POST",
+                "status": 200,
+                "duration": 453,
+                "page": "Step 05 - Dismiss tour if present",
+                "stepId": "Step 05 - Dismiss tour if present-5",
+                "timestamp": 1781090033785
+              }
+            ],
+            "count": 1,
+            "totalDuration": 453,
+            "minDuration": 453,
+            "maxDuration": 453,
+            "method": "POST",
+            "avg": 453,
+            "min": 453,
+            "max": 453,
+            "p90": 453,
+            "p95": 453
+          },
+          "https://nconprem-10-122-152-117.ccpnx.com/api/multidomain/v4.0/config/registered-domains": {
+            "calls": [
+              {
+                "url": "https://nconprem-10-122-152-117.ccpnx.com/api/multidomain/v4.0/config/registered-domains",
+                "normalizedUrl": "https://nconprem-10-122-152-117.ccpnx.com/api/multidomain/v4.0/config/registered-domains",
+                "fullUrl": "https://nconprem-10-122-152-117.ccpnx.com/api/multidomain/v4.0/config/registered-domains?$page=0&$limit=10&$filter=(apiCredentialStatus+eq+Multidomain.Config.ApiCredentialStatus%27NEAR_EXPIRY%27+or+apiCredentialStatus+eq+Multidomain.Config.ApiCredentialStatus%27EXPIRED%27)+and+registrationState+eq+Multidomain.Common.RegistrationState%27REGISTERED%27",
+                "method": "GET",
+                "status": 200,
+                "duration": 256,
+                "page": "Step 05 - Dismiss tour if present",
+                "stepId": "Step 05 - Dismiss tour if present-5",
+                "timestamp": 1781090034793
+              }
+            ],
+            "count": 1,
+            "totalDuration": 256,
+            "minDuration": 256,
+            "maxDuration": 256,
+            "method": "GET",
+            "avg": 256,
+            "min": 256,
+            "max": 256,
+            "p90": 256,
+            "p95": 256
+          },
+          "https://nconprem-10-122-152-117.ccpnx.com/api/nutanix-central/v4.0.a1/resources/domains-utilization-summary": {
+            "calls": [
+              {
+                "url": "https://nconprem-10-122-152-117.ccpnx.com/api/nutanix-central/v4.0.a1/resources/domains-utilization-summary",
+                "normalizedUrl": "https://nconprem-10-122-152-117.ccpnx.com/api/nutanix-central/v4.0.a1/resources/domains-utilization-summary",
+                "fullUrl": "https://nconprem-10-122-152-117.ccpnx.com/api/nutanix-central/v4.0.a1/resources/domains-utilization-summary",
+                "method": "POST",
+                "status": 200,
+                "duration": 2338,
+                "page": "Step 05 - Dismiss tour if present",
+                "stepId": "Step 05 - Dismiss tour if present-5",
+                "timestamp": 1781090037298
+              }
+            ],
+            "count": 1,
+            "totalDuration": 2338,
+            "minDuration": 2338,
+            "maxDuration": 2338,
+            "method": "POST",
+            "avg": 2338,
+            "min": 2338,
+            "max": 2338,
+            "p90": 2338,
+            "p95": 2338
+          }
+        },
+        "failedDetails": []
+      }
+    },
+    "Step 06 - Click on Global Overview and select Self Service": {
+      "webVitals": {
+        "domContentLoaded": 1043.5999999977648,
+        "firstPaint": 836,
+        "firstContentfulPaint": 836,
+        "totalLoadTime": 5229.400000002235,
+        "totalResources": 42,
+        "jsSize": 1390633,
+        "cssSize": 6813,
+        "imageSize": 543724,
+        "responseTime": 273.4000000022352,
+        "dnsTime": 0,
+        "tcpTime": 0,
+        "navigationType": "navigate",
+        "_captureTimestamp": 1781090040227,
+        "_fetchStart": 509.8999999985099,
+        "_loadEventEnd": 5739.300000000745,
+        "stepDurationMs": 2422,
+        "source": "main page",
+        "capturedAt": 1781090040228,
+        "metricsQuality": "complete",
+        "retries": 0,
+        "captureDurationMs": 2,
+        "stepId": "Step 06 - Click on Global Overview and select Self Service-6",
+        "_diagnostic": {
+          "attemptCount": 1,
+          "retryCount": 0,
+          "quality": "complete",
+          "captureTimeMs": 2,
+          "hasLoadTime": true,
+          "hasFCP": true,
+          "hasDOMReady": true
+        }
+      },
+      "metricsQuality": "complete",
+      "elementInteraction": {
+        "totalInteractions": 2,
+        "avgWaitMs": 62,
+        "slowInteractions": 0,
+        "timeouts": 0,
+        "details": [
+          {
+            "action": "click",
+            "element": "Global Overview menu",
+            "waitTimeMs": 39,
+            "timedOut": false,
+            "timestamp": 1781090037842
+          },
+          {
+            "action": "click",
+            "element": "Self Service menu item",
+            "waitTimeMs": 85,
+            "timedOut": false,
+            "timestamp": 1781090037927
+          }
+        ]
+      },
+      "apiPerformance": {
+        "totalCalls": 5,
+        "uniqueEndpoints": 5,
+        "avgResponse": "811.60",
+        "slowRequests": 0,
+        "failedRequests": 0,
+        "byEndpoint": {
+          "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/opsmgmt/v4/onboarding/accounts": {
+            "calls": [
+              {
+                "url": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/opsmgmt/v4/onboarding/accounts",
+                "normalizedUrl": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/opsmgmt/v4/onboarding/accounts",
+                "fullUrl": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/opsmgmt/v4/onboarding/accounts?passHomePcUuid=true",
+                "method": "GET",
+                "status": 200,
+                "duration": 962,
+                "page": "Step 06 - Click on Global Overview and select Self Service",
+                "stepId": "Step 06 - Click on Global Overview and select Self Service-6",
+                "timestamp": 1781090039131
+              }
+            ],
+            "count": 1,
+            "totalDuration": 962,
+            "minDuration": 962,
+            "maxDuration": 962,
+            "method": "GET",
+            "avg": 962,
+            "min": 962,
+            "max": 962,
+            "p90": 962,
+            "p95": 962
+          },
+          "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/nutanix/v3/search": {
+            "calls": [
+              {
+                "url": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/nutanix/v3/search",
+                "normalizedUrl": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/nutanix/v3/search",
+                "fullUrl": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/nutanix/v3/search",
+                "method": "POST",
+                "status": 200,
+                "duration": 1209,
+                "page": "Step 06 - Click on Global Overview and select Self Service",
+                "stepId": "Step 06 - Click on Global Overview and select Self Service-6",
+                "timestamp": 1781090039135
+              }
+            ],
+            "count": 1,
+            "totalDuration": 1209,
+            "minDuration": 1209,
+            "maxDuration": 1209,
+            "method": "POST",
+            "avg": 1209,
+            "min": 1209,
+            "max": 1209,
+            "p90": 1209,
+            "p95": 1209
+          },
+          "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/nutanix/v3/accounts/list": {
+            "calls": [
+              {
+                "url": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/nutanix/v3/accounts/list",
+                "normalizedUrl": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/nutanix/v3/accounts/list",
+                "fullUrl": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/nutanix/v3/accounts/list",
+                "method": "POST",
+                "status": 200,
+                "duration": 1133,
+                "page": "Step 06 - Click on Global Overview and select Self Service",
+                "stepId": "Step 06 - Click on Global Overview and select Self Service-6",
+                "timestamp": 1781090039302
+              }
+            ],
+            "count": 1,
+            "totalDuration": 1133,
+            "minDuration": 1133,
+            "maxDuration": 1133,
+            "method": "POST",
+            "avg": 1133,
+            "min": 1133,
+            "max": 1133,
+            "p90": 1133,
+            "p95": 1133
+          },
+          "https://nconprem-10-122-152-117.ccpnx.com/api/multidomain/v4.0/config/registered-domains/{uuid}": {
+            "calls": [
+              {
+                "url": "https://nconprem-10-122-152-117.ccpnx.com/api/multidomain/v4.0/config/registered-domains/424db17c-6210-4a7c-a134-d2f56ca63b73",
+                "normalizedUrl": "https://nconprem-10-122-152-117.ccpnx.com/api/multidomain/v4.0/config/registered-domains/{uuid}",
+                "fullUrl": "https://nconprem-10-122-152-117.ccpnx.com/api/multidomain/v4.0/config/registered-domains/424db17c-6210-4a7c-a134-d2f56ca63b73",
+                "method": "GET",
+                "status": 200,
+                "duration": 250,
+                "page": "Step 06 - Click on Global Overview and select Self Service",
+                "stepId": "Step 06 - Click on Global Overview and select Self Service-6",
+                "timestamp": 1781090039390
+              }
+            ],
+            "count": 1,
+            "totalDuration": 250,
+            "minDuration": 250,
+            "maxDuration": 250,
+            "method": "GET",
+            "avg": 250,
+            "min": 250,
+            "max": 250,
+            "p90": 250,
+            "p95": 250
+          },
+          "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/opsmgmt/v4/onboarding/accounts/status/{uuid}": {
+            "calls": [
+              {
+                "url": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/opsmgmt/v4/onboarding/accounts/status/e71f1809-85d2-4192-473b-ac3168aa7ee0",
+                "normalizedUrl": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/opsmgmt/v4/onboarding/accounts/status/{uuid}",
+                "fullUrl": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/opsmgmt/v4/onboarding/accounts/status/e71f1809-85d2-4192-473b-ac3168aa7ee0?filters=",
+                "method": "GET",
+                "status": 200,
+                "duration": 504,
+                "page": "Step 06 - Click on Global Overview and select Self Service",
+                "stepId": "Step 06 - Click on Global Overview and select Self Service-6",
+                "timestamp": 1781090039811
+              }
+            ],
+            "count": 1,
+            "totalDuration": 504,
+            "minDuration": 504,
+            "maxDuration": 504,
+            "method": "GET",
+            "avg": 504,
+            "min": 504,
+            "max": 504,
+            "p90": 504,
+            "p95": 504
+          }
+        },
+        "failedDetails": []
+      }
+    },
+    "Step 07 - Dismiss Welcome Modal inside iframe": {
+      "webVitals": {
+        "domContentLoaded": 6822.300000000745,
+        "firstPaint": 1380,
+        "firstContentfulPaint": 1380,
+        "totalLoadTime": 6792.800000000745,
+        "totalResources": 30,
+        "jsSize": 2443677,
+        "cssSize": 96837,
+        "imageSize": 0,
+        "responseTime": 585.6999999992549,
+        "dnsTime": 0,
+        "tcpTime": 0,
+        "navigationType": "navigate",
+        "_captureTimestamp": 1781090050211,
+        "_fetchStart": 31.699999999254942,
+        "_loadEventEnd": 6824.5,
+        "stepDurationMs": 9978,
+        "source": "ch-nc_self_service frame",
+        "capturedAt": 1781090050212,
+        "metricsQuality": "complete",
+        "retries": 0,
+        "captureDurationMs": 5,
+        "stepId": "Step 07 - Dismiss Welcome Modal inside iframe-7",
+        "_diagnostic": {
+          "attemptCount": 1,
+          "retryCount": 0,
+          "quality": "complete",
+          "captureTimeMs": 5,
+          "hasLoadTime": true,
+          "hasFCP": true,
+          "hasDOMReady": true
+        }
+      },
+      "metricsQuality": "complete",
+      "apiPerformance": {
+        "totalCalls": 7,
+        "uniqueEndpoints": 7,
+        "avgResponse": "998.86",
+        "slowRequests": 2,
+        "failedRequests": 0,
+        "byEndpoint": {
+          "https://iam.services.nconprem-10-122-152-117.ccpnx.com/api/iam/v4.1.b1/authz/user-authorization-policies": {
+            "calls": [
+              {
+                "url": "https://iam.services.nconprem-10-122-152-117.ccpnx.com/api/iam/v4.1.b1/authz/user-authorization-policies",
+                "normalizedUrl": "https://iam.services.nconprem-10-122-152-117.ccpnx.com/api/iam/v4.1.b1/authz/user-authorization-policies",
+                "fullUrl": "https://iam.services.nconprem-10-122-152-117.ccpnx.com/api/iam/v4.1.b1/authz/user-authorization-policies?$limit=50&$page=0",
+                "method": "GET",
+                "status": 200,
+                "duration": 256,
+                "page": "Step 07 - Dismiss Welcome Modal inside iframe",
+                "stepId": "Step 07 - Dismiss Welcome Modal inside iframe-7",
+                "timestamp": 1781090046902
+              }
+            ],
+            "count": 1,
+            "totalDuration": 256,
+            "minDuration": 256,
+            "maxDuration": 256,
+            "method": "GET",
+            "avg": 256,
+            "min": 256,
+            "max": 256,
+            "p90": 256,
+            "p95": 256
+          },
+          "https://iam.services.nconprem-10-122-152-117.ccpnx.com/api/iam/v4.1.b1/authz/user-roles": {
+            "calls": [
+              {
+                "url": "https://iam.services.nconprem-10-122-152-117.ccpnx.com/api/iam/v4.1.b1/authz/user-roles",
+                "normalizedUrl": "https://iam.services.nconprem-10-122-152-117.ccpnx.com/api/iam/v4.1.b1/authz/user-roles",
+                "fullUrl": "https://iam.services.nconprem-10-122-152-117.ccpnx.com/api/iam/v4.1.b1/authz/user-roles?$limit=50&$page=0",
+                "method": "GET",
+                "status": 200,
+                "duration": 267,
+                "page": "Step 07 - Dismiss Welcome Modal inside iframe",
+                "stepId": "Step 07 - Dismiss Welcome Modal inside iframe-7",
+                "timestamp": 1781090046913
+              }
+            ],
+            "count": 1,
+            "totalDuration": 267,
+            "minDuration": 267,
+            "maxDuration": 267,
+            "method": "GET",
+            "avg": 267,
+            "min": 267,
+            "max": 267,
+            "p90": 267,
+            "p95": 267
+          },
+          "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/opsmgmt/v4/onboarding/accounts": {
+            "calls": [
+              {
+                "url": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/opsmgmt/v4/onboarding/accounts",
+                "normalizedUrl": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/opsmgmt/v4/onboarding/accounts",
+                "fullUrl": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/opsmgmt/v4/onboarding/accounts?passHomePcUuid=true",
+                "method": "GET",
+                "status": 200,
+                "duration": 1916,
+                "page": "Step 07 - Dismiss Welcome Modal inside iframe",
+                "stepId": "Step 07 - Dismiss Welcome Modal inside iframe-7",
+                "timestamp": 1781090048853
+              }
+            ],
+            "count": 1,
+            "totalDuration": 1916,
+            "minDuration": 1916,
+            "maxDuration": 1916,
+            "method": "GET",
+            "avg": 1916,
+            "min": 1916,
+            "max": 1916,
+            "p90": 1916,
+            "p95": 1916
+          },
+          "https://iam.services.nconprem-10-122-152-117.ccpnx.com/api/iam/v4.1.b1/authn/oidc/userinfo": {
+            "calls": [
+              {
+                "url": "https://iam.services.nconprem-10-122-152-117.ccpnx.com/api/iam/v4.1.b1/authn/oidc/userinfo",
+                "normalizedUrl": "https://iam.services.nconprem-10-122-152-117.ccpnx.com/api/iam/v4.1.b1/authn/oidc/userinfo",
+                "fullUrl": "https://iam.services.nconprem-10-122-152-117.ccpnx.com/api/iam/v4.1.b1/authn/oidc/userinfo",
+                "method": "GET",
+                "status": 200,
+                "duration": 2002,
+                "page": "Step 07 - Dismiss Welcome Modal inside iframe",
+                "stepId": "Step 07 - Dismiss Welcome Modal inside iframe-7",
+                "timestamp": 1781090048940
+              }
+            ],
+            "count": 1,
+            "totalDuration": 2002,
+            "minDuration": 2002,
+            "maxDuration": 2002,
+            "method": "GET",
+            "avg": 2002,
+            "min": 2002,
+            "max": 2002,
+            "p90": 2002,
+            "p95": 2002
+          },
+          "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/nutanix/v3/accounts/list": {
+            "calls": [
+              {
+                "url": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/nutanix/v3/accounts/list",
+                "normalizedUrl": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/nutanix/v3/accounts/list",
+                "fullUrl": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/nutanix/v3/accounts/list",
+                "method": "POST",
+                "status": 200,
+                "duration": 2003,
+                "page": "Step 07 - Dismiss Welcome Modal inside iframe",
+                "stepId": "Step 07 - Dismiss Welcome Modal inside iframe-7",
+                "timestamp": 1781090048941
+              }
+            ],
+            "count": 1,
+            "totalDuration": 2003,
+            "minDuration": 2003,
+            "maxDuration": 2003,
+            "method": "POST",
+            "avg": 2003,
+            "min": 2003,
+            "max": 2003,
+            "p90": 2003,
+            "p95": 2003
+          },
+          "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/opsmgmt/v4/onboarding/accounts/status/{uuid}": {
+            "calls": [
+              {
+                "url": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/opsmgmt/v4/onboarding/accounts/status/e71f1809-85d2-4192-473b-ac3168aa7ee0",
+                "normalizedUrl": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/opsmgmt/v4/onboarding/accounts/status/{uuid}",
+                "fullUrl": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/opsmgmt/v4/onboarding/accounts/status/e71f1809-85d2-4192-473b-ac3168aa7ee0",
+                "method": "GET",
+                "status": 200,
+                "duration": 255,
+                "page": "Step 07 - Dismiss Welcome Modal inside iframe",
+                "stepId": "Step 07 - Dismiss Welcome Modal inside iframe-7",
+                "timestamp": 1781090049230
+              }
+            ],
+            "count": 1,
+            "totalDuration": 255,
+            "minDuration": 255,
+            "maxDuration": 255,
+            "method": "GET",
+            "avg": 255,
+            "min": 255,
+            "max": 255,
+            "p90": 255,
+            "p95": 255
+          },
+          "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/nutanix/v3/groups": {
+            "calls": [
+              {
+                "url": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/nutanix/v3/groups",
+                "normalizedUrl": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/nutanix/v3/groups",
+                "fullUrl": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/nutanix/v3/groups",
+                "method": "POST",
+                "status": 200,
+                "duration": 293,
+                "page": "Step 07 - Dismiss Welcome Modal inside iframe",
+                "stepId": "Step 07 - Dismiss Welcome Modal inside iframe-7",
+                "timestamp": 1781090049262
+              }
+            ],
+            "count": 1,
+            "totalDuration": 293,
+            "minDuration": 293,
+            "maxDuration": 293,
+            "method": "POST",
+            "avg": 293,
+            "min": 293,
+            "max": 293,
+            "p90": 293,
+            "p95": 293
+          }
+        },
+        "failedDetails": []
+      }
+    },
+    "Step 08 - Dismiss Welcome Modal (legacy)": {
+      "webVitals": {
+        "domContentLoaded": 6822.300000000745,
+        "firstPaint": 1380,
+        "firstContentfulPaint": 1380,
+        "totalLoadTime": 6792.800000000745,
+        "totalResources": 30,
+        "jsSize": 2443677,
+        "cssSize": 96837,
+        "imageSize": 0,
+        "responseTime": 585.6999999992549,
+        "dnsTime": 0,
+        "tcpTime": 0,
+        "navigationType": "navigate",
+        "_captureTimestamp": 1781090058348,
+        "_fetchStart": 31.699999999254942,
+        "_loadEventEnd": 6824.5,
+        "stepDurationMs": 8132,
+        "source": "ch-nc_self_service frame",
+        "capturedAt": 1781090058349,
+        "metricsQuality": "complete",
+        "retries": 0,
+        "captureDurationMs": 3,
+        "stepId": "Step 08 - Dismiss Welcome Modal (legacy)-8",
+        "_diagnostic": {
+          "attemptCount": 1,
+          "retryCount": 0,
+          "quality": "complete",
+          "captureTimeMs": 3,
+          "hasLoadTime": true,
+          "hasFCP": true,
+          "hasDOMReady": true
+        }
+      },
+      "metricsQuality": "complete",
+      "apiPerformance": {
+        "totalCalls": 0,
+        "uniqueEndpoints": 0,
+        "avgResponse": "0",
+        "slowRequests": 0,
+        "failedRequests": 0,
+        "byEndpoint": {},
+        "failedDetails": []
+      }
+    },
+    "Step 09 - Click on Runbooks in Self Service": {
+      "webVitals": {
+        "domContentLoaded": 6822.300000000745,
+        "firstPaint": 1380,
+        "firstContentfulPaint": 1380,
+        "totalLoadTime": 6792.800000000745,
+        "totalResources": 32,
+        "jsSize": 2746099,
+        "cssSize": 96837,
+        "imageSize": 0,
+        "responseTime": 585.6999999992549,
+        "dnsTime": 0,
+        "tcpTime": 0,
+        "navigationType": "navigate",
+        "_captureTimestamp": 1781090059699,
+        "_fetchStart": 31.699999999254942,
+        "_loadEventEnd": 6824.5,
+        "stepDurationMs": 1348,
+        "source": "ch-nc_self_service frame",
+        "capturedAt": 1781090059700,
+        "metricsQuality": "complete",
+        "retries": 0,
+        "captureDurationMs": 3,
+        "stepId": "Step 09 - Click on Runbooks in Self Service-9",
+        "_diagnostic": {
+          "attemptCount": 1,
+          "retryCount": 0,
+          "quality": "complete",
+          "captureTimeMs": 3,
+          "hasLoadTime": true,
+          "hasFCP": true,
+          "hasDOMReady": true
+        }
+      },
+      "metricsQuality": "complete",
+      "elementInteraction": {
+        "totalInteractions": 1,
+        "avgWaitMs": 54,
+        "slowInteractions": 0,
+        "timeouts": 0,
+        "details": [
+          {
+            "action": "click",
+            "element": "Runbooks link",
+            "waitTimeMs": 54,
+            "timedOut": false,
+            "timestamp": 1781090058404
+          }
+        ]
+      },
+      "apiPerformance": {
+        "totalCalls": 1,
+        "uniqueEndpoints": 1,
+        "avgResponse": "448.00",
+        "slowRequests": 0,
+        "failedRequests": 0,
+        "byEndpoint": {
+          "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/nutanix/v3/groups": {
+            "calls": [
+              {
+                "url": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/nutanix/v3/groups",
+                "normalizedUrl": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/nutanix/v3/groups",
+                "fullUrl": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/nutanix/v3/groups",
+                "method": "POST",
+                "status": 200,
+                "duration": 448,
+                "page": "Step 09 - Click on Runbooks in Self Service",
+                "stepId": "Step 09 - Click on Runbooks in Self Service-9",
+                "timestamp": 1781090060127
+              }
+            ],
+            "count": 1,
+            "totalDuration": 448,
+            "minDuration": 448,
+            "maxDuration": 448,
+            "method": "POST",
+            "avg": 448,
+            "min": 448,
+            "max": 448,
+            "p90": 448,
+            "p95": 448
+          }
+        },
+        "failedDetails": []
+      }
+    },
+    "Step 10 - Search for Runbook in Store": {
+      "webVitals": {
+        "domContentLoaded": 6822.300000000745,
+        "firstPaint": 1380,
+        "firstContentfulPaint": 1380,
+        "totalLoadTime": 6792.800000000745,
+        "totalResources": 32,
+        "jsSize": 2746099,
+        "cssSize": 96837,
+        "imageSize": 0,
+        "responseTime": 585.6999999992549,
+        "dnsTime": 0,
+        "tcpTime": 0,
+        "navigationType": "navigate",
+        "_captureTimestamp": 1781090059715,
+        "_fetchStart": 31.699999999254942,
+        "_loadEventEnd": 6824.5,
+        "stepDurationMs": 12,
+        "source": "ch-nc_self_service frame",
+        "capturedAt": 1781090059715,
+        "metricsQuality": "complete",
+        "retries": 0,
+        "captureDurationMs": 2,
+        "stepId": "Step 10 - Search for Runbook in Store-10",
+        "_diagnostic": {
+          "attemptCount": 1,
+          "retryCount": 0,
+          "quality": "complete",
+          "captureTimeMs": 2,
+          "hasLoadTime": true,
+          "hasFCP": true,
+          "hasDOMReady": true
+        }
+      },
+      "metricsQuality": "complete",
+      "apiPerformance": {
+        "totalCalls": 0,
+        "uniqueEndpoints": 0,
+        "avgResponse": "0",
+        "slowRequests": 0,
+        "failedRequests": 0,
+        "byEndpoint": {},
+        "failedDetails": []
+      }
+    },
+    "Step 11 - Select Runbook from search results": {
+      "webVitals": {
+        "domContentLoaded": 6822.300000000745,
+        "firstPaint": 1380,
+        "firstContentfulPaint": 1380,
+        "totalLoadTime": 6792.800000000745,
+        "totalResources": 43,
+        "jsSize": 2998367,
+        "cssSize": 96837,
+        "imageSize": 0,
+        "responseTime": 585.6999999992549,
+        "dnsTime": 0,
+        "tcpTime": 0,
+        "navigationType": "navigate",
+        "_captureTimestamp": 1781090063130,
+        "_fetchStart": 31.699999999254942,
+        "_loadEventEnd": 6824.5,
+        "stepDurationMs": 3412,
+        "source": "ch-nc_self_service frame",
+        "capturedAt": 1781090063130,
+        "metricsQuality": "complete",
+        "retries": 0,
+        "captureDurationMs": 2,
+        "stepId": "Step 11 - Select Runbook from search results-11",
+        "_diagnostic": {
+          "attemptCount": 1,
+          "retryCount": 0,
+          "quality": "complete",
+          "captureTimeMs": 2,
+          "hasLoadTime": true,
+          "hasFCP": true,
+          "hasDOMReady": true
+        }
+      },
+      "metricsQuality": "complete",
+      "apiPerformance": {
+        "totalCalls": 5,
+        "uniqueEndpoints": 5,
+        "avgResponse": "566.40",
+        "slowRequests": 0,
+        "failedRequests": 0,
+        "byEndpoint": {
+          "https://nconprem-10-122-152-117.ccpnx.com/api/multidomain/v4.0/config/registered-domains/{uuid}": {
+            "calls": [
+              {
+                "url": "https://nconprem-10-122-152-117.ccpnx.com/api/multidomain/v4.0/config/registered-domains/424db17c-6210-4a7c-a134-d2f56ca63b73",
+                "normalizedUrl": "https://nconprem-10-122-152-117.ccpnx.com/api/multidomain/v4.0/config/registered-domains/{uuid}",
+                "fullUrl": "https://nconprem-10-122-152-117.ccpnx.com/api/multidomain/v4.0/config/registered-domains/424db17c-6210-4a7c-a134-d2f56ca63b73",
+                "method": "GET",
+                "status": 200,
+                "duration": 245,
+                "page": "Step 11 - Select Runbook from search results",
+                "stepId": "Step 11 - Select Runbook from search results-11",
+                "timestamp": 1781090059998
+              }
+            ],
+            "count": 1,
+            "totalDuration": 245,
+            "minDuration": 245,
+            "maxDuration": 245,
+            "method": "GET",
+            "avg": 245,
+            "min": 245,
+            "max": 245,
+            "p90": 245,
+            "p95": 245
+          },
+          "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/nutanix/v3/groups": {
+            "calls": [
+              {
+                "url": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/nutanix/v3/groups",
+                "normalizedUrl": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/nutanix/v3/groups",
+                "fullUrl": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/nutanix/v3/groups",
+                "method": "POST",
+                "status": 200,
+                "duration": 452,
+                "page": "Step 11 - Select Runbook from search results",
+                "stepId": "Step 11 - Select Runbook from search results-11",
+                "timestamp": 1781090060205
+              }
+            ],
+            "count": 1,
+            "totalDuration": 452,
+            "minDuration": 452,
+            "maxDuration": 452,
+            "method": "POST",
+            "avg": 452,
+            "min": 452,
+            "max": 452,
+            "p90": 452,
+            "p95": 452
+          },
+          "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/nutanix/v3/runbooks/{uuid}": {
+            "calls": [
+              {
+                "url": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/nutanix/v3/runbooks/e4e3e2dc-f52b-4a6c-9815-e5e92b49d434",
+                "normalizedUrl": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/nutanix/v3/runbooks/{uuid}",
+                "fullUrl": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/nutanix/v3/runbooks/e4e3e2dc-f52b-4a6c-9815-e5e92b49d434",
+                "method": "GET",
+                "status": 200,
+                "duration": 403,
+                "page": "Step 11 - Select Runbook from search results",
+                "stepId": "Step 11 - Select Runbook from search results-11",
+                "timestamp": 1781090061760
+              }
+            ],
+            "count": 1,
+            "totalDuration": 403,
+            "minDuration": 403,
+            "maxDuration": 403,
+            "method": "GET",
+            "avg": 403,
+            "min": 403,
+            "max": 403,
+            "p90": 403,
+            "p95": 403
+          },
+          "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/nutanix/v3/accounts/list": {
+            "calls": [
+              {
+                "url": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/nutanix/v3/accounts/list",
+                "normalizedUrl": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/nutanix/v3/accounts/list",
+                "fullUrl": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/nutanix/v3/accounts/list",
+                "method": "POST",
+                "status": 200,
+                "duration": 470,
+                "page": "Step 11 - Select Runbook from search results",
+                "stepId": "Step 11 - Select Runbook from search results-11",
+                "timestamp": 1781090062261
+              }
+            ],
+            "count": 1,
+            "totalDuration": 470,
+            "minDuration": 470,
+            "maxDuration": 470,
+            "method": "POST",
+            "avg": 470,
+            "min": 470,
+            "max": 470,
+            "p90": 470,
+            "p95": 470
+          },
+          "https://dm.services.nconprem-10-122-152-117.ccpnx.com/api/nutanix/v3/projects_internal/{uuid}": {
+            "calls": [
+              {
+                "url": "https://dm.services.nconprem-10-122-152-117.ccpnx.com/api/nutanix/v3/projects_internal/f3d1ad39-2302-4e90-baa6-172edbb14ee9",
+                "normalizedUrl": "https://dm.services.nconprem-10-122-152-117.ccpnx.com/api/nutanix/v3/projects_internal/{uuid}",
+                "fullUrl": "https://dm.services.nconprem-10-122-152-117.ccpnx.com/api/nutanix/v3/projects_internal/f3d1ad39-2302-4e90-baa6-172edbb14ee9",
+                "method": "GET",
+                "status": 200,
+                "duration": 1262,
+                "page": "Step 11 - Select Runbook from search results",
+                "stepId": "Step 11 - Select Runbook from search results-11",
+                "timestamp": 1781090062625
+              }
+            ],
+            "count": 1,
+            "totalDuration": 1262,
+            "minDuration": 1262,
+            "maxDuration": 1262,
+            "method": "GET",
+            "avg": 1262,
+            "min": 1262,
+            "max": 1262,
+            "p90": 1262,
+            "p95": 1262
+          }
+        },
+        "failedDetails": []
+      }
+    },
+    "Step 12 - Click on Task": {
+      "webVitals": {
+        "domContentLoaded": 6822.300000000745,
+        "firstPaint": 1380,
+        "firstContentfulPaint": 1380,
+        "totalLoadTime": 6792.800000000745,
+        "totalResources": 43,
+        "jsSize": 2998367,
+        "cssSize": 96837,
+        "imageSize": 0,
+        "responseTime": 585.6999999992549,
+        "dnsTime": 0,
+        "tcpTime": 0,
+        "navigationType": "navigate",
+        "_captureTimestamp": 1781090063217,
+        "_fetchStart": 31.699999999254942,
+        "_loadEventEnd": 6824.5,
+        "stepDurationMs": 85,
+        "source": "ch-nc_self_service frame",
+        "capturedAt": 1781090063217,
+        "metricsQuality": "complete",
+        "retries": 0,
+        "captureDurationMs": 2,
+        "stepId": "Step 12 - Click on Task-12",
+        "_diagnostic": {
+          "attemptCount": 1,
+          "retryCount": 0,
+          "quality": "complete",
+          "captureTimeMs": 2,
+          "hasLoadTime": true,
+          "hasFCP": true,
+          "hasDOMReady": true
+        }
+      },
+      "metricsQuality": "complete",
+      "apiPerformance": {
+        "totalCalls": 1,
+        "uniqueEndpoints": 1,
+        "avgResponse": "368.00",
+        "slowRequests": 0,
+        "failedRequests": 0,
+        "byEndpoint": {
+          "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/calm/v3.0/resource_types/tags/list": {
+            "calls": [
+              {
+                "url": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/calm/v3.0/resource_types/tags/list",
+                "normalizedUrl": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/calm/v3.0/resource_types/tags/list",
+                "fullUrl": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/calm/v3.0/resource_types/tags/list",
+                "method": "POST",
+                "status": 200,
+                "duration": 368,
+                "page": "Step 12 - Click on Task",
+                "stepId": "Step 12 - Click on Task-12",
+                "timestamp": 1781090063581
+              }
+            ],
+            "count": 1,
+            "totalDuration": 368,
+            "minDuration": 368,
+            "maxDuration": 368,
+            "method": "POST",
+            "avg": 368,
+            "min": 368,
+            "max": 368,
+            "p90": 368,
+            "p95": 368
+          }
+        },
+        "failedDetails": []
+      }
+    },
+    "Step 13 - Select Operation": {
+      "webVitals": {
+        "domContentLoaded": 6822.300000000745,
+        "firstPaint": 1380,
+        "firstContentfulPaint": 1380,
+        "totalLoadTime": 6792.800000000745,
+        "totalResources": 44,
+        "jsSize": 2998367,
+        "cssSize": 96837,
+        "imageSize": 0,
+        "responseTime": 585.6999999992549,
+        "dnsTime": 0,
+        "tcpTime": 0,
+        "navigationType": "navigate",
+        "_captureTimestamp": 1781090063709,
+        "_fetchStart": 31.699999999254942,
+        "_loadEventEnd": 6824.5,
+        "stepDurationMs": 490,
+        "source": "ch-nc_self_service frame",
+        "capturedAt": 1781090063709,
+        "metricsQuality": "complete",
+        "retries": 0,
+        "captureDurationMs": 2,
+        "stepId": "Step 13 - Select Operation-13",
+        "_diagnostic": {
+          "attemptCount": 1,
+          "retryCount": 0,
+          "quality": "complete",
+          "captureTimeMs": 2,
+          "hasLoadTime": true,
+          "hasFCP": true,
+          "hasDOMReady": true
+        }
+      },
+      "metricsQuality": "complete",
+      "apiPerformance": {
+        "totalCalls": 1,
+        "uniqueEndpoints": 1,
+        "avgResponse": "665.00",
+        "slowRequests": 0,
+        "failedRequests": 0,
+        "byEndpoint": {
+          "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/nutanix/v3/endpoints/list": {
+            "calls": [
+              {
+                "url": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/nutanix/v3/endpoints/list",
+                "normalizedUrl": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/nutanix/v3/endpoints/list",
+                "fullUrl": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/nutanix/v3/endpoints/list",
+                "method": "POST",
+                "status": 200,
+                "duration": 665,
+                "page": "Step 13 - Select Operation",
+                "stepId": "Step 13 - Select Operation-13",
+                "timestamp": 1781090063893
+              }
+            ],
+            "count": 1,
+            "totalDuration": 665,
+            "minDuration": 665,
+            "maxDuration": 665,
+            "method": "POST",
+            "avg": 665,
+            "min": 665,
+            "max": 665,
+            "p90": 665,
+            "p95": 665
+          }
+        },
+        "failedDetails": []
+      }
+    },
+    "Step 14 - Save Runbook": {
+      "webVitals": {
+        "domContentLoaded": 6822.300000000745,
+        "firstPaint": 1380,
+        "firstContentfulPaint": 1380,
+        "totalLoadTime": 6792.800000000745,
+        "totalResources": 47,
+        "jsSize": 2998367,
+        "cssSize": 96837,
+        "imageSize": 0,
+        "responseTime": 585.6999999992549,
+        "dnsTime": 0,
+        "tcpTime": 0,
+        "navigationType": "navigate",
+        "_captureTimestamp": 1781090064647,
+        "_fetchStart": 31.699999999254942,
+        "_loadEventEnd": 6824.5,
+        "stepDurationMs": 934,
+        "source": "ch-nc_self_service frame",
+        "capturedAt": 1781090064648,
+        "metricsQuality": "complete",
+        "retries": 0,
+        "captureDurationMs": 3,
+        "stepId": "Step 14 - Save Runbook-14",
+        "_diagnostic": {
+          "attemptCount": 1,
+          "retryCount": 0,
+          "quality": "complete",
+          "captureTimeMs": 3,
+          "hasLoadTime": true,
+          "hasFCP": true,
+          "hasDOMReady": true
+        }
+      },
+      "metricsQuality": "complete",
+      "apiPerformance": {
+        "totalCalls": 1,
+        "uniqueEndpoints": 1,
+        "avgResponse": "572.00",
+        "slowRequests": 0,
+        "failedRequests": 0,
+        "byEndpoint": {
+          "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/nutanix/v3/runbooks/{uuid}": {
+            "calls": [
+              {
+                "url": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/nutanix/v3/runbooks/e4e3e2dc-f52b-4a6c-9815-e5e92b49d434",
+                "normalizedUrl": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/nutanix/v3/runbooks/{uuid}",
+                "fullUrl": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/nutanix/v3/runbooks/e4e3e2dc-f52b-4a6c-9815-e5e92b49d434",
+                "method": "PUT",
+                "status": 200,
+                "duration": 572,
+                "page": "Step 14 - Save Runbook",
+                "stepId": "Step 14 - Save Runbook-14",
+                "timestamp": 1781090064340
+              }
+            ],
+            "count": 1,
+            "totalDuration": 572,
+            "minDuration": 572,
+            "maxDuration": 572,
+            "method": "PUT",
+            "avg": 572,
+            "min": 572,
+            "max": 572,
+            "p90": 572,
+            "p95": 572
+          }
+        },
+        "failedDetails": []
+      }
+    },
+    "Step 15 - Click Execute": {
+      "webVitals": {
+        "domContentLoaded": 6822.300000000745,
+        "firstPaint": 1380,
+        "firstContentfulPaint": 1380,
+        "totalLoadTime": 6792.800000000745,
+        "totalResources": 47,
+        "jsSize": 2998367,
+        "cssSize": 96837,
+        "imageSize": 0,
+        "responseTime": 585.6999999992549,
+        "dnsTime": 0,
+        "tcpTime": 0,
+        "navigationType": "navigate",
+        "_captureTimestamp": 1781090064702,
+        "_fetchStart": 31.699999999254942,
+        "_loadEventEnd": 6824.5,
+        "stepDurationMs": 52,
+        "source": "ch-nc_self_service frame",
+        "capturedAt": 1781090064703,
+        "metricsQuality": "complete",
+        "retries": 0,
+        "captureDurationMs": 3,
+        "stepId": "Step 15 - Click Execute-15",
+        "_diagnostic": {
+          "attemptCount": 1,
+          "retryCount": 0,
+          "quality": "complete",
+          "captureTimeMs": 3,
+          "hasLoadTime": true,
+          "hasFCP": true,
+          "hasDOMReady": true
+        }
+      },
+      "metricsQuality": "complete",
+      "apiPerformance": {
+        "totalCalls": 0,
+        "uniqueEndpoints": 0,
+        "avgResponse": "0",
+        "slowRequests": 0,
+        "failedRequests": 0,
+        "byEndpoint": {},
+        "failedDetails": []
+      }
+    },
+    "Step 16 - Select endpoint and execute": {
+      "webVitals": {
+        "domContentLoaded": 6822.300000000745,
+        "firstPaint": 1380,
+        "firstContentfulPaint": 1380,
+        "totalLoadTime": 6792.800000000745,
+        "totalResources": 50,
+        "jsSize": 2998367,
+        "cssSize": 96837,
+        "imageSize": 0,
+        "responseTime": 585.6999999992549,
+        "dnsTime": 0,
+        "tcpTime": 0,
+        "navigationType": "navigate",
+        "_captureTimestamp": 1781090067618,
+        "_fetchStart": 31.699999999254942,
+        "_loadEventEnd": 6824.5,
+        "stepDurationMs": 2912,
+        "source": "ch-nc_self_service frame",
+        "capturedAt": 1781090067618,
+        "metricsQuality": "complete",
+        "retries": 0,
+        "captureDurationMs": 2,
+        "stepId": "Step 16 - Select endpoint and execute-16",
+        "_diagnostic": {
+          "attemptCount": 1,
+          "retryCount": 0,
+          "quality": "complete",
+          "captureTimeMs": 2,
+          "hasLoadTime": true,
+          "hasFCP": true,
+          "hasDOMReady": true
+        }
+      },
+      "metricsQuality": "complete",
+      "apiPerformance": {
+        "totalCalls": 5,
+        "uniqueEndpoints": 3,
+        "avgResponse": "554.80",
+        "slowRequests": 0,
+        "failedRequests": 0,
+        "byEndpoint": {
+          "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/nutanix/v3/endpoints/{uuid}": {
+            "calls": [
+              {
+                "url": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/nutanix/v3/endpoints/901981b1-1592-4681-a70c-fd2237cac04f",
+                "normalizedUrl": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/nutanix/v3/endpoints/{uuid}",
+                "fullUrl": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/nutanix/v3/endpoints/901981b1-1592-4681-a70c-fd2237cac04f",
+                "method": "GET",
+                "status": 200,
+                "duration": 379,
+                "page": "Step 16 - Select endpoint and execute",
+                "stepId": "Step 16 - Select endpoint and execute-16",
+                "timestamp": 1781090065109
+              },
+              {
+                "url": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/nutanix/v3/endpoints/87b62563-e593-4741-a95d-ea26d1dc0221",
+                "normalizedUrl": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/nutanix/v3/endpoints/{uuid}",
+                "fullUrl": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/nutanix/v3/endpoints/87b62563-e593-4741-a95d-ea26d1dc0221",
+                "method": "GET",
+                "status": 200,
+                "duration": 411,
+                "page": "Step 16 - Select endpoint and execute",
+                "stepId": "Step 16 - Select endpoint and execute-16",
+                "timestamp": 1781090067983
+              }
+            ],
+            "count": 2,
+            "totalDuration": 790,
+            "minDuration": 379,
+            "maxDuration": 411,
+            "method": "GET",
+            "avg": 395,
+            "min": 379,
+            "max": 411,
+            "p90": 411,
+            "p95": 411
+          },
+          "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/nutanix/v3/endpoints/list": {
+            "calls": [
+              {
+                "url": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/nutanix/v3/endpoints/list",
+                "normalizedUrl": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/nutanix/v3/endpoints/list",
+                "fullUrl": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/nutanix/v3/endpoints/list",
+                "method": "POST",
+                "status": 200,
+                "duration": 666,
+                "page": "Step 16 - Select endpoint and execute",
+                "stepId": "Step 16 - Select endpoint and execute-16",
+                "timestamp": 1781090065394
+              },
+              {
+                "url": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/nutanix/v3/endpoints/list",
+                "normalizedUrl": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/nutanix/v3/endpoints/list",
+                "fullUrl": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/nutanix/v3/endpoints/list",
+                "method": "POST",
+                "status": 200,
+                "duration": 483,
+                "page": "Step 16 - Select endpoint and execute",
+                "stepId": "Step 16 - Select endpoint and execute-16",
+                "timestamp": 1781090066612
+              }
+            ],
+            "count": 2,
+            "totalDuration": 1149,
+            "minDuration": 483,
+            "maxDuration": 666,
+            "method": "POST",
+            "avg": 574.5,
+            "min": 483,
+            "max": 666,
+            "p90": 666,
+            "p95": 666
+          },
+          "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/nutanix/v3/runbooks/{uuid}/execute": {
+            "calls": [
+              {
+                "url": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/nutanix/v3/runbooks/e4e3e2dc-f52b-4a6c-9815-e5e92b49d434/execute",
+                "normalizedUrl": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/nutanix/v3/runbooks/{uuid}/execute",
+                "fullUrl": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/nutanix/v3/runbooks/e4e3e2dc-f52b-4a6c-9815-e5e92b49d434/execute",
+                "method": "POST",
+                "status": 200,
+                "duration": 835,
+                "page": "Step 16 - Select endpoint and execute",
+                "stepId": "Step 16 - Select endpoint and execute-16",
+                "timestamp": 1781090068447
+              }
+            ],
+            "count": 1,
+            "totalDuration": 835,
+            "minDuration": 835,
+            "maxDuration": 835,
+            "method": "POST",
+            "avg": 835,
+            "min": 835,
+            "max": 835,
+            "p90": 835,
+            "p95": 835
+          }
+        },
+        "failedDetails": []
+      }
+    },
+    "Step 17 - Verify Execution Is Successful": {
+      "webVitals": {
+        "domContentLoaded": 6822.300000000745,
+        "firstPaint": 1380,
+        "firstContentfulPaint": 1380,
+        "totalLoadTime": 6792.800000000745,
+        "totalResources": 79,
+        "jsSize": 3137972,
+        "cssSize": 96837,
+        "imageSize": 0,
+        "responseTime": 585.6999999992549,
+        "dnsTime": 0,
+        "tcpTime": 0,
+        "navigationType": "navigate",
+        "_captureTimestamp": 1781090094649,
+        "_fetchStart": 31.699999999254942,
+        "_loadEventEnd": 6824.5,
+        "stepDurationMs": 27023,
+        "source": "ch-nc_self_service frame",
+        "capturedAt": 1781090094649,
+        "metricsQuality": "complete",
+        "retries": 0,
+        "captureDurationMs": 5,
+        "stepId": "Step 17 - Verify Execution Is Successful-17",
+        "_diagnostic": {
+          "attemptCount": 1,
+          "retryCount": 0,
+          "quality": "complete",
+          "captureTimeMs": 5,
+          "hasLoadTime": true,
+          "hasFCP": true,
+          "hasDOMReady": true
+        }
+      },
+      "metricsQuality": "complete",
+      "apiPerformance": {
+        "totalCalls": 22,
+        "uniqueEndpoints": 2,
+        "avgResponse": "427.41",
+        "slowRequests": 0,
+        "failedRequests": 0,
+        "byEndpoint": {
+          "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/calm/v3.0/runbooks/runlogs/{uuid}/children/list": {
+            "calls": [
+              {
+                "url": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/calm/v3.0/runbooks/runlogs/fb5190a9-27ae-42ea-bfbc-56b0f3c75590/children/list",
+                "normalizedUrl": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/calm/v3.0/runbooks/runlogs/{uuid}/children/list",
+                "fullUrl": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/calm/v3.0/runbooks/runlogs/fb5190a9-27ae-42ea-bfbc-56b0f3c75590/children/list",
+                "method": "POST",
+                "status": 200,
+                "duration": 377,
+                "page": "Step 17 - Verify Execution Is Successful",
+                "stepId": "Step 17 - Verify Execution Is Successful-17",
+                "timestamp": 1781090069840
+              },
+              {
+                "url": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/calm/v3.0/runbooks/runlogs/fb5190a9-27ae-42ea-bfbc-56b0f3c75590/children/list",
+                "normalizedUrl": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/calm/v3.0/runbooks/runlogs/{uuid}/children/list",
+                "fullUrl": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/calm/v3.0/runbooks/runlogs/fb5190a9-27ae-42ea-bfbc-56b0f3c75590/children/list",
+                "method": "POST",
+                "status": 200,
+                "duration": 356,
+                "page": "Step 17 - Verify Execution Is Successful",
+                "stepId": "Step 17 - Verify Execution Is Successful-17",
+                "timestamp": 1781090072202
+              },
+              {
+                "url": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/calm/v3.0/runbooks/runlogs/fb5190a9-27ae-42ea-bfbc-56b0f3c75590/children/list",
+                "normalizedUrl": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/calm/v3.0/runbooks/runlogs/{uuid}/children/list",
+                "fullUrl": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/calm/v3.0/runbooks/runlogs/fb5190a9-27ae-42ea-bfbc-56b0f3c75590/children/list",
+                "method": "POST",
+                "status": 200,
+                "duration": 358,
+                "page": "Step 17 - Verify Execution Is Successful",
+                "stepId": "Step 17 - Verify Execution Is Successful-17",
+                "timestamp": 1781090074566
+              },
+              {
+                "url": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/calm/v3.0/runbooks/runlogs/fb5190a9-27ae-42ea-bfbc-56b0f3c75590/children/list",
+                "normalizedUrl": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/calm/v3.0/runbooks/runlogs/{uuid}/children/list",
+                "fullUrl": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/calm/v3.0/runbooks/runlogs/fb5190a9-27ae-42ea-bfbc-56b0f3c75590/children/list",
+                "method": "POST",
+                "status": 200,
+                "duration": 473,
+                "page": "Step 17 - Verify Execution Is Successful",
+                "stepId": "Step 17 - Verify Execution Is Successful-17",
+                "timestamp": 1781090077045
+              },
+              {
+                "url": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/calm/v3.0/runbooks/runlogs/fb5190a9-27ae-42ea-bfbc-56b0f3c75590/children/list",
+                "normalizedUrl": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/calm/v3.0/runbooks/runlogs/{uuid}/children/list",
+                "fullUrl": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/calm/v3.0/runbooks/runlogs/fb5190a9-27ae-42ea-bfbc-56b0f3c75590/children/list",
+                "method": "POST",
+                "status": 200,
+                "duration": 481,
+                "page": "Step 17 - Verify Execution Is Successful",
+                "stepId": "Step 17 - Verify Execution Is Successful-17",
+                "timestamp": 1781090079532
+              },
+              {
+                "url": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/calm/v3.0/runbooks/runlogs/fb5190a9-27ae-42ea-bfbc-56b0f3c75590/children/list",
+                "normalizedUrl": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/calm/v3.0/runbooks/runlogs/{uuid}/children/list",
+                "fullUrl": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/calm/v3.0/runbooks/runlogs/fb5190a9-27ae-42ea-bfbc-56b0f3c75590/children/list",
+                "method": "POST",
+                "status": 200,
+                "duration": 543,
+                "page": "Step 17 - Verify Execution Is Successful",
+                "stepId": "Step 17 - Verify Execution Is Successful-17",
+                "timestamp": 1781090082090
+              },
+              {
+                "url": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/calm/v3.0/runbooks/runlogs/fb5190a9-27ae-42ea-bfbc-56b0f3c75590/children/list",
+                "normalizedUrl": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/calm/v3.0/runbooks/runlogs/{uuid}/children/list",
+                "fullUrl": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/calm/v3.0/runbooks/runlogs/fb5190a9-27ae-42ea-bfbc-56b0f3c75590/children/list",
+                "method": "POST",
+                "status": 200,
+                "duration": 628,
+                "page": "Step 17 - Verify Execution Is Successful",
+                "stepId": "Step 17 - Verify Execution Is Successful-17",
+                "timestamp": 1781090084726
+              },
+              {
+                "url": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/calm/v3.0/runbooks/runlogs/fb5190a9-27ae-42ea-bfbc-56b0f3c75590/children/list",
+                "normalizedUrl": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/calm/v3.0/runbooks/runlogs/{uuid}/children/list",
+                "fullUrl": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/calm/v3.0/runbooks/runlogs/fb5190a9-27ae-42ea-bfbc-56b0f3c75590/children/list",
+                "method": "POST",
+                "status": 200,
+                "duration": 471,
+                "page": "Step 17 - Verify Execution Is Successful",
+                "stepId": "Step 17 - Verify Execution Is Successful-17",
+                "timestamp": 1781090087212
+              },
+              {
+                "url": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/calm/v3.0/runbooks/runlogs/fb5190a9-27ae-42ea-bfbc-56b0f3c75590/children/list",
+                "normalizedUrl": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/calm/v3.0/runbooks/runlogs/{uuid}/children/list",
+                "fullUrl": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/calm/v3.0/runbooks/runlogs/fb5190a9-27ae-42ea-bfbc-56b0f3c75590/children/list",
+                "method": "POST",
+                "status": 200,
+                "duration": 484,
+                "page": "Step 17 - Verify Execution Is Successful",
+                "stepId": "Step 17 - Verify Execution Is Successful-17",
+                "timestamp": 1781090089702
+              },
+              {
+                "url": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/calm/v3.0/runbooks/runlogs/fb5190a9-27ae-42ea-bfbc-56b0f3c75590/children/list",
+                "normalizedUrl": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/calm/v3.0/runbooks/runlogs/{uuid}/children/list",
+                "fullUrl": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/calm/v3.0/runbooks/runlogs/fb5190a9-27ae-42ea-bfbc-56b0f3c75590/children/list",
+                "method": "POST",
+                "status": 200,
+                "duration": 461,
+                "page": "Step 17 - Verify Execution Is Successful",
+                "stepId": "Step 17 - Verify Execution Is Successful-17",
+                "timestamp": 1781090092178
+              },
+              {
+                "url": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/calm/v3.0/runbooks/runlogs/fb5190a9-27ae-42ea-bfbc-56b0f3c75590/children/list",
+                "normalizedUrl": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/calm/v3.0/runbooks/runlogs/{uuid}/children/list",
+                "fullUrl": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/calm/v3.0/runbooks/runlogs/fb5190a9-27ae-42ea-bfbc-56b0f3c75590/children/list",
+                "method": "POST",
+                "status": 200,
+                "duration": 474,
+                "page": "Step 17 - Verify Execution Is Successful",
+                "stepId": "Step 17 - Verify Execution Is Successful-17",
+                "timestamp": 1781090094379
+              }
+            ],
+            "count": 11,
+            "totalDuration": 5106,
+            "minDuration": 356,
+            "maxDuration": 628,
+            "method": "POST",
+            "avg": 464.1818181818182,
+            "min": 356,
+            "max": 628,
+            "p90": 543,
+            "p95": 628
+          },
+          "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/calm/v3.0/runbooks/runlogs/{uuid}": {
+            "calls": [
+              {
+                "url": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/calm/v3.0/runbooks/runlogs/fb5190a9-27ae-42ea-bfbc-56b0f3c75590",
+                "normalizedUrl": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/calm/v3.0/runbooks/runlogs/{uuid}",
+                "fullUrl": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/calm/v3.0/runbooks/runlogs/fb5190a9-27ae-42ea-bfbc-56b0f3c75590",
+                "method": "GET",
+                "status": 200,
+                "duration": 415,
+                "page": "Step 17 - Verify Execution Is Successful",
+                "stepId": "Step 17 - Verify Execution Is Successful-17",
+                "timestamp": 1781090069878
+              },
+              {
+                "url": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/calm/v3.0/runbooks/runlogs/fb5190a9-27ae-42ea-bfbc-56b0f3c75590",
+                "normalizedUrl": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/calm/v3.0/runbooks/runlogs/{uuid}",
+                "fullUrl": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/calm/v3.0/runbooks/runlogs/fb5190a9-27ae-42ea-bfbc-56b0f3c75590",
+                "method": "GET",
+                "status": 200,
+                "duration": 390,
+                "page": "Step 17 - Verify Execution Is Successful",
+                "stepId": "Step 17 - Verify Execution Is Successful-17",
+                "timestamp": 1781090072278
+              },
+              {
+                "url": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/calm/v3.0/runbooks/runlogs/fb5190a9-27ae-42ea-bfbc-56b0f3c75590",
+                "normalizedUrl": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/calm/v3.0/runbooks/runlogs/{uuid}",
+                "fullUrl": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/calm/v3.0/runbooks/runlogs/fb5190a9-27ae-42ea-bfbc-56b0f3c75590",
+                "method": "GET",
+                "status": 200,
+                "duration": 407,
+                "page": "Step 17 - Verify Execution Is Successful",
+                "stepId": "Step 17 - Verify Execution Is Successful-17",
+                "timestamp": 1781090074691
+              },
+              {
+                "url": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/calm/v3.0/runbooks/runlogs/fb5190a9-27ae-42ea-bfbc-56b0f3c75590",
+                "normalizedUrl": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/calm/v3.0/runbooks/runlogs/{uuid}",
+                "fullUrl": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/calm/v3.0/runbooks/runlogs/fb5190a9-27ae-42ea-bfbc-56b0f3c75590",
+                "method": "GET",
+                "status": 200,
+                "duration": 401,
+                "page": "Step 17 - Verify Execution Is Successful",
+                "stepId": "Step 17 - Verify Execution Is Successful-17",
+                "timestamp": 1781090077097
+              },
+              {
+                "url": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/calm/v3.0/runbooks/runlogs/fb5190a9-27ae-42ea-bfbc-56b0f3c75590",
+                "normalizedUrl": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/calm/v3.0/runbooks/runlogs/{uuid}",
+                "fullUrl": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/calm/v3.0/runbooks/runlogs/fb5190a9-27ae-42ea-bfbc-56b0f3c75590",
+                "method": "GET",
+                "status": 200,
+                "duration": 390,
+                "page": "Step 17 - Verify Execution Is Successful",
+                "stepId": "Step 17 - Verify Execution Is Successful-17",
+                "timestamp": 1781090079503
+              },
+              {
+                "url": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/calm/v3.0/runbooks/runlogs/fb5190a9-27ae-42ea-bfbc-56b0f3c75590",
+                "normalizedUrl": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/calm/v3.0/runbooks/runlogs/{uuid}",
+                "fullUrl": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/calm/v3.0/runbooks/runlogs/fb5190a9-27ae-42ea-bfbc-56b0f3c75590",
+                "method": "GET",
+                "status": 200,
+                "duration": 383,
+                "page": "Step 17 - Verify Execution Is Successful",
+                "stepId": "Step 17 - Verify Execution Is Successful-17",
+                "timestamp": 1781090081901
+              },
+              {
+                "url": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/calm/v3.0/runbooks/runlogs/fb5190a9-27ae-42ea-bfbc-56b0f3c75590",
+                "normalizedUrl": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/calm/v3.0/runbooks/runlogs/{uuid}",
+                "fullUrl": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/calm/v3.0/runbooks/runlogs/fb5190a9-27ae-42ea-bfbc-56b0f3c75590",
+                "method": "GET",
+                "status": 200,
+                "duration": 386,
+                "page": "Step 17 - Verify Execution Is Successful",
+                "stepId": "Step 17 - Verify Execution Is Successful-17",
+                "timestamp": 1781090084304
+              },
+              {
+                "url": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/calm/v3.0/runbooks/runlogs/fb5190a9-27ae-42ea-bfbc-56b0f3c75590",
+                "normalizedUrl": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/calm/v3.0/runbooks/runlogs/{uuid}",
+                "fullUrl": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/calm/v3.0/runbooks/runlogs/fb5190a9-27ae-42ea-bfbc-56b0f3c75590",
+                "method": "GET",
+                "status": 200,
+                "duration": 404,
+                "page": "Step 17 - Verify Execution Is Successful",
+                "stepId": "Step 17 - Verify Execution Is Successful-17",
+                "timestamp": 1781090086721
+              },
+              {
+                "url": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/calm/v3.0/runbooks/runlogs/fb5190a9-27ae-42ea-bfbc-56b0f3c75590",
+                "normalizedUrl": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/calm/v3.0/runbooks/runlogs/{uuid}",
+                "fullUrl": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/calm/v3.0/runbooks/runlogs/fb5190a9-27ae-42ea-bfbc-56b0f3c75590",
+                "method": "GET",
+                "status": 200,
+                "duration": 373,
+                "page": "Step 17 - Verify Execution Is Successful",
+                "stepId": "Step 17 - Verify Execution Is Successful-17",
+                "timestamp": 1781090089111
+              },
+              {
+                "url": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/calm/v3.0/runbooks/runlogs/fb5190a9-27ae-42ea-bfbc-56b0f3c75590",
+                "normalizedUrl": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/calm/v3.0/runbooks/runlogs/{uuid}",
+                "fullUrl": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/calm/v3.0/runbooks/runlogs/fb5190a9-27ae-42ea-bfbc-56b0f3c75590",
+                "method": "GET",
+                "status": 200,
+                "duration": 367,
+                "page": "Step 17 - Verify Execution Is Successful",
+                "stepId": "Step 17 - Verify Execution Is Successful-17",
+                "timestamp": 1781090091485
+              },
+              {
+                "url": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/calm/v3.0/runbooks/runlogs/fb5190a9-27ae-42ea-bfbc-56b0f3c75590",
+                "normalizedUrl": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/calm/v3.0/runbooks/runlogs/{uuid}",
+                "fullUrl": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/calm/v3.0/runbooks/runlogs/fb5190a9-27ae-42ea-bfbc-56b0f3c75590",
+                "method": "GET",
+                "status": 200,
+                "duration": 381,
+                "page": "Step 17 - Verify Execution Is Successful",
+                "stepId": "Step 17 - Verify Execution Is Successful-17",
+                "timestamp": 1781090093884
+              }
+            ],
+            "count": 11,
+            "totalDuration": 4297,
+            "minDuration": 367,
+            "maxDuration": 415,
+            "method": "GET",
+            "avg": 390.6363636363636,
+            "min": 367,
+            "max": 415,
+            "p90": 407,
+            "p95": 415
+          }
+        },
+        "failedDetails": []
+      }
+    },
+    "Step 18 - Performance Summary": {
+      "metricsQuality": "unavailable",
+      "apiPerformance": {
+        "totalCalls": 0,
+        "uniqueEndpoints": 0,
+        "avgResponse": "0",
+        "slowRequests": 0,
+        "failedRequests": 0,
+        "byEndpoint": {},
+        "failedDetails": []
+      }
+    }
+  },
+  "globalMetrics": {
+    "elementTimes": {},
+    "browserMetrics": {}
+  },
+  "dataQuality": {
+    "totalSteps": 18,
+    "completeSteps": 17,
+    "incompleteSteps": 0,
+    "failedSteps": 1,
+    "incompleteStepsList": [
+      "Step 18 - Performance Summary"
+    ],
+    "totalRetries": 0,
+    "totalCaptureAttempts": 17
+  },
+  "diagnostics": {
+    "captureAttempts": {
+      "Step 01 - Navigate to login page": [
+        {
+          "attempt": 1,
+          "durationMs": 17,
+          "success": true,
+          "metricsCount": 15,
+          "timestamp": 1781090024833
+        }
+      ],
+      "Step 02 - Enter username": [
+        {
+          "attempt": 1,
+          "durationMs": 2,
+          "success": true,
+          "metricsCount": 15,
+          "timestamp": 1781090024866
+        }
+      ],
+      "Step 03 - Enter password": [
+        {
+          "attempt": 1,
+          "durationMs": 2,
+          "success": true,
+          "metricsCount": 15,
+          "timestamp": 1781090024892
+        }
+      ],
+      "Step 04 - Submit and wait for dashboard page": [
+        {
+          "attempt": 1,
+          "durationMs": 2,
+          "success": true,
+          "metricsCount": 15,
+          "timestamp": 1781090024961
+        }
+      ],
+      "Step 05 - Dismiss tour if present": [
+        {
+          "attempt": 1,
+          "durationMs": 2,
+          "success": true,
+          "metricsCount": 15,
+          "timestamp": 1781090037802
+        }
+      ],
+      "Step 06 - Click on Global Overview and select Self Service": [
+        {
+          "attempt": 1,
+          "durationMs": 2,
+          "success": true,
+          "metricsCount": 15,
+          "timestamp": 1781090040228
+        }
+      ],
+      "Step 07 - Dismiss Welcome Modal inside iframe": [
+        {
+          "attempt": 1,
+          "durationMs": 5,
+          "success": true,
+          "metricsCount": 15,
+          "timestamp": 1781090050212
+        }
+      ],
+      "Step 08 - Dismiss Welcome Modal (legacy)": [
+        {
+          "attempt": 1,
+          "durationMs": 3,
+          "success": true,
+          "metricsCount": 15,
+          "timestamp": 1781090058349
+        }
+      ],
+      "Step 09 - Click on Runbooks in Self Service": [
+        {
+          "attempt": 1,
+          "durationMs": 3,
+          "success": true,
+          "metricsCount": 15,
+          "timestamp": 1781090059700
+        }
+      ],
+      "Step 10 - Search for Runbook in Store": [
+        {
+          "attempt": 1,
+          "durationMs": 2,
+          "success": true,
+          "metricsCount": 15,
+          "timestamp": 1781090059715
+        }
+      ],
+      "Step 11 - Select Runbook from search results": [
+        {
+          "attempt": 1,
+          "durationMs": 2,
+          "success": true,
+          "metricsCount": 15,
+          "timestamp": 1781090063130
+        }
+      ],
+      "Step 12 - Click on Task": [
+        {
+          "attempt": 1,
+          "durationMs": 2,
+          "success": true,
+          "metricsCount": 15,
+          "timestamp": 1781090063217
+        }
+      ],
+      "Step 13 - Select Operation": [
+        {
+          "attempt": 1,
+          "durationMs": 2,
+          "success": true,
+          "metricsCount": 15,
+          "timestamp": 1781090063709
+        }
+      ],
+      "Step 14 - Save Runbook": [
+        {
+          "attempt": 1,
+          "durationMs": 3,
+          "success": true,
+          "metricsCount": 15,
+          "timestamp": 1781090064648
+        }
+      ],
+      "Step 15 - Click Execute": [
+        {
+          "attempt": 1,
+          "durationMs": 3,
+          "success": true,
+          "metricsCount": 15,
+          "timestamp": 1781090064703
+        }
+      ],
+      "Step 16 - Select endpoint and execute": [
+        {
+          "attempt": 1,
+          "durationMs": 2,
+          "success": true,
+          "metricsCount": 15,
+          "timestamp": 1781090067618
+        }
+      ],
+      "Step 17 - Verify Execution Is Successful": [
+        {
+          "attempt": 1,
+          "durationMs": 5,
+          "success": true,
+          "metricsCount": 15,
+          "timestamp": 1781090094649
+        }
+      ]
+    },
+    "errors": [],
+    "warnings": [
+      {
+        "timestamp": 1781090094652,
+        "step": "Step 18 - Performance Summary",
+        "message": "Browser metrics not available",
+        "error": "this.page.metrics is not a function"
+      },
+      {
+        "timestamp": 1781090094656,
+        "step": "Step 18 - Performance Summary",
+        "message": "Browser metrics not available",
+        "error": "this.page.metrics is not a function"
+      }
+    ],
+    "retries": {},
+    "debugLogs": [
+      {
+        "timestamp": "2026-06-10T11:13:33.571Z",
+        "user": "[User 7]",
+        "step": "Unknown",
+        "message": "Initialized",
+        "options": {
+          "slowRequestThreshold": 2000,
+          "screenshotOnFailure": true,
+          "maxRetries": 3,
+          "retryDelayMs": 1500,
+          "loadStateTimeout": 15000,
+          "frameDetectionTimeout": 10000,
+          "performanceThresholds": {
+            "fcp": {
+              "excellent": 1800,
+              "good": 2500
+            },
+            "pageLoad": {
+              "excellent": 1000,
+              "good": 3000
+            },
+            "elementLoad": {
+              "excellent": 500,
+              "good": 2000
+            },
+            "contentReady": {
+              "excellent": 2000,
+              "good": 5000
+            }
+          },
+          "debugMode": true
+        }
+      },
+      {
+        "timestamp": "2026-06-10T11:13:33.588Z",
+        "user": "[User 7]",
+        "step": "Step 01 - Navigate to login page",
+        "message": "Page context set: Step 01 - Navigate to login page"
+      },
+      {
+        "timestamp": "2026-06-10T11:13:33.588Z",
+        "user": "[User 7]",
+        "step": "Step 01 - Navigate to login page",
+        "message": "Step started: Step 01 - Navigate to login page",
+        "stepId": "Step 01 - Navigate to login page-1",
+        "frameName": null,
+        "options": {}
+      },
+      {
+        "timestamp": "2026-06-10T11:13:44.814Z",
+        "user": "[User 7]",
+        "step": "Step 01 - Navigate to login page",
+        "message": "Stopping step: Step 01 - Navigate to login page",
+        "stepId": "Step 01 - Navigate to login page-1",
+        "durationMs": 11225,
+        "frameName": null
+      },
+      {
+        "timestamp": "2026-06-10T11:13:44.814Z",
+        "user": "[User 7]",
+        "step": "Step 01 - Navigate to login page",
+        "message": "Using main page as target"
+      },
+      {
+        "timestamp": "2026-06-10T11:13:44.816Z",
+        "user": "[User 7]",
+        "step": "Step 01 - Navigate to login page",
+        "message": "Load state wait completed",
+        "waitMs": 2
+      },
+      {
+        "timestamp": "2026-06-10T11:13:44.816Z",
+        "user": "[User 7]",
+        "step": "Step 01 - Navigate to login page",
+        "message": "Starting Web Vitals capture",
+        "frameName": null,
+        "stepId": "Step 01 - Navigate to login page-1"
+      },
+      {
+        "timestamp": "2026-06-10T11:13:44.816Z",
+        "user": "[User 7]",
+        "step": "Step 01 - Navigate to login page",
+        "message": "Capture attempt 1/3"
+      },
+      {
+        "timestamp": "2026-06-10T11:13:44.816Z",
+        "user": "[User 7]",
+        "step": "Step 01 - Navigate to login page",
+        "message": "Getting Web Vitals",
+        "frameName": null
+      },
+      {
+        "timestamp": "2026-06-10T11:13:44.817Z",
+        "user": "[User 7]",
+        "step": "Step 01 - Navigate to login page",
+        "message": "Using main page as target"
+      },
+      {
+        "timestamp": "2026-06-10T11:13:44.832Z",
+        "user": "[User 7]",
+        "step": "Step 01 - Navigate to login page",
+        "message": "Web Vitals collected",
+        "metricsCount": 12,
+        "totalLoadTime": 284,
+        "fcp": 320
+      },
+      {
+        "timestamp": "2026-06-10T11:13:44.833Z",
+        "user": "[User 7]",
+        "step": "Step 01 - Navigate to login page",
+        "message": "Capture succeeded",
+        "attempt": 1,
+        "metricsCount": 15
+      },
+      {
+        "timestamp": "2026-06-10T11:13:44.833Z",
+        "user": "[User 7]",
+        "step": "Step 01 - Navigate to login page",
+        "message": "Complete metrics captured",
+        "metricsCount": 15
+      },
+      {
+        "timestamp": "2026-06-10T11:13:44.833Z",
+        "user": "[User 7]",
+        "step": "Step 02 - Enter username",
+        "message": "Page context set: Step 02 - Enter username"
+      },
+      {
+        "timestamp": "2026-06-10T11:13:44.833Z",
+        "user": "[User 7]",
+        "step": "Step 02 - Enter username",
+        "message": "Step started: Step 02 - Enter username",
+        "stepId": "Step 02 - Enter username-2",
+        "frameName": null,
+        "options": {}
+      },
+      {
+        "timestamp": 1781090024862,
+        "user": "[User 7]",
+        "step": "Step 02 - Enter username",
+        "message": "✅ Element ready: fill on \"Username input field\" in 28ms",
+        "action": "fill",
+        "element": "Username input field",
+        "waitTimeMs": 28,
+        "timedOut": false
+      },
+      {
+        "timestamp": "2026-06-10T11:13:44.863Z",
+        "user": "[User 7]",
+        "step": "Step 02 - Enter username",
+        "message": "Stopping step: Step 02 - Enter username",
+        "stepId": "Step 02 - Enter username-2",
+        "durationMs": 30,
+        "frameName": null
+      },
+      {
+        "timestamp": "2026-06-10T11:13:44.863Z",
+        "user": "[User 7]",
+        "step": "Step 02 - Enter username",
+        "message": "Using main page as target"
+      },
+      {
+        "timestamp": "2026-06-10T11:13:44.864Z",
+        "user": "[User 7]",
+        "step": "Step 02 - Enter username",
+        "message": "Load state wait completed",
+        "waitMs": 1
+      },
+      {
+        "timestamp": "2026-06-10T11:13:44.864Z",
+        "user": "[User 7]",
+        "step": "Step 02 - Enter username",
+        "message": "Starting Web Vitals capture",
+        "frameName": null,
+        "stepId": "Step 02 - Enter username-2"
+      },
+      {
+        "timestamp": "2026-06-10T11:13:44.864Z",
+        "user": "[User 7]",
+        "step": "Step 02 - Enter username",
+        "message": "Capture attempt 1/3"
+      },
+      {
+        "timestamp": "2026-06-10T11:13:44.864Z",
+        "user": "[User 7]",
+        "step": "Step 02 - Enter username",
+        "message": "Getting Web Vitals",
+        "frameName": null
+      },
+      {
+        "timestamp": "2026-06-10T11:13:44.864Z",
+        "user": "[User 7]",
+        "step": "Step 02 - Enter username",
+        "message": "Using main page as target"
+      },
+      {
+        "timestamp": "2026-06-10T11:13:44.865Z",
+        "user": "[User 7]",
+        "step": "Step 02 - Enter username",
+        "message": "Web Vitals collected",
+        "metricsCount": 12,
+        "totalLoadTime": 284,
+        "fcp": 320
+      },
+      {
+        "timestamp": "2026-06-10T11:13:44.866Z",
+        "user": "[User 7]",
+        "step": "Step 02 - Enter username",
+        "message": "Capture succeeded",
+        "attempt": 1,
+        "metricsCount": 15
+      },
+      {
+        "timestamp": "2026-06-10T11:13:44.866Z",
+        "user": "[User 7]",
+        "step": "Step 02 - Enter username",
+        "message": "Complete metrics captured",
+        "metricsCount": 15
+      },
+      {
+        "timestamp": "2026-06-10T11:13:44.866Z",
+        "user": "[User 7]",
+        "step": "Step 02 - Enter username",
+        "message": "Recorded 1 element interactions"
+      },
+      {
+        "timestamp": "2026-06-10T11:13:44.866Z",
+        "user": "[User 7]",
+        "step": "Step 03 - Enter password",
+        "message": "Page context set: Step 03 - Enter password"
+      },
+      {
+        "timestamp": "2026-06-10T11:13:44.866Z",
+        "user": "[User 7]",
+        "step": "Step 03 - Enter password",
+        "message": "Step started: Step 03 - Enter password",
+        "stepId": "Step 03 - Enter password-3",
+        "frameName": null,
+        "options": {}
+      },
+      {
+        "timestamp": 1781090024888,
+        "user": "[User 7]",
+        "step": "Step 03 - Enter password",
+        "message": "✅ Element ready: fill on \"Password input field\" in 22ms",
+        "action": "fill",
+        "element": "Password input field",
+        "waitTimeMs": 22,
+        "timedOut": false
+      },
+      {
+        "timestamp": "2026-06-10T11:13:44.889Z",
+        "user": "[User 7]",
+        "step": "Step 03 - Enter password",
+        "message": "Stopping step: Step 03 - Enter password",
+        "stepId": "Step 03 - Enter password-3",
+        "durationMs": 23,
+        "frameName": null
+      },
+      {
+        "timestamp": "2026-06-10T11:13:44.889Z",
+        "user": "[User 7]",
+        "step": "Step 03 - Enter password",
+        "message": "Using main page as target"
+      },
+      {
+        "timestamp": "2026-06-10T11:13:44.890Z",
+        "user": "[User 7]",
+        "step": "Step 03 - Enter password",
+        "message": "Load state wait completed",
+        "waitMs": 1
+      },
+      {
+        "timestamp": "2026-06-10T11:13:44.890Z",
+        "user": "[User 7]",
+        "step": "Step 03 - Enter password",
+        "message": "Starting Web Vitals capture",
+        "frameName": null,
+        "stepId": "Step 03 - Enter password-3"
+      },
+      {
+        "timestamp": "2026-06-10T11:13:44.890Z",
+        "user": "[User 7]",
+        "step": "Step 03 - Enter password",
+        "message": "Capture attempt 1/3"
+      },
+      {
+        "timestamp": "2026-06-10T11:13:44.890Z",
+        "user": "[User 7]",
+        "step": "Step 03 - Enter password",
+        "message": "Getting Web Vitals",
+        "frameName": null
+      },
+      {
+        "timestamp": "2026-06-10T11:13:44.890Z",
+        "user": "[User 7]",
+        "step": "Step 03 - Enter password",
+        "message": "Using main page as target"
+      },
+      {
+        "timestamp": "2026-06-10T11:13:44.892Z",
+        "user": "[User 7]",
+        "step": "Step 03 - Enter password",
+        "message": "Web Vitals collected",
+        "metricsCount": 12,
+        "totalLoadTime": 284,
+        "fcp": 320
+      },
+      {
+        "timestamp": "2026-06-10T11:13:44.892Z",
+        "user": "[User 7]",
+        "step": "Step 03 - Enter password",
+        "message": "Capture succeeded",
+        "attempt": 1,
+        "metricsCount": 15
+      },
+      {
+        "timestamp": "2026-06-10T11:13:44.892Z",
+        "user": "[User 7]",
+        "step": "Step 03 - Enter password",
+        "message": "Complete metrics captured",
+        "metricsCount": 15
+      },
+      {
+        "timestamp": "2026-06-10T11:13:44.892Z",
+        "user": "[User 7]",
+        "step": "Step 03 - Enter password",
+        "message": "Recorded 1 element interactions"
+      },
+      {
+        "timestamp": "2026-06-10T11:13:44.892Z",
+        "user": "[User 7]",
+        "step": "Step 04 - Submit and wait for dashboard page",
+        "message": "Page context set: Step 04 - Submit and wait for dashboard page"
+      },
+      {
+        "timestamp": "2026-06-10T11:13:44.892Z",
+        "user": "[User 7]",
+        "step": "Step 04 - Submit and wait for dashboard page",
+        "message": "Step started: Step 04 - Submit and wait for dashboard page",
+        "stepId": "Step 04 - Submit and wait for dashboard page-4",
+        "frameName": null,
+        "options": {}
+      },
+      {
+        "timestamp": 1781090024956,
+        "user": "[User 7]",
+        "step": "Step 04 - Submit and wait for dashboard page",
+        "message": "✅ Element ready: click on \"Login submit button\" in 64ms",
+        "action": "click",
+        "element": "Login submit button",
+        "waitTimeMs": 64,
+        "timedOut": false
+      },
+      {
+        "timestamp": "2026-06-10T11:13:44.958Z",
+        "user": "[User 7]",
+        "step": "Step 04 - Submit and wait for dashboard page",
+        "message": "Stopping step: Step 04 - Submit and wait for dashboard page",
+        "stepId": "Step 04 - Submit and wait for dashboard page-4",
+        "durationMs": 66,
+        "frameName": null
+      },
+      {
+        "timestamp": "2026-06-10T11:13:44.958Z",
+        "user": "[User 7]",
+        "step": "Step 04 - Submit and wait for dashboard page",
+        "message": "Using main page as target"
+      },
+      {
+        "timestamp": "2026-06-10T11:13:44.958Z",
+        "user": "[User 7]",
+        "step": "Step 04 - Submit and wait for dashboard page",
+        "message": "Load state wait completed",
+        "waitMs": 0
+      },
+      {
+        "timestamp": "2026-06-10T11:13:44.958Z",
+        "user": "[User 7]",
+        "step": "Step 04 - Submit and wait for dashboard page",
+        "message": "Starting Web Vitals capture",
+        "frameName": null,
+        "stepId": "Step 04 - Submit and wait for dashboard page-4"
+      },
+      {
+        "timestamp": "2026-06-10T11:13:44.958Z",
+        "user": "[User 7]",
+        "step": "Step 04 - Submit and wait for dashboard page",
+        "message": "Capture attempt 1/3"
+      },
+      {
+        "timestamp": "2026-06-10T11:13:44.959Z",
+        "user": "[User 7]",
+        "step": "Step 04 - Submit and wait for dashboard page",
+        "message": "Getting Web Vitals",
+        "frameName": null
+      },
+      {
+        "timestamp": "2026-06-10T11:13:44.959Z",
+        "user": "[User 7]",
+        "step": "Step 04 - Submit and wait for dashboard page",
+        "message": "Using main page as target"
+      },
+      {
+        "timestamp": "2026-06-10T11:13:44.960Z",
+        "user": "[User 7]",
+        "step": "Step 04 - Submit and wait for dashboard page",
+        "message": "Web Vitals collected",
+        "metricsCount": 12,
+        "totalLoadTime": 284,
+        "fcp": 320
+      },
+      {
+        "timestamp": "2026-06-10T11:13:44.961Z",
+        "user": "[User 7]",
+        "step": "Step 04 - Submit and wait for dashboard page",
+        "message": "Capture succeeded",
+        "attempt": 1,
+        "metricsCount": 15
+      },
+      {
+        "timestamp": "2026-06-10T11:13:44.961Z",
+        "user": "[User 7]",
+        "step": "Step 04 - Submit and wait for dashboard page",
+        "message": "Complete metrics captured",
+        "metricsCount": 15
+      },
+      {
+        "timestamp": "2026-06-10T11:13:44.961Z",
+        "user": "[User 7]",
+        "step": "Step 04 - Submit and wait for dashboard page",
+        "message": "Recorded 1 element interactions"
+      },
+      {
+        "timestamp": "2026-06-10T11:13:44.961Z",
+        "user": "[User 7]",
+        "step": "Step 05 - Dismiss tour if present",
+        "message": "Page context set: Step 05 - Dismiss tour if present"
+      },
+      {
+        "timestamp": "2026-06-10T11:13:44.961Z",
+        "user": "[User 7]",
+        "step": "Step 05 - Dismiss tour if present",
+        "message": "Step started: Step 05 - Dismiss tour if present",
+        "stepId": "Step 05 - Dismiss tour if present-5",
+        "frameName": null,
+        "options": {}
+      },
+      {
+        "timestamp": 1781090035487,
+        "user": "[User 7]",
+        "step": "Step 05 - Dismiss tour if present",
+        "message": "✅ Element ready: click on \"Skip tour button\" in 67ms",
+        "action": "click",
+        "element": "Skip tour button",
+        "waitTimeMs": 67,
+        "timedOut": false
+      },
+      {
+        "timestamp": "2026-06-10T11:13:57.298Z",
+        "user": "[User 7]",
+        "step": "Step 05 - Dismiss tour if present",
+        "message": "Slow API detected",
+        "url": "https://nconprem-10-122-152-117.ccpnx.com/api/nutanix-central/v4.0.a1/resources/domains-utilization-summary",
+        "duration": 2338,
+        "threshold": 2000
+      },
+      {
+        "timestamp": "2026-06-10T11:13:57.800Z",
+        "user": "[User 7]",
+        "step": "Step 05 - Dismiss tour if present",
+        "message": "Stopping step: Step 05 - Dismiss tour if present",
+        "stepId": "Step 05 - Dismiss tour if present-5",
+        "durationMs": 12838,
+        "frameName": null
+      },
+      {
+        "timestamp": "2026-06-10T11:13:57.800Z",
+        "user": "[User 7]",
+        "step": "Step 05 - Dismiss tour if present",
+        "message": "Using main page as target"
+      },
+      {
+        "timestamp": "2026-06-10T11:13:57.800Z",
+        "user": "[User 7]",
+        "step": "Step 05 - Dismiss tour if present",
+        "message": "Load state wait completed",
+        "waitMs": 0
+      },
+      {
+        "timestamp": "2026-06-10T11:13:57.800Z",
+        "user": "[User 7]",
+        "step": "Step 05 - Dismiss tour if present",
+        "message": "Starting Web Vitals capture",
+        "frameName": null,
+        "stepId": "Step 05 - Dismiss tour if present-5"
+      },
+      {
+        "timestamp": "2026-06-10T11:13:57.800Z",
+        "user": "[User 7]",
+        "step": "Step 05 - Dismiss tour if present",
+        "message": "Capture attempt 1/3"
+      },
+      {
+        "timestamp": "2026-06-10T11:13:57.800Z",
+        "user": "[User 7]",
+        "step": "Step 05 - Dismiss tour if present",
+        "message": "Getting Web Vitals",
+        "frameName": null
+      },
+      {
+        "timestamp": "2026-06-10T11:13:57.800Z",
+        "user": "[User 7]",
+        "step": "Step 05 - Dismiss tour if present",
+        "message": "Using main page as target"
+      },
+      {
+        "timestamp": "2026-06-10T11:13:57.802Z",
+        "user": "[User 7]",
+        "step": "Step 05 - Dismiss tour if present",
+        "message": "Web Vitals collected",
+        "metricsCount": 12,
+        "totalLoadTime": 5229.400000002235,
+        "fcp": 836
+      },
+      {
+        "timestamp": "2026-06-10T11:13:57.802Z",
+        "user": "[User 7]",
+        "step": "Step 05 - Dismiss tour if present",
+        "message": "Capture succeeded",
+        "attempt": 1,
+        "metricsCount": 15
+      },
+      {
+        "timestamp": "2026-06-10T11:13:57.802Z",
+        "user": "[User 7]",
+        "step": "Step 05 - Dismiss tour if present",
+        "message": "Complete metrics captured",
+        "metricsCount": 15
+      },
+      {
+        "timestamp": "2026-06-10T11:13:57.802Z",
+        "user": "[User 7]",
+        "step": "Step 05 - Dismiss tour if present",
+        "message": "Recorded 1 element interactions"
+      },
+      {
+        "timestamp": "2026-06-10T11:13:57.803Z",
+        "user": "[User 7]",
+        "step": "Step 06 - Click on Global Overview and select Self Service",
+        "message": "Page context set: Step 06 - Click on Global Overview and select Self Service"
+      },
+      {
+        "timestamp": "2026-06-10T11:13:57.803Z",
+        "user": "[User 7]",
+        "step": "Step 06 - Click on Global Overview and select Self Service",
+        "message": "Step started: Step 06 - Click on Global Overview and select Self Service",
+        "stepId": "Step 06 - Click on Global Overview and select Self Service-6",
+        "frameName": null,
+        "options": {}
+      },
+      {
+        "timestamp": 1781090037842,
+        "user": "[User 7]",
+        "step": "Step 06 - Click on Global Overview and select Self Service",
+        "message": "✅ Element ready: click on \"Global Overview menu\" in 39ms",
+        "action": "click",
+        "element": "Global Overview menu",
+        "waitTimeMs": 39,
+        "timedOut": false
+      },
+      {
+        "timestamp": 1781090037927,
+        "user": "[User 7]",
+        "step": "Step 06 - Click on Global Overview and select Self Service",
+        "message": "✅ Element ready: click on \"Self Service menu item\" in 85ms",
+        "action": "click",
+        "element": "Self Service menu item",
+        "waitTimeMs": 85,
+        "timedOut": false
+      },
+      {
+        "timestamp": "2026-06-10T11:14:00.225Z",
+        "user": "[User 7]",
+        "step": "Step 06 - Click on Global Overview and select Self Service",
+        "message": "Stopping step: Step 06 - Click on Global Overview and select Self Service",
+        "stepId": "Step 06 - Click on Global Overview and select Self Service-6",
+        "durationMs": 2422,
+        "frameName": null
+      },
+      {
+        "timestamp": "2026-06-10T11:14:00.225Z",
+        "user": "[User 7]",
+        "step": "Step 06 - Click on Global Overview and select Self Service",
+        "message": "Using main page as target"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:00.226Z",
+        "user": "[User 7]",
+        "step": "Step 06 - Click on Global Overview and select Self Service",
+        "message": "Load state wait completed",
+        "waitMs": 1
+      },
+      {
+        "timestamp": "2026-06-10T11:14:00.226Z",
+        "user": "[User 7]",
+        "step": "Step 06 - Click on Global Overview and select Self Service",
+        "message": "Starting Web Vitals capture",
+        "frameName": null,
+        "stepId": "Step 06 - Click on Global Overview and select Self Service-6"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:00.226Z",
+        "user": "[User 7]",
+        "step": "Step 06 - Click on Global Overview and select Self Service",
+        "message": "Capture attempt 1/3"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:00.226Z",
+        "user": "[User 7]",
+        "step": "Step 06 - Click on Global Overview and select Self Service",
+        "message": "Getting Web Vitals",
+        "frameName": null
+      },
+      {
+        "timestamp": "2026-06-10T11:14:00.226Z",
+        "user": "[User 7]",
+        "step": "Step 06 - Click on Global Overview and select Self Service",
+        "message": "Using main page as target"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:00.227Z",
+        "user": "[User 7]",
+        "step": "Step 06 - Click on Global Overview and select Self Service",
+        "message": "Web Vitals collected",
+        "metricsCount": 12,
+        "totalLoadTime": 5229.400000002235,
+        "fcp": 836
+      },
+      {
+        "timestamp": "2026-06-10T11:14:00.228Z",
+        "user": "[User 7]",
+        "step": "Step 06 - Click on Global Overview and select Self Service",
+        "message": "Capture succeeded",
+        "attempt": 1,
+        "metricsCount": 15
+      },
+      {
+        "timestamp": "2026-06-10T11:14:00.228Z",
+        "user": "[User 7]",
+        "step": "Step 06 - Click on Global Overview and select Self Service",
+        "message": "Complete metrics captured",
+        "metricsCount": 15
+      },
+      {
+        "timestamp": "2026-06-10T11:14:00.228Z",
+        "user": "[User 7]",
+        "step": "Step 06 - Click on Global Overview and select Self Service",
+        "message": "Recorded 2 element interactions"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:00.228Z",
+        "user": "[User 7]",
+        "step": "Step 07 - Dismiss Welcome Modal inside iframe",
+        "message": "Page context set: Step 07 - Dismiss Welcome Modal inside iframe"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:00.228Z",
+        "user": "[User 7]",
+        "step": "Step 07 - Dismiss Welcome Modal inside iframe",
+        "message": "Step started: Step 07 - Dismiss Welcome Modal inside iframe",
+        "stepId": "Step 07 - Dismiss Welcome Modal inside iframe-7",
+        "frameName": "ch-nc_self_service",
+        "options": {
+          "frameName": "ch-nc_self_service"
+        }
+      },
+      {
+        "timestamp": "2026-06-10T11:14:08.940Z",
+        "user": "[User 7]",
+        "step": "Step 07 - Dismiss Welcome Modal inside iframe",
+        "message": "Slow API detected",
+        "url": "https://iam.services.nconprem-10-122-152-117.ccpnx.com/api/iam/v4.1.b1/authn/oidc/userinfo",
+        "duration": 2002,
+        "threshold": 2000
+      },
+      {
+        "timestamp": "2026-06-10T11:14:08.941Z",
+        "user": "[User 7]",
+        "step": "Step 07 - Dismiss Welcome Modal inside iframe",
+        "message": "Slow API detected",
+        "url": "https://ncm.services.nconprem-10-122-152-117.ccpnx.com/api/nutanix/v3/accounts/list",
+        "duration": 2003,
+        "threshold": 2000
+      },
+      {
+        "timestamp": "2026-06-10T11:14:10.206Z",
+        "user": "[User 7]",
+        "step": "Step 07 - Dismiss Welcome Modal inside iframe",
+        "message": "Stopping step: Step 07 - Dismiss Welcome Modal inside iframe",
+        "stepId": "Step 07 - Dismiss Welcome Modal inside iframe-7",
+        "durationMs": 9978,
+        "frameName": "ch-nc_self_service"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:10.207Z",
+        "user": "[User 7]",
+        "step": "Step 07 - Dismiss Welcome Modal inside iframe",
+        "message": "Detecting frame target",
+        "frameName": "ch-nc_self_service"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:10.207Z",
+        "user": "[User 7]",
+        "step": "Step 07 - Dismiss Welcome Modal inside iframe",
+        "message": "Frame found by name",
+        "frameName": "ch-nc_self_service"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:10.207Z",
+        "user": "[User 7]",
+        "step": "Step 07 - Dismiss Welcome Modal inside iframe",
+        "message": "Load state wait completed",
+        "waitMs": 0
+      },
+      {
+        "timestamp": "2026-06-10T11:14:10.207Z",
+        "user": "[User 7]",
+        "step": "Step 07 - Dismiss Welcome Modal inside iframe",
+        "message": "Starting Web Vitals capture",
+        "frameName": "ch-nc_self_service",
+        "stepId": "Step 07 - Dismiss Welcome Modal inside iframe-7"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:10.207Z",
+        "user": "[User 7]",
+        "step": "Step 07 - Dismiss Welcome Modal inside iframe",
+        "message": "Capture attempt 1/3"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:10.207Z",
+        "user": "[User 7]",
+        "step": "Step 07 - Dismiss Welcome Modal inside iframe",
+        "message": "Getting Web Vitals",
+        "frameName": "ch-nc_self_service"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:10.207Z",
+        "user": "[User 7]",
+        "step": "Step 07 - Dismiss Welcome Modal inside iframe",
+        "message": "Detecting frame target",
+        "frameName": "ch-nc_self_service"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:10.207Z",
+        "user": "[User 7]",
+        "step": "Step 07 - Dismiss Welcome Modal inside iframe",
+        "message": "Frame found by name",
+        "frameName": "ch-nc_self_service"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:10.212Z",
+        "user": "[User 7]",
+        "step": "Step 07 - Dismiss Welcome Modal inside iframe",
+        "message": "Web Vitals collected",
+        "metricsCount": 12,
+        "totalLoadTime": 6792.800000000745,
+        "fcp": 1380
+      },
+      {
+        "timestamp": "2026-06-10T11:14:10.212Z",
+        "user": "[User 7]",
+        "step": "Step 07 - Dismiss Welcome Modal inside iframe",
+        "message": "Capture succeeded",
+        "attempt": 1,
+        "metricsCount": 15
+      },
+      {
+        "timestamp": "2026-06-10T11:14:10.212Z",
+        "user": "[User 7]",
+        "step": "Step 07 - Dismiss Welcome Modal inside iframe",
+        "message": "Complete metrics captured",
+        "metricsCount": 15
+      },
+      {
+        "timestamp": "2026-06-10T11:14:10.212Z",
+        "user": "[User 7]",
+        "step": "Step 08 - Dismiss Welcome Modal (legacy)",
+        "message": "Page context set: Step 08 - Dismiss Welcome Modal (legacy)"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:10.212Z",
+        "user": "[User 7]",
+        "step": "Step 08 - Dismiss Welcome Modal (legacy)",
+        "message": "Step started: Step 08 - Dismiss Welcome Modal (legacy)",
+        "stepId": "Step 08 - Dismiss Welcome Modal (legacy)-8",
+        "frameName": "ch-nc_self_service",
+        "options": {
+          "frameName": "ch-nc_self_service"
+        }
+      },
+      {
+        "timestamp": "2026-06-10T11:14:18.344Z",
+        "user": "[User 7]",
+        "step": "Step 08 - Dismiss Welcome Modal (legacy)",
+        "message": "Stopping step: Step 08 - Dismiss Welcome Modal (legacy)",
+        "stepId": "Step 08 - Dismiss Welcome Modal (legacy)-8",
+        "durationMs": 8132,
+        "frameName": "ch-nc_self_service"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:18.344Z",
+        "user": "[User 7]",
+        "step": "Step 08 - Dismiss Welcome Modal (legacy)",
+        "message": "Detecting frame target",
+        "frameName": "ch-nc_self_service"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:18.344Z",
+        "user": "[User 7]",
+        "step": "Step 08 - Dismiss Welcome Modal (legacy)",
+        "message": "Frame found by name",
+        "frameName": "ch-nc_self_service"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:18.346Z",
+        "user": "[User 7]",
+        "step": "Step 08 - Dismiss Welcome Modal (legacy)",
+        "message": "Load state wait completed",
+        "waitMs": 2
+      },
+      {
+        "timestamp": "2026-06-10T11:14:18.346Z",
+        "user": "[User 7]",
+        "step": "Step 08 - Dismiss Welcome Modal (legacy)",
+        "message": "Starting Web Vitals capture",
+        "frameName": "ch-nc_self_service",
+        "stepId": "Step 08 - Dismiss Welcome Modal (legacy)-8"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:18.346Z",
+        "user": "[User 7]",
+        "step": "Step 08 - Dismiss Welcome Modal (legacy)",
+        "message": "Capture attempt 1/3"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:18.346Z",
+        "user": "[User 7]",
+        "step": "Step 08 - Dismiss Welcome Modal (legacy)",
+        "message": "Getting Web Vitals",
+        "frameName": "ch-nc_self_service"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:18.346Z",
+        "user": "[User 7]",
+        "step": "Step 08 - Dismiss Welcome Modal (legacy)",
+        "message": "Detecting frame target",
+        "frameName": "ch-nc_self_service"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:18.346Z",
+        "user": "[User 7]",
+        "step": "Step 08 - Dismiss Welcome Modal (legacy)",
+        "message": "Frame found by name",
+        "frameName": "ch-nc_self_service"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:18.349Z",
+        "user": "[User 7]",
+        "step": "Step 08 - Dismiss Welcome Modal (legacy)",
+        "message": "Web Vitals collected",
+        "metricsCount": 12,
+        "totalLoadTime": 6792.800000000745,
+        "fcp": 1380
+      },
+      {
+        "timestamp": "2026-06-10T11:14:18.349Z",
+        "user": "[User 7]",
+        "step": "Step 08 - Dismiss Welcome Modal (legacy)",
+        "message": "Capture succeeded",
+        "attempt": 1,
+        "metricsCount": 15
+      },
+      {
+        "timestamp": "2026-06-10T11:14:18.349Z",
+        "user": "[User 7]",
+        "step": "Step 08 - Dismiss Welcome Modal (legacy)",
+        "message": "Complete metrics captured",
+        "metricsCount": 15
+      },
+      {
+        "timestamp": "2026-06-10T11:14:18.349Z",
+        "user": "[User 7]",
+        "step": "Step 09 - Click on Runbooks in Self Service",
+        "message": "Page context set: Step 09 - Click on Runbooks in Self Service"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:18.349Z",
+        "user": "[User 7]",
+        "step": "Step 09 - Click on Runbooks in Self Service",
+        "message": "Step started: Step 09 - Click on Runbooks in Self Service",
+        "stepId": "Step 09 - Click on Runbooks in Self Service-9",
+        "frameName": "ch-nc_self_service",
+        "options": {
+          "frameName": "ch-nc_self_service"
+        }
+      },
+      {
+        "timestamp": 1781090058404,
+        "user": "[User 7]",
+        "step": "Step 09 - Click on Runbooks in Self Service",
+        "message": "✅ Element ready: click on \"Runbooks link\" in 54ms",
+        "action": "click",
+        "element": "Runbooks link",
+        "waitTimeMs": 54,
+        "timedOut": false
+      },
+      {
+        "timestamp": "2026-06-10T11:14:19.697Z",
+        "user": "[User 7]",
+        "step": "Step 09 - Click on Runbooks in Self Service",
+        "message": "Stopping step: Step 09 - Click on Runbooks in Self Service",
+        "stepId": "Step 09 - Click on Runbooks in Self Service-9",
+        "durationMs": 1348,
+        "frameName": "ch-nc_self_service"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:19.697Z",
+        "user": "[User 7]",
+        "step": "Step 09 - Click on Runbooks in Self Service",
+        "message": "Detecting frame target",
+        "frameName": "ch-nc_self_service"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:19.697Z",
+        "user": "[User 7]",
+        "step": "Step 09 - Click on Runbooks in Self Service",
+        "message": "Frame found by name",
+        "frameName": "ch-nc_self_service"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:19.697Z",
+        "user": "[User 7]",
+        "step": "Step 09 - Click on Runbooks in Self Service",
+        "message": "Load state wait completed",
+        "waitMs": 0
+      },
+      {
+        "timestamp": "2026-06-10T11:14:19.697Z",
+        "user": "[User 7]",
+        "step": "Step 09 - Click on Runbooks in Self Service",
+        "message": "Starting Web Vitals capture",
+        "frameName": "ch-nc_self_service",
+        "stepId": "Step 09 - Click on Runbooks in Self Service-9"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:19.697Z",
+        "user": "[User 7]",
+        "step": "Step 09 - Click on Runbooks in Self Service",
+        "message": "Capture attempt 1/3"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:19.697Z",
+        "user": "[User 7]",
+        "step": "Step 09 - Click on Runbooks in Self Service",
+        "message": "Getting Web Vitals",
+        "frameName": "ch-nc_self_service"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:19.697Z",
+        "user": "[User 7]",
+        "step": "Step 09 - Click on Runbooks in Self Service",
+        "message": "Detecting frame target",
+        "frameName": "ch-nc_self_service"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:19.697Z",
+        "user": "[User 7]",
+        "step": "Step 09 - Click on Runbooks in Self Service",
+        "message": "Frame found by name",
+        "frameName": "ch-nc_self_service"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:19.700Z",
+        "user": "[User 7]",
+        "step": "Step 09 - Click on Runbooks in Self Service",
+        "message": "Web Vitals collected",
+        "metricsCount": 12,
+        "totalLoadTime": 6792.800000000745,
+        "fcp": 1380
+      },
+      {
+        "timestamp": "2026-06-10T11:14:19.700Z",
+        "user": "[User 7]",
+        "step": "Step 09 - Click on Runbooks in Self Service",
+        "message": "Capture succeeded",
+        "attempt": 1,
+        "metricsCount": 15
+      },
+      {
+        "timestamp": "2026-06-10T11:14:19.700Z",
+        "user": "[User 7]",
+        "step": "Step 09 - Click on Runbooks in Self Service",
+        "message": "Complete metrics captured",
+        "metricsCount": 15
+      },
+      {
+        "timestamp": "2026-06-10T11:14:19.700Z",
+        "user": "[User 7]",
+        "step": "Step 09 - Click on Runbooks in Self Service",
+        "message": "Recorded 1 element interactions"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:19.700Z",
+        "user": "[User 7]",
+        "step": "Step 10 - Search for Runbook in Store",
+        "message": "Page context set: Step 10 - Search for Runbook in Store"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:19.700Z",
+        "user": "[User 7]",
+        "step": "Step 10 - Search for Runbook in Store",
+        "message": "Step started: Step 10 - Search for Runbook in Store",
+        "stepId": "Step 10 - Search for Runbook in Store-10",
+        "frameName": "ch-nc_self_service",
+        "options": {
+          "frameName": "ch-nc_self_service"
+        }
+      },
+      {
+        "timestamp": "2026-06-10T11:14:19.712Z",
+        "user": "[User 7]",
+        "step": "Step 10 - Search for Runbook in Store",
+        "message": "Stopping step: Step 10 - Search for Runbook in Store",
+        "stepId": "Step 10 - Search for Runbook in Store-10",
+        "durationMs": 12,
+        "frameName": "ch-nc_self_service"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:19.712Z",
+        "user": "[User 7]",
+        "step": "Step 10 - Search for Runbook in Store",
+        "message": "Detecting frame target",
+        "frameName": "ch-nc_self_service"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:19.712Z",
+        "user": "[User 7]",
+        "step": "Step 10 - Search for Runbook in Store",
+        "message": "Frame found by name",
+        "frameName": "ch-nc_self_service"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:19.713Z",
+        "user": "[User 7]",
+        "step": "Step 10 - Search for Runbook in Store",
+        "message": "Load state wait completed",
+        "waitMs": 1
+      },
+      {
+        "timestamp": "2026-06-10T11:14:19.713Z",
+        "user": "[User 7]",
+        "step": "Step 10 - Search for Runbook in Store",
+        "message": "Starting Web Vitals capture",
+        "frameName": "ch-nc_self_service",
+        "stepId": "Step 10 - Search for Runbook in Store-10"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:19.713Z",
+        "user": "[User 7]",
+        "step": "Step 10 - Search for Runbook in Store",
+        "message": "Capture attempt 1/3"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:19.713Z",
+        "user": "[User 7]",
+        "step": "Step 10 - Search for Runbook in Store",
+        "message": "Getting Web Vitals",
+        "frameName": "ch-nc_self_service"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:19.713Z",
+        "user": "[User 7]",
+        "step": "Step 10 - Search for Runbook in Store",
+        "message": "Detecting frame target",
+        "frameName": "ch-nc_self_service"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:19.713Z",
+        "user": "[User 7]",
+        "step": "Step 10 - Search for Runbook in Store",
+        "message": "Frame found by name",
+        "frameName": "ch-nc_self_service"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:19.715Z",
+        "user": "[User 7]",
+        "step": "Step 10 - Search for Runbook in Store",
+        "message": "Web Vitals collected",
+        "metricsCount": 12,
+        "totalLoadTime": 6792.800000000745,
+        "fcp": 1380
+      },
+      {
+        "timestamp": "2026-06-10T11:14:19.715Z",
+        "user": "[User 7]",
+        "step": "Step 10 - Search for Runbook in Store",
+        "message": "Capture succeeded",
+        "attempt": 1,
+        "metricsCount": 15
+      },
+      {
+        "timestamp": "2026-06-10T11:14:19.715Z",
+        "user": "[User 7]",
+        "step": "Step 10 - Search for Runbook in Store",
+        "message": "Complete metrics captured",
+        "metricsCount": 15
+      },
+      {
+        "timestamp": "2026-06-10T11:14:19.715Z",
+        "user": "[User 7]",
+        "step": "Step 11 - Select Runbook from search results",
+        "message": "Page context set: Step 11 - Select Runbook from search results"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:19.715Z",
+        "user": "[User 7]",
+        "step": "Step 11 - Select Runbook from search results",
+        "message": "Step started: Step 11 - Select Runbook from search results",
+        "stepId": "Step 11 - Select Runbook from search results-11",
+        "frameName": "ch-nc_self_service",
+        "options": {
+          "frameName": "ch-nc_self_service"
+        }
+      },
+      {
+        "timestamp": "2026-06-10T11:14:23.127Z",
+        "user": "[User 7]",
+        "step": "Step 11 - Select Runbook from search results",
+        "message": "Stopping step: Step 11 - Select Runbook from search results",
+        "stepId": "Step 11 - Select Runbook from search results-11",
+        "durationMs": 3412,
+        "frameName": "ch-nc_self_service"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:23.127Z",
+        "user": "[User 7]",
+        "step": "Step 11 - Select Runbook from search results",
+        "message": "Detecting frame target",
+        "frameName": "ch-nc_self_service"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:23.127Z",
+        "user": "[User 7]",
+        "step": "Step 11 - Select Runbook from search results",
+        "message": "Frame found by name",
+        "frameName": "ch-nc_self_service"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:23.128Z",
+        "user": "[User 7]",
+        "step": "Step 11 - Select Runbook from search results",
+        "message": "Load state wait completed",
+        "waitMs": 1
+      },
+      {
+        "timestamp": "2026-06-10T11:14:23.128Z",
+        "user": "[User 7]",
+        "step": "Step 11 - Select Runbook from search results",
+        "message": "Starting Web Vitals capture",
+        "frameName": "ch-nc_self_service",
+        "stepId": "Step 11 - Select Runbook from search results-11"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:23.128Z",
+        "user": "[User 7]",
+        "step": "Step 11 - Select Runbook from search results",
+        "message": "Capture attempt 1/3"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:23.128Z",
+        "user": "[User 7]",
+        "step": "Step 11 - Select Runbook from search results",
+        "message": "Getting Web Vitals",
+        "frameName": "ch-nc_self_service"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:23.128Z",
+        "user": "[User 7]",
+        "step": "Step 11 - Select Runbook from search results",
+        "message": "Detecting frame target",
+        "frameName": "ch-nc_self_service"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:23.128Z",
+        "user": "[User 7]",
+        "step": "Step 11 - Select Runbook from search results",
+        "message": "Frame found by name",
+        "frameName": "ch-nc_self_service"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:23.130Z",
+        "user": "[User 7]",
+        "step": "Step 11 - Select Runbook from search results",
+        "message": "Web Vitals collected",
+        "metricsCount": 12,
+        "totalLoadTime": 6792.800000000745,
+        "fcp": 1380
+      },
+      {
+        "timestamp": "2026-06-10T11:14:23.130Z",
+        "user": "[User 7]",
+        "step": "Step 11 - Select Runbook from search results",
+        "message": "Capture succeeded",
+        "attempt": 1,
+        "metricsCount": 15
+      },
+      {
+        "timestamp": "2026-06-10T11:14:23.130Z",
+        "user": "[User 7]",
+        "step": "Step 11 - Select Runbook from search results",
+        "message": "Complete metrics captured",
+        "metricsCount": 15
+      },
+      {
+        "timestamp": "2026-06-10T11:14:23.130Z",
+        "user": "[User 7]",
+        "step": "Step 12 - Click on Task",
+        "message": "Page context set: Step 12 - Click on Task"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:23.130Z",
+        "user": "[User 7]",
+        "step": "Step 12 - Click on Task",
+        "message": "Step started: Step 12 - Click on Task",
+        "stepId": "Step 12 - Click on Task-12",
+        "frameName": "ch-nc_self_service",
+        "options": {
+          "frameName": "ch-nc_self_service"
+        }
+      },
+      {
+        "timestamp": "2026-06-10T11:14:23.215Z",
+        "user": "[User 7]",
+        "step": "Step 12 - Click on Task",
+        "message": "Stopping step: Step 12 - Click on Task",
+        "stepId": "Step 12 - Click on Task-12",
+        "durationMs": 85,
+        "frameName": "ch-nc_self_service"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:23.215Z",
+        "user": "[User 7]",
+        "step": "Step 12 - Click on Task",
+        "message": "Detecting frame target",
+        "frameName": "ch-nc_self_service"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:23.215Z",
+        "user": "[User 7]",
+        "step": "Step 12 - Click on Task",
+        "message": "Frame found by name",
+        "frameName": "ch-nc_self_service"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:23.215Z",
+        "user": "[User 7]",
+        "step": "Step 12 - Click on Task",
+        "message": "Load state wait completed",
+        "waitMs": 0
+      },
+      {
+        "timestamp": "2026-06-10T11:14:23.215Z",
+        "user": "[User 7]",
+        "step": "Step 12 - Click on Task",
+        "message": "Starting Web Vitals capture",
+        "frameName": "ch-nc_self_service",
+        "stepId": "Step 12 - Click on Task-12"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:23.215Z",
+        "user": "[User 7]",
+        "step": "Step 12 - Click on Task",
+        "message": "Capture attempt 1/3"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:23.215Z",
+        "user": "[User 7]",
+        "step": "Step 12 - Click on Task",
+        "message": "Getting Web Vitals",
+        "frameName": "ch-nc_self_service"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:23.215Z",
+        "user": "[User 7]",
+        "step": "Step 12 - Click on Task",
+        "message": "Detecting frame target",
+        "frameName": "ch-nc_self_service"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:23.215Z",
+        "user": "[User 7]",
+        "step": "Step 12 - Click on Task",
+        "message": "Frame found by name",
+        "frameName": "ch-nc_self_service"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:23.217Z",
+        "user": "[User 7]",
+        "step": "Step 12 - Click on Task",
+        "message": "Web Vitals collected",
+        "metricsCount": 12,
+        "totalLoadTime": 6792.800000000745,
+        "fcp": 1380
+      },
+      {
+        "timestamp": "2026-06-10T11:14:23.217Z",
+        "user": "[User 7]",
+        "step": "Step 12 - Click on Task",
+        "message": "Capture succeeded",
+        "attempt": 1,
+        "metricsCount": 15
+      },
+      {
+        "timestamp": "2026-06-10T11:14:23.217Z",
+        "user": "[User 7]",
+        "step": "Step 12 - Click on Task",
+        "message": "Complete metrics captured",
+        "metricsCount": 15
+      },
+      {
+        "timestamp": "2026-06-10T11:14:23.217Z",
+        "user": "[User 7]",
+        "step": "Step 13 - Select Operation",
+        "message": "Page context set: Step 13 - Select Operation"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:23.217Z",
+        "user": "[User 7]",
+        "step": "Step 13 - Select Operation",
+        "message": "Step started: Step 13 - Select Operation",
+        "stepId": "Step 13 - Select Operation-13",
+        "frameName": "ch-nc_self_service",
+        "options": {
+          "frameName": "ch-nc_self_service"
+        }
+      },
+      {
+        "timestamp": "2026-06-10T11:14:23.707Z",
+        "user": "[User 7]",
+        "step": "Step 13 - Select Operation",
+        "message": "Stopping step: Step 13 - Select Operation",
+        "stepId": "Step 13 - Select Operation-13",
+        "durationMs": 490,
+        "frameName": "ch-nc_self_service"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:23.707Z",
+        "user": "[User 7]",
+        "step": "Step 13 - Select Operation",
+        "message": "Detecting frame target",
+        "frameName": "ch-nc_self_service"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:23.707Z",
+        "user": "[User 7]",
+        "step": "Step 13 - Select Operation",
+        "message": "Frame found by name",
+        "frameName": "ch-nc_self_service"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:23.707Z",
+        "user": "[User 7]",
+        "step": "Step 13 - Select Operation",
+        "message": "Load state wait completed",
+        "waitMs": 0
+      },
+      {
+        "timestamp": "2026-06-10T11:14:23.707Z",
+        "user": "[User 7]",
+        "step": "Step 13 - Select Operation",
+        "message": "Starting Web Vitals capture",
+        "frameName": "ch-nc_self_service",
+        "stepId": "Step 13 - Select Operation-13"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:23.707Z",
+        "user": "[User 7]",
+        "step": "Step 13 - Select Operation",
+        "message": "Capture attempt 1/3"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:23.707Z",
+        "user": "[User 7]",
+        "step": "Step 13 - Select Operation",
+        "message": "Getting Web Vitals",
+        "frameName": "ch-nc_self_service"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:23.707Z",
+        "user": "[User 7]",
+        "step": "Step 13 - Select Operation",
+        "message": "Detecting frame target",
+        "frameName": "ch-nc_self_service"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:23.707Z",
+        "user": "[User 7]",
+        "step": "Step 13 - Select Operation",
+        "message": "Frame found by name",
+        "frameName": "ch-nc_self_service"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:23.709Z",
+        "user": "[User 7]",
+        "step": "Step 13 - Select Operation",
+        "message": "Web Vitals collected",
+        "metricsCount": 12,
+        "totalLoadTime": 6792.800000000745,
+        "fcp": 1380
+      },
+      {
+        "timestamp": "2026-06-10T11:14:23.709Z",
+        "user": "[User 7]",
+        "step": "Step 13 - Select Operation",
+        "message": "Capture succeeded",
+        "attempt": 1,
+        "metricsCount": 15
+      },
+      {
+        "timestamp": "2026-06-10T11:14:23.709Z",
+        "user": "[User 7]",
+        "step": "Step 13 - Select Operation",
+        "message": "Complete metrics captured",
+        "metricsCount": 15
+      },
+      {
+        "timestamp": "2026-06-10T11:14:23.710Z",
+        "user": "[User 7]",
+        "step": "Step 14 - Save Runbook",
+        "message": "Page context set: Step 14 - Save Runbook"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:23.710Z",
+        "user": "[User 7]",
+        "step": "Step 14 - Save Runbook",
+        "message": "Step started: Step 14 - Save Runbook",
+        "stepId": "Step 14 - Save Runbook-14",
+        "frameName": "ch-nc_self_service",
+        "options": {
+          "frameName": "ch-nc_self_service"
+        }
+      },
+      {
+        "timestamp": "2026-06-10T11:14:24.644Z",
+        "user": "[User 7]",
+        "step": "Step 14 - Save Runbook",
+        "message": "Stopping step: Step 14 - Save Runbook",
+        "stepId": "Step 14 - Save Runbook-14",
+        "durationMs": 934,
+        "frameName": "ch-nc_self_service"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:24.644Z",
+        "user": "[User 7]",
+        "step": "Step 14 - Save Runbook",
+        "message": "Detecting frame target",
+        "frameName": "ch-nc_self_service"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:24.644Z",
+        "user": "[User 7]",
+        "step": "Step 14 - Save Runbook",
+        "message": "Frame found by name",
+        "frameName": "ch-nc_self_service"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:24.645Z",
+        "user": "[User 7]",
+        "step": "Step 14 - Save Runbook",
+        "message": "Load state wait completed",
+        "waitMs": 1
+      },
+      {
+        "timestamp": "2026-06-10T11:14:24.645Z",
+        "user": "[User 7]",
+        "step": "Step 14 - Save Runbook",
+        "message": "Starting Web Vitals capture",
+        "frameName": "ch-nc_self_service",
+        "stepId": "Step 14 - Save Runbook-14"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:24.645Z",
+        "user": "[User 7]",
+        "step": "Step 14 - Save Runbook",
+        "message": "Capture attempt 1/3"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:24.645Z",
+        "user": "[User 7]",
+        "step": "Step 14 - Save Runbook",
+        "message": "Getting Web Vitals",
+        "frameName": "ch-nc_self_service"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:24.645Z",
+        "user": "[User 7]",
+        "step": "Step 14 - Save Runbook",
+        "message": "Detecting frame target",
+        "frameName": "ch-nc_self_service"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:24.645Z",
+        "user": "[User 7]",
+        "step": "Step 14 - Save Runbook",
+        "message": "Frame found by name",
+        "frameName": "ch-nc_self_service"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:24.648Z",
+        "user": "[User 7]",
+        "step": "Step 14 - Save Runbook",
+        "message": "Web Vitals collected",
+        "metricsCount": 12,
+        "totalLoadTime": 6792.800000000745,
+        "fcp": 1380
+      },
+      {
+        "timestamp": "2026-06-10T11:14:24.648Z",
+        "user": "[User 7]",
+        "step": "Step 14 - Save Runbook",
+        "message": "Capture succeeded",
+        "attempt": 1,
+        "metricsCount": 15
+      },
+      {
+        "timestamp": "2026-06-10T11:14:24.648Z",
+        "user": "[User 7]",
+        "step": "Step 14 - Save Runbook",
+        "message": "Complete metrics captured",
+        "metricsCount": 15
+      },
+      {
+        "timestamp": "2026-06-10T11:14:24.648Z",
+        "user": "[User 7]",
+        "step": "Step 15 - Click Execute",
+        "message": "Page context set: Step 15 - Click Execute"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:24.648Z",
+        "user": "[User 7]",
+        "step": "Step 15 - Click Execute",
+        "message": "Step started: Step 15 - Click Execute",
+        "stepId": "Step 15 - Click Execute-15",
+        "frameName": "ch-nc_self_service",
+        "options": {
+          "frameName": "ch-nc_self_service"
+        }
+      },
+      {
+        "timestamp": "2026-06-10T11:14:24.700Z",
+        "user": "[User 7]",
+        "step": "Step 15 - Click Execute",
+        "message": "Stopping step: Step 15 - Click Execute",
+        "stepId": "Step 15 - Click Execute-15",
+        "durationMs": 52,
+        "frameName": "ch-nc_self_service"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:24.700Z",
+        "user": "[User 7]",
+        "step": "Step 15 - Click Execute",
+        "message": "Detecting frame target",
+        "frameName": "ch-nc_self_service"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:24.700Z",
+        "user": "[User 7]",
+        "step": "Step 15 - Click Execute",
+        "message": "Frame found by name",
+        "frameName": "ch-nc_self_service"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:24.700Z",
+        "user": "[User 7]",
+        "step": "Step 15 - Click Execute",
+        "message": "Load state wait completed",
+        "waitMs": 0
+      },
+      {
+        "timestamp": "2026-06-10T11:14:24.700Z",
+        "user": "[User 7]",
+        "step": "Step 15 - Click Execute",
+        "message": "Starting Web Vitals capture",
+        "frameName": "ch-nc_self_service",
+        "stepId": "Step 15 - Click Execute-15"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:24.700Z",
+        "user": "[User 7]",
+        "step": "Step 15 - Click Execute",
+        "message": "Capture attempt 1/3"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:24.700Z",
+        "user": "[User 7]",
+        "step": "Step 15 - Click Execute",
+        "message": "Getting Web Vitals",
+        "frameName": "ch-nc_self_service"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:24.700Z",
+        "user": "[User 7]",
+        "step": "Step 15 - Click Execute",
+        "message": "Detecting frame target",
+        "frameName": "ch-nc_self_service"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:24.700Z",
+        "user": "[User 7]",
+        "step": "Step 15 - Click Execute",
+        "message": "Frame found by name",
+        "frameName": "ch-nc_self_service"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:24.703Z",
+        "user": "[User 7]",
+        "step": "Step 15 - Click Execute",
+        "message": "Web Vitals collected",
+        "metricsCount": 12,
+        "totalLoadTime": 6792.800000000745,
+        "fcp": 1380
+      },
+      {
+        "timestamp": "2026-06-10T11:14:24.703Z",
+        "user": "[User 7]",
+        "step": "Step 15 - Click Execute",
+        "message": "Capture succeeded",
+        "attempt": 1,
+        "metricsCount": 15
+      },
+      {
+        "timestamp": "2026-06-10T11:14:24.703Z",
+        "user": "[User 7]",
+        "step": "Step 15 - Click Execute",
+        "message": "Complete metrics captured",
+        "metricsCount": 15
+      },
+      {
+        "timestamp": "2026-06-10T11:14:24.703Z",
+        "user": "[User 7]",
+        "step": "Step 16 - Select endpoint and execute",
+        "message": "Page context set: Step 16 - Select endpoint and execute"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:24.703Z",
+        "user": "[User 7]",
+        "step": "Step 16 - Select endpoint and execute",
+        "message": "Step started: Step 16 - Select endpoint and execute",
+        "stepId": "Step 16 - Select endpoint and execute-16",
+        "frameName": "ch-nc_self_service",
+        "options": {
+          "frameName": "ch-nc_self_service"
+        }
+      },
+      {
+        "timestamp": "2026-06-10T11:14:27.615Z",
+        "user": "[User 7]",
+        "step": "Step 16 - Select endpoint and execute",
+        "message": "Stopping step: Step 16 - Select endpoint and execute",
+        "stepId": "Step 16 - Select endpoint and execute-16",
+        "durationMs": 2912,
+        "frameName": "ch-nc_self_service"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:27.615Z",
+        "user": "[User 7]",
+        "step": "Step 16 - Select endpoint and execute",
+        "message": "Detecting frame target",
+        "frameName": "ch-nc_self_service"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:27.615Z",
+        "user": "[User 7]",
+        "step": "Step 16 - Select endpoint and execute",
+        "message": "Frame found by name",
+        "frameName": "ch-nc_self_service"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:27.616Z",
+        "user": "[User 7]",
+        "step": "Step 16 - Select endpoint and execute",
+        "message": "Load state wait completed",
+        "waitMs": 1
+      },
+      {
+        "timestamp": "2026-06-10T11:14:27.616Z",
+        "user": "[User 7]",
+        "step": "Step 16 - Select endpoint and execute",
+        "message": "Starting Web Vitals capture",
+        "frameName": "ch-nc_self_service",
+        "stepId": "Step 16 - Select endpoint and execute-16"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:27.616Z",
+        "user": "[User 7]",
+        "step": "Step 16 - Select endpoint and execute",
+        "message": "Capture attempt 1/3"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:27.616Z",
+        "user": "[User 7]",
+        "step": "Step 16 - Select endpoint and execute",
+        "message": "Getting Web Vitals",
+        "frameName": "ch-nc_self_service"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:27.616Z",
+        "user": "[User 7]",
+        "step": "Step 16 - Select endpoint and execute",
+        "message": "Detecting frame target",
+        "frameName": "ch-nc_self_service"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:27.616Z",
+        "user": "[User 7]",
+        "step": "Step 16 - Select endpoint and execute",
+        "message": "Frame found by name",
+        "frameName": "ch-nc_self_service"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:27.618Z",
+        "user": "[User 7]",
+        "step": "Step 16 - Select endpoint and execute",
+        "message": "Web Vitals collected",
+        "metricsCount": 12,
+        "totalLoadTime": 6792.800000000745,
+        "fcp": 1380
+      },
+      {
+        "timestamp": "2026-06-10T11:14:27.618Z",
+        "user": "[User 7]",
+        "step": "Step 16 - Select endpoint and execute",
+        "message": "Capture succeeded",
+        "attempt": 1,
+        "metricsCount": 15
+      },
+      {
+        "timestamp": "2026-06-10T11:14:27.619Z",
+        "user": "[User 7]",
+        "step": "Step 16 - Select endpoint and execute",
+        "message": "Complete metrics captured",
+        "metricsCount": 15
+      },
+      {
+        "timestamp": "2026-06-10T11:14:27.619Z",
+        "user": "[User 7]",
+        "step": "Step 17 - Verify Execution Is Successful",
+        "message": "Page context set: Step 17 - Verify Execution Is Successful"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:27.619Z",
+        "user": "[User 7]",
+        "step": "Step 17 - Verify Execution Is Successful",
+        "message": "Step started: Step 17 - Verify Execution Is Successful",
+        "stepId": "Step 17 - Verify Execution Is Successful-17",
+        "frameName": "ch-nc_self_service",
+        "options": {
+          "frameName": "ch-nc_self_service"
+        }
+      },
+      {
+        "timestamp": "2026-06-10T11:14:54.642Z",
+        "user": "[User 7]",
+        "step": "Step 17 - Verify Execution Is Successful",
+        "message": "Stopping step: Step 17 - Verify Execution Is Successful",
+        "stepId": "Step 17 - Verify Execution Is Successful-17",
+        "durationMs": 27023,
+        "frameName": "ch-nc_self_service"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:54.642Z",
+        "user": "[User 7]",
+        "step": "Step 17 - Verify Execution Is Successful",
+        "message": "Detecting frame target",
+        "frameName": "ch-nc_self_service"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:54.642Z",
+        "user": "[User 7]",
+        "step": "Step 17 - Verify Execution Is Successful",
+        "message": "Frame found by name",
+        "frameName": "ch-nc_self_service"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:54.644Z",
+        "user": "[User 7]",
+        "step": "Step 17 - Verify Execution Is Successful",
+        "message": "Load state wait completed",
+        "waitMs": 2
+      },
+      {
+        "timestamp": "2026-06-10T11:14:54.644Z",
+        "user": "[User 7]",
+        "step": "Step 17 - Verify Execution Is Successful",
+        "message": "Starting Web Vitals capture",
+        "frameName": "ch-nc_self_service",
+        "stepId": "Step 17 - Verify Execution Is Successful-17"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:54.644Z",
+        "user": "[User 7]",
+        "step": "Step 17 - Verify Execution Is Successful",
+        "message": "Capture attempt 1/3"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:54.644Z",
+        "user": "[User 7]",
+        "step": "Step 17 - Verify Execution Is Successful",
+        "message": "Getting Web Vitals",
+        "frameName": "ch-nc_self_service"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:54.644Z",
+        "user": "[User 7]",
+        "step": "Step 17 - Verify Execution Is Successful",
+        "message": "Detecting frame target",
+        "frameName": "ch-nc_self_service"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:54.644Z",
+        "user": "[User 7]",
+        "step": "Step 17 - Verify Execution Is Successful",
+        "message": "Frame found by name",
+        "frameName": "ch-nc_self_service"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:54.649Z",
+        "user": "[User 7]",
+        "step": "Step 17 - Verify Execution Is Successful",
+        "message": "Web Vitals collected",
+        "metricsCount": 12,
+        "totalLoadTime": 6792.800000000745,
+        "fcp": 1380
+      },
+      {
+        "timestamp": "2026-06-10T11:14:54.649Z",
+        "user": "[User 7]",
+        "step": "Step 17 - Verify Execution Is Successful",
+        "message": "Capture succeeded",
+        "attempt": 1,
+        "metricsCount": 15
+      },
+      {
+        "timestamp": "2026-06-10T11:14:54.649Z",
+        "user": "[User 7]",
+        "step": "Step 17 - Verify Execution Is Successful",
+        "message": "Complete metrics captured",
+        "metricsCount": 15
+      },
+      {
+        "timestamp": "2026-06-10T11:14:54.650Z",
+        "user": "[User 7]",
+        "step": "Step 18 - Performance Summary",
+        "message": "Page context set: Step 18 - Performance Summary"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:54.650Z",
+        "user": "[User 7]",
+        "step": "Step 18 - Performance Summary",
+        "message": "Step started: Step 18 - Performance Summary",
+        "stepId": "Step 18 - Performance Summary-18",
+        "frameName": null,
+        "options": {}
+      },
+      {
+        "timestamp": "2026-06-10T11:14:54.651Z",
+        "user": "[User 7]",
+        "step": "Step 18 - Performance Summary",
+        "message": "Exporting to JSON",
+        "filename": "User 7-metrics.json"
+      },
+      {
+        "timestamp": "2026-06-10T11:14:54.656Z",
+        "user": "[User 7]",
+        "step": "Step 18 - Performance Summary",
+        "message": "Exporting to JSON",
+        "filename": "User 7-metrics.json"
+      }
+    ]
+  },
+  "config": {
+    "maxRetries": 3,
+    "retryDelayMs": 1500,
+    "loadStateTimeout": 15000,
+    "slowRequestThreshold": 2000
+  }
+}

@@ -1,1 +1,1 @@
-# nc-qa-resources
+# nc-qa-automation
